@@ -208,6 +208,11 @@ function Supernova(toml::Dict)
     return supernova
 end
 
+function Supernova(toml_path::AbstractString)
+    toml = TOML.parsefile(toml_path)
+    return Supernova(toml)
+end
+
 # Plotting functions
 function plot!(fig, ax, supernova::Supernova, plot_config::Dict)
     instruments = String[]
