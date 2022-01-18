@@ -9,6 +9,7 @@ CairoMakie.activate!(type = "svg")
 
 # Exports
 export Supernova
+export Observation
 export plot, plot!
 
 # Fix for unknown unit context
@@ -219,7 +220,13 @@ function plot!(fig, ax, supernova::Supernova, plot_config::Dict)
     units = get(plot_config, "unit", Dict())
     time_unit = uparse(get(units, "time", "d"))
     flux_unit = uparse(get(units, "flux", "μJy"))
+    names = get(plot_config, "names", nothing)
     for obs in supernova.lightcurve
+        if !isnothing(names)
+            if !(obs.name in names)
+                continue
+            end
+        end
         if !(obs.name in instruments)
             elem = MarkerElement(color = :black, marker = Meta.parse(plot_config["marker"][obs.name]))
             push!(legend_plots, elem)
