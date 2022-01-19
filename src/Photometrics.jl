@@ -3,18 +3,8 @@ module Photometrics
 # External Packages
 using Unitful, UnitfulAstro
 
-# Fix for unknown unit context
-function Unitful.uparse(str)
-    try
-        uparse(str, unit_context=Unitful)
-    catch
-        uparse(str, unit_context=UnitfulAstro)
-    end
-end
-
 # Internal Packages
-include("Filters.jl")
-using .Filters
+using ..Filters
 
 # Exports
 export Lightcurve
@@ -34,7 +24,6 @@ end
 
 function get_column_index(obs_file::Vector{String}, delimiter::AbstractString, header_keys::Dict, facility, instrument, filter_name)
     if typeof(header_keys["time"]["col"]) <: AbstractString
-        println("String header")
         header = [h for h in split(obs_file[1], delimiter) if h != ""]
         time_col = findfirst(f -> header_keys["time"]["col"] == f, header)
         time_unit = header_keys["time"]["unit"]
@@ -59,7 +48,6 @@ function get_column_index(obs_file::Vector{String}, delimiter::AbstractString, h
         end
         obs_file = obs_file[2:end] # Remove header
     else
-        println("Index header")
         time_col = header_keys["time"]["col"]
         time_unit = header_keys["time"]["unit"]
         flux_col = header_keys["flux"]["col"]
@@ -87,7 +75,6 @@ end
 
 # Default header
 function get_column_index(obs_file::Vector{String}, delimiter::AbstractString, header_keys::Nothing, facility, instrument, filter_name)
-    println("Default header")
     header = [h for h in split(obs_file[1], delimiter) if h != ""]
     time_col = findfirst(f -> occursin("time[", f), header)
     time_unit = "$(header[time_col][6:end-1])"
@@ -119,7 +106,6 @@ function Lightcurve(observations::Vector, max_flux_err)
     lc = Observation[]
     for observation in observations
         obs_name = observation["name"]
-        @show obs_name
         obs_path = observation["path"]
         facility = get(observation, "facility", nothing)
         instrument = get(observation, "instrument", nothing)
