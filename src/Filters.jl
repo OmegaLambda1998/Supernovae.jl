@@ -59,7 +59,6 @@ end
 
 function Filter(facility::AbstractString, instrument::AbstractString, name::AbstractString)
     # First see if the requested filter is stored locally
-    @debug "Attempting to find $(facility)__$(instrument)__$(name) in local files"
     filter_dir = joinpath(@__DIR__, "filters")
     for filter_file in readdir(filter_dir, join=false)
         if filter_file == "$(facility)__$(instrument)__$(name)"
@@ -73,7 +72,7 @@ function Filter(facility::AbstractString, instrument::AbstractString, name::Abst
         return Filter(facility, instrument, name, filter_svo)
     end
     # Finally, give up
-    @debug "Count not find $(facility)__$(instrument)__$(name) anywhere"
+    @error "Count not find $(facility)__$(instrument)__$(name) anywhere"
     throw(ErrorException("No filter found with facilty: $facility, instrument: $instrument, and name: $name"))
 end
 
