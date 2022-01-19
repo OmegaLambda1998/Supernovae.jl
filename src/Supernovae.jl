@@ -1,10 +1,10 @@
 module Supernovae
 
-# External packages
+# External Packages
 using TOML
-using ArgParse
+using LoggingExtras
 
-# Internal files
+# Internal Packages 
 include("Filters.jl")
 using .Filters
 include("Photometrics.jl")
@@ -15,41 +15,73 @@ include("Plotting.jl")
 using .Plotting
 
 # Exports
+export main
 export Filter
 export Observation, Lightcurve, Supernova
 export plot_lightcurve, plot_lightcurve!
 
-function get_args()
-    s = ArgParseSettings()
-    @add_arg_table s begin
-        "--verbose", "-v"
-            help = "Increase level of logging verbosity"
-            action = :store_true
-        "toml"
-            help = "Path to toml input file"
-            required = true
+function setup_global_config!(toml::Dict)
+    config = get(toml, "global", Dict())
+    base_path = abspath(get(config, "base_path", dirname(toml["toml_path"])))
+    config["base_path"] = base_path
+    output_path = joinpath(base_path, get(config, "output_path", "Output"))
+    if isdir(output_path)
+        @warn "$output_path already exists. Some files may be overwritten"
+    else
+        mkpath(output_path)
     end
-
-    return parse_args(s)
+    config["output_path"] = output_path
+    log_file = get(config, "log_file", nothing)
+    if !isnothing(log_file)
+        log_file = joinpath(output_path, log_file) 
+    end
+    config["log_file"] = log_file
+    toml["global"] = config
+    return toml
 end
 
-if abspath(PROGRAM_FILE) == @__FILE__
-    args = get_args()
-    verbose = args["verbose"]
-    toml_path = args["toml"]
-    toml = TOML.parsefile(toml_path)
-    println("Building supernova")
-    supernova = Supernova(toml)
-    @show supernova.name
+function main(toml::Dict, verbose::Bool)
+    toml = setup_global_config!(toml)
+    config = toml["global"]
+    # Optionally set up logging
+    log_file = config["log_file"]
+    if !isnothing(log_file)
+        if verbose
+            level = Logging.Debug
+        else
+            level = Logging.Info
+        end
+        logger = TeeLogger(
+            MinLevelLogger(FileLogger(log_file), level),
+            MinLevelLogger(SimpleLogger(stdout), level)
+        )
+        global_logger(logger)
+    end
+    toml["data"]["base_path"] = config["base_path"]
+    toml["data"]["output_path"] = config["output_path"]
+    supernova = Supernova(toml["data"])
     plot_config = get(toml, "plot", nothing)
+    # Plotting
     if !isnothing(plot_config)
-        println("Plotting")
-        lightcurve_config = get(plot_config, "lightcurve", nothing) 
-        if !isnothing(lightcurve_config)
-            plot_lightcurve(supernova, lightcurve_config)
+        # Lightcurve plotting
+        lc_config = get(plot_config, "lightcurve", nothing)
+        if !isnothing(lc_config)
+            @info "Plotting lightcurve"
+            lc_path = get(lc_config, "path", "$(supernova.name)_lightcurve.svg")
+            if !isabspath(lc_path)
+                lc_path = joinpath(config["output_path"], lc_path)
+            end
+            lc_config["path"] = lc_path
+            plot_lightcurve(supernova, lc_config)
         end
     end
+    return supernova
 end
- 
+
+function main(toml_path::AbstractString, verbose::Bool)
+    toml = TOML.parsefile(toml_path)
+    toml["toml_path"] = toml_path
+    return main(toml, verbose)
+end
 
 end # module
