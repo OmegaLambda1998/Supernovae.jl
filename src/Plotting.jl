@@ -18,12 +18,15 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
     time = Dict()
     flux = Dict()
     flux_err = Dict()
-    legend_plots = MarkerElement[]
-    legend_names = String[]
+    marker_plots = MarkerElement[]
+    marker_names = String[]
+    colour_plots = MarkerElement[]
+    colour_names = String[]
     units = get(plot_config, "unit", Dict())
     time_unit = uparse(get(units, "time", "d"))
     flux_unit = uparse(get(units, "flux", "μJy"))
     names = get(plot_config, "names", nothing)
+    @debug "Generating all plot vectors"
     for obs in supernova.lightcurve.observations
         if !isnothing(names)
             if !(obs.name in names)
@@ -32,13 +35,13 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
         end
         if !(obs.name in instruments)
             elem = MarkerElement(color = :black, marker = Meta.parse(plot_config["marker"][obs.name]))
-            push!(legend_plots, elem)
-            push!(legend_names, obs.name)
+            push!(marker_plots, elem)
+            push!(marker_names, obs.name)
         end
         if !(obs.filter.name in filters)
             elem = MarkerElement(color = plot_config["colour"][obs.filter.name], marker = :circle)
-            push!(legend_plots, elem)
-            push!(legend_names, obs.filter.name)
+            push!(colour_plots, elem)
+            push!(colour_names, obs.filter.name)
         end
         if !(obs.name in instruments)
             push!(instruments, obs.name)
@@ -50,6 +53,9 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
         push!(get!(flux, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(flux_unit, obs.flux)))
         push!(get!(flux_err, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(flux_unit, obs.flux_err)))
     end
+    legend_plots = MarkerElement[marker_plots; colour_plots]
+    legend_names = String[marker_names; colour_names]
+    @debug "Plotting"
     for (i, time_key) in enumerate(collect(keys(time)))
         flux_key = collect(keys(flux))[i]
         flux_err_key = collect(keys(flux_err))[i]

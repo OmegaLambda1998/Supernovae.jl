@@ -2,7 +2,6 @@ module Data
 
 # External packages
 using Unitful, UnitfulAstro
-using TOML
 
 # Fix for uparse context
 function Unitful.uparse(s)
@@ -14,11 +13,8 @@ function Unitful.uparse(s)
 end
 
 # Internal files
-include("Filters.jl")
-using .Filters
-
-include("Photometrics.jl")
-using .Photometrics
+using ..Filters
+using ..Photometrics
 
 # Exports
 export Supernova
@@ -31,39 +27,42 @@ mutable struct Supernova
 end
 
 # Read in a supernova object from a toml dictionary
-function Supernova(toml::Dict)
-    data = toml["data"]
+function Supernova(data::Dict)
     name = data["name"]
+    @info "Loading in Supernova $name"
     redshift = data["redshift"]
     distance_modulus = data["distance_modulus"]
     max_flux_err = nothing
     max_flux_err_val = get(data, "max_flux_err", nothing)
     if !isnothing(max_flux_err_val)
-        max_flux_error_unit = get(data, "max_flux_err_unit", nothing)
-        if !isnothing(max_flux_error_unit)
-            max_flux_err = max_flux_err_val * uparse(max_flux_error_unit)
-        end
+        max_flux_error_unit = get(data, "max_flux_err_unit", "μJy")
+        max_flux_err = max_flux_err_val * uparse(max_flux_error_unit)
     end
+    @debug "Max flux error set to $max_flux_err"
     # Loading in lightcurve
-    peak_time = get(toml["data"], "peak_time", nothing)
+    observations = get(data, "observations", [])
+    @info "Found $(length(observations)) photometry sources"
+    for obs in observations
+        obs["base_path"] = data["base_path"]
+        obs["output_path"] = data["output_path"]
+    end
+    peak_time = get(data, "peak_time", nothing)
+    @info "Loading in lightcurves"
+    @debug "Loading lightcurve with peak_time = $peak_time"
     if !isnothing(peak_time)
         if peak_time == true
-            lightcurve = Lightcurve(get(data, "observations", []), max_flux_err, peak_time)
+            lightcurve = Lightcurve(observations, max_flux_err, peak_time)
         else
-            peak_time_unit = uparse(toml["data"], "peak_time_unit", "d")
-            lightcurve = Lightcurve(get(data, "observations", []), max_flux_err, peak_time, peak_time_unit)
+            peak_time_unit = uparse(data, "peak_time_unit", "d")
+            lightcurve = Lightcurve(observations, max_flux_err, peak_time, peak_time_unit)
         end
     else
-        lightcurve = Lightcurve(get(data, "observations", []), max_flux_err)
+        lightcurve = Lightcurve(observations, max_flux_err)
     end
+    @info "Loading supernova"
     supernova = Supernova(name, redshift, distance_modulus, lightcurve)
+    @info "All done"
     return supernova
 end
-
-function Supernova(toml_path::AbstractString)
-    toml = TOML.parsefile(toml_path)
-    return Supernova(toml)
-end
-
 
 end

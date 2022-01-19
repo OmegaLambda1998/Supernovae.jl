@@ -24,6 +24,7 @@ end
 
 function get_column_index(obs_file::Vector{String}, delimiter::AbstractString, header_keys::Dict, facility, instrument, filter_name)
     if typeof(header_keys["time"]["col"]) <: AbstractString
+        @debug "Reading in string based header"
         header = [h for h in split(obs_file[1], delimiter) if h != ""]
         time_col = findfirst(f -> header_keys["time"]["col"] == f, header)
         time_unit = header_keys["time"]["unit"]
@@ -48,6 +49,7 @@ function get_column_index(obs_file::Vector{String}, delimiter::AbstractString, h
         end
         obs_file = obs_file[2:end] # Remove header
     else
+        @debug "Reading in index based header"
         time_col = header_keys["time"]["col"]
         time_unit = header_keys["time"]["unit"]
         flux_col = header_keys["flux"]["col"]
@@ -75,6 +77,7 @@ end
 
 # Default header
 function get_column_index(obs_file::Vector{String}, delimiter::AbstractString, header_keys::Nothing, facility, instrument, filter_name)
+    @debug "Reading in default header"
     header = [h for h in split(obs_file[1], delimiter) if h != ""]
     time_col = findfirst(f -> occursin("time[", f), header)
     time_unit = "$(header[time_col][6:end-1])"
@@ -106,7 +109,11 @@ function Lightcurve(observations::Vector, max_flux_err)
     lc = Observation[]
     for observation in observations
         obs_name = observation["name"]
+        @info "Loading observations for $obs_name"
         obs_path = observation["path"]
+        if !isabspath(obs_path)
+            obs_path = joinpath(observation["base_path"], observation["path"])
+        end
         facility = get(observation, "facility", nothing)
         instrument = get(observation, "instrument", nothing)
         filter_name = get(observation, "filter", nothing)
@@ -120,6 +127,7 @@ function Lightcurve(observations::Vector, max_flux_err)
         flux_offset_val = get(observation, "flux_offset", 0)
         flux_offset_unit = uparse(get(observation, "flux_offset_unit", flux_unit))
         flux_offset = flux_offset_val * flux_offset_unit
+        @debug "Moving through lines"
         for line in obs_file
             if occursin(comment, line)
                 continue
@@ -153,6 +161,7 @@ end
 
 function Lightcurve(observations::Vector, max_flux_err, peak_time::Bool)
     lightcurve = Lightcurve(observations, max_flux_err)
+    @debug "Offsetting peak time"
     if peak_time
         max_obs = lightcurve.observations[1]
         for obs in lightcurve.observations
@@ -172,6 +181,7 @@ function Lightcurve(observations::Vector, max_flux_err, peak_time, peak_time_uni
     lightcurve = Lightcurve(observations, max_flux_err)
     peak_time_unit = uparse(toml["data"], "peak_time_unit", "d")
     peak_time = peak_time * peak_time_unit
+    @debug "Offsetting peak time"
     for obs in lightcurve
         obs.time -= peak_time
     end
