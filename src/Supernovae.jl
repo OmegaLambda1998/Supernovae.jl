@@ -40,22 +40,43 @@ function setup_global_config!(toml::Dict)
     return toml
 end
 
+function setup_logger(log_file::AbstractString, verbose::Bool)
+    if verbose
+        level = Logging.Debug
+    else
+        level = Logging.Info
+    end
+    function fmt(io, args)
+        if args.level == Logging.Error
+            color = :red
+            bold = true
+        elseif args.level == Logging.Warn
+            color = :yellow
+            bold = true
+        elseif args.level == Logging.Info
+            color = :cyan
+            bold = false
+        else
+            color = :white
+            bold = false
+        end
+        printstyled(io, args._module, " | ", "[", args.level, "] ", args.message, "\n"; color = color, bold = bold)
+    end
+    logger = TeeLogger(
+        MinLevelLogger(FormatLogger(fmt, open(log_file, "w")), level),
+        MinLevelLogger(FormatLogger(fmt, stdout), level)
+    )
+    global_logger(logger)
+    @info "Logging to $log_file"
+end
+
 function main(toml::Dict, verbose::Bool)
     toml = setup_global_config!(toml)
     config = toml["global"]
     # Optionally set up logging
     log_file = config["log_file"]
     if !isnothing(log_file)
-        if verbose
-            level = Logging.Debug
-        else
-            level = Logging.Info
-        end
-        logger = TeeLogger(
-            MinLevelLogger(FileLogger(log_file), level),
-            MinLevelLogger(SimpleLogger(stdout), level)
-        )
-        global_logger(logger)
+        setup_logger(log_file, verbose)
     end
     toml["data"]["base_path"] = config["base_path"]
     toml["data"]["output_path"] = config["output_path"]
