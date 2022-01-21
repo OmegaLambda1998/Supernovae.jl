@@ -4,9 +4,12 @@ module Filters
 using Unitful
 using UnitfulAstro
 using PyCall
+using Trapz
 
 # Exports
 export Filter
+export planck
+export flux
 
 function svo(facility, instrument, name)
     py"""
@@ -28,14 +31,14 @@ struct Filter
     facility :: AbstractString # Facility name (NewHorizons, Kepler, Tess, etc...)
     instrument :: AbstractString # Instrument name (Bessell, CTIO, Landolt, etc...)
     name :: AbstractString # Filter name (g, r, i, z, etc...)
-    wavelength :: Vector{typeof(1.0u"A")} # Default unit of Angstrom
+    wavelength :: Vector{typeof(1.0u"Å")} # Default unit of Angstrom
     transmission :: Vector{Float64} # Unitless 
 end
 
 function Filter(facility::AbstractString, instrument::AbstractString, name::AbstractString, svo::PyCall.PyObject)
     wavelength = svo.__getitem__("Wavelength")
     transmission = svo.__getitem__("Transmission")
-    filter = Filter(facility, instrument, name, wavelength .* u"A", transmission)
+    filter = Filter(facility, instrument, name, wavelength .* u"Å", transmission)
     save(filter)
     return filter
 end
@@ -49,7 +52,7 @@ function Filter(facility::AbstractString, instrument::AbstractString, name::Abst
     transmission = []
     for line in lines
         w, t = split(line, ',')
-        w = parse(Float64, w) * u"A"
+        w = parse(Float64, w) * u"Å"
         t = parse(Float64, t)
         push!(wavelength, w)
         push!(transmission, t)
@@ -88,6 +91,27 @@ function save(filter::Filter)
     open(filter_path, "w") do io
         write(io, filter_str)
     end
+end
+
+# Planck's law
+# Calculates the specral radiance of a blackbody at temperature T, emitting at wavelength λ
+function planck(T, λ)
+    h = 6.626e-34 * u"J / Hz" # Planck Constant
+    k = 1.381e-23 * u"J / K" # Boltzmann Constant
+    c = 299.792 * u"km / s" # Speed of light in a vacuum
+    B = 2π * h * c * c / ((λ ^ 5) * (exp(h * c / (λ * k * T)) - 1)) # Spectral Radiance
+    return B
+end
+
+# Calculates the flux of a blackbody at temperature T, as seen through the filter
+function flux(filter::Filter, T)
+    c = 299.792 * u"km / s" # Speed of light in a vacuum
+    numer = @. planck(T, filter.wavelength) * filter.transmission * filter.wavelength
+    numer = trapz(numer, filter.wavelength)
+    denom = @. c * filter.transmission / filter.wavelength
+    denom = trapz(denom, filter.wavelength)
+
+    return numer / denom
 end
 
 end
