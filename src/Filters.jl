@@ -60,9 +60,8 @@ function Filter(facility::AbstractString, instrument::AbstractString, name::Abst
     return Filter(facility, instrument, name, wavelength, transmission)
 end
 
-function Filter(facility::AbstractString, instrument::AbstractString, name::AbstractString)
+function Filter(filter_dir::AbstractString, facility::AbstractString, instrument::AbstractString, name::AbstractString)
     # First see if the requested filter is stored locally
-    filter_dir = joinpath(@__DIR__, "filters")
     for filter_file in readdir(filter_dir, join=false)
         if filter_file == "$(facility)__$(instrument)__$(name)"
             return Filter(facility, instrument, name, joinpath(filter_dir, filter_file))

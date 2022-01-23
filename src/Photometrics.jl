@@ -112,7 +112,7 @@ function Lightcurve(observations::Vector, max_flux_err)
         @info "Loading observations for $obs_name"
         obs_path = observation["path"]
         if !isabspath(obs_path)
-            obs_path = joinpath(observation["base_path"], observation["path"])
+            obs_path = joinpath(observation["data_path"], observation["path"])
         end
         facility = get(observation, "facility", nothing)
         instrument = get(observation, "instrument", nothing)
@@ -151,7 +151,7 @@ function Lightcurve(observations::Vector, max_flux_err)
             if !isnothing(filter_col)
                 filter_name = line[filter_col]
             end
-            filter = Filter(facility, instrument, filter_name)
+            filter = Filter(observation["filter_path"], facility, instrument, filter_name)
             obs = Observation(obs_name, time, flux, flux_err, filter)
             push!(lc, obs)
         end
