@@ -45,6 +45,8 @@ function Supernova(data::Dict)
     for obs in observations
         obs["base_path"] = data["base_path"]
         obs["output_path"] = data["output_path"]
+        obs["filter_path"] = data["filter_path"]
+        obs["data_path"] = data["data_path"]
     end
     peak_time = get(data, "peak_time", nothing)
     @info "Loading in lightcurves"
