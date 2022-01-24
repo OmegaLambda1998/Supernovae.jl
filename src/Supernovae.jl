@@ -47,7 +47,7 @@ function setup_global_config!(toml::Dict)
     # Data path is where all supernovae data (both photometric and spectroscopic) will be stored
     # Default to base_path / Data
     # Can be relatvie (to base_path) or absolute
-    data_path = get(config, "data", nothing)
+    data_path = get(config, "data_path", nothing)
     if isnothing(data_path)
         data_path = joinpath(base_path, "Data")
     elseif !isabspath(data_path)
@@ -68,14 +68,12 @@ function setup_global_config!(toml::Dict)
     logging = get(config, "logging", false)
     config["logging"] = logging
     # Log file is the name of the log file. This will only work if logging is true
-    # Defaults to output_path / log.txt
     # Can only be relative to output_path
-    log_file = get(config, "log_file", nothing)
-    if !isnothing(log_file)
-        log_file = joinpath(output_path, log_file) 
-        if !logging
-            @warn "Logging set to false, so log file $log_file will not be written"
-        end
+    # Defaults to log.txt
+    log_file = get(config, "log_file", "log.txt")
+    log_file = joinpath(output_path, log_file) 
+    if !logging
+        @warn "Logging set to false, so log file $log_file will not be written. Please add `logger=true` to your [ global ] config"
     end
     config["log_file"] = log_file
     toml["global"] = config
