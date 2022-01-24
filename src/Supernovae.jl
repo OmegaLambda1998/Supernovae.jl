@@ -75,7 +75,7 @@ function setup_global_config!(toml::Dict)
         if isnothing(log_file)
             log_file = "log.txt"
         end
-        log_file = joinpath(output_path, log_file)
+        log_file = abspath(joinpath(output_path, log_file))
     end
     if !logging & !isnothing(log_file)
         @warn "Logging set to false, so log file $log_file will not be written. Please add `logger=true` to your [ global ] config"
@@ -117,10 +117,6 @@ end
 function process_supernova(toml::Dict, verbose::Bool)
     setup_global_config!(toml)
     config = toml["global"]
-    # Optionally set up logging
-    if config["logging"]
-        setup_logger(config["log_file"], verbose)
-    end
     # Ensure all path's exist
     if !isdir(config["base_path"])
         mkpath(config["base_path"])
@@ -133,6 +129,10 @@ function process_supernova(toml::Dict, verbose::Bool)
     end
     if !isdir(config["filter_path"])
         mkpath(config["filter_path"])
+    end
+    # Optionally set up logging
+    if config["logging"]
+        setup_logger(config["log_file"], verbose)
     end
     # Pass path's down a layer
     toml["data"]["base_path"] = config["base_path"]
