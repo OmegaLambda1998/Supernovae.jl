@@ -70,9 +70,14 @@ function setup_global_config!(toml::Dict)
     # Log file is the name of the log file. This will only work if logging is true
     # Can only be relative to output_path
     # Defaults to log.txt
-    log_file = get(config, "log_file", "log.txt")
-    log_file = joinpath(output_path, log_file) 
-    if !logging
+    log_file = get(config, "log_file", nothing)
+    if logging
+        if isnothing(log_file)
+            log_file = "log.txt"
+        end
+        log_file = joinpath(output_path, log_file)
+    end
+    if !logging & !isnothing(log_file)
         @warn "Logging set to false, so log file $log_file will not be written. Please add `logger=true` to your [ global ] config"
     end
     config["log_file"] = log_file
@@ -122,6 +127,9 @@ function main(toml::Dict, verbose::Bool)
     end
     if !isdir(config["output_path"])
         mkpath(config["output_path"])
+    end
+    if !isdir(config["data_path"])
+        mkpath(config["data_path"])
     end
     if !isdir(config["filter_path"])
         mkpath(config["filter_path"])
