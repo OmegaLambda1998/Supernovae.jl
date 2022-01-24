@@ -15,7 +15,7 @@ include("Plotting.jl")
 using .Plotting
 
 # Exports
-export main
+export process_supernova 
 export Filter
 export planck, flux
 export Observation, Lightcurve, Supernova
@@ -43,7 +43,7 @@ function setup_global_config!(toml::Dict)
     elseif !isabspath(output_path)
         output_path = joinpath(base_path, output_path)
     end
-    config["output_path"] = output_path
+    config["output_path"] = abspath(output_path)
     # Data path is where all supernovae data (both photometric and spectroscopic) will be stored
     # Default to base_path / Data
     # Can be relatvie (to base_path) or absolute
@@ -53,7 +53,7 @@ function setup_global_config!(toml::Dict)
     elseif !isabspath(data_path)
         data_path = joinpath(base_path, data_path)
     end
-    config["data_path"] = data_path
+    config["data_path"] = abspath(data_path)
     # Filter path is where all filter data will be placed. This is seperate from the data path so filters can be shared between supernovae
     # Defaults to base_path / Filters
     # Can be relative (to base_path) or absolute
@@ -63,7 +63,7 @@ function setup_global_config!(toml::Dict)
     elseif !isabspath(filter_path)
         filter_path = joinpath(base_path, filter_path)
     end
-    config["filter_path"] = filter_path
+    config["filter_path"] = abspath(filter_path)
     # Logging sets whether or not to setup and use Supernovae's logging
     logging = get(config, "logging", false)
     config["logging"] = logging
@@ -114,7 +114,7 @@ function setup_logger(log_file::AbstractString, verbose::Bool)
     @info "Logging to $log_file"
 end
 
-function main(toml::Dict, verbose::Bool)
+function process_supernova(toml::Dict, verbose::Bool)
     setup_global_config!(toml)
     config = toml["global"]
     # Optionally set up logging
@@ -139,9 +139,11 @@ function main(toml::Dict, verbose::Bool)
     toml["data"]["output_path"] = config["output_path"]
     toml["data"]["filter_path"] = config["filter_path"]
     toml["data"]["data_path"] = config["data_path"]
+    # TODO test
     supernova = Supernova(toml["data"])
     plot_config = get(toml, "plot", nothing)
     # Plotting
+    # TODO test
     if !isnothing(plot_config)
         # Lightcurve plotting
         lc_config = get(plot_config, "lightcurve", nothing)
@@ -158,10 +160,10 @@ function main(toml::Dict, verbose::Bool)
     return supernova
 end
 
-function main(toml_path::AbstractString, verbose::Bool)
+function process_supernova(toml_path::AbstractString, verbose::Bool)
     toml = TOML.parsefile(toml_path)
     toml["toml_path"] = abspath(toml_path)
-    return main(toml, verbose)
+    return process_supernova(toml, verbose)
 end
 
 end # module

@@ -43,4 +43,4 @@ using .Supernovae
 # Run script
 verbose = args["verbose"]
 toml_path = args["toml"]
-main(toml_path, verbose)
+process_supernova(toml_path, verbose)
