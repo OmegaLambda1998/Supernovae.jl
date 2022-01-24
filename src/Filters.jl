@@ -40,7 +40,6 @@ function Filter(identifier, svo::PyCall.PyObject)
     wavelength = svo.__getitem__("Wavelength")
     transmission = svo.__getitem__("Transmission")
     filter = Filter(facility, instrument, name, wavelength .* u"Å", transmission)
-    save(filter)
     return filter
 end
 
@@ -73,7 +72,9 @@ function Filter(filter_dir::AbstractString, facility::AbstractString, instrument
     # Next see if the filter can be found on SVO FPS
     filter_svo = svo(facility, instrument, name)
     if !isnothing(filter_svo)
-        return Filter((facility, instrument, name), filter_svo)
+        filter = Filter((facility, instrument, name), filter_svo)
+        save(filter_dir, filter)
+        return filter
     end
     # Finally, give up
     @error "Count not find $(facility)__$(instrument)__$(name) anywhere"
@@ -81,8 +82,7 @@ function Filter(filter_dir::AbstractString, facility::AbstractString, instrument
 end
 
 # Functions on a filter curve
-function save(filter::Filter)
-    filter_dir = joinpath(@__DIR__, "filters")
+function save(filter_dir::AbstractString, filter::Filter)
     filter_path = joinpath(filter_dir, "$(filter.facility)__$(filter.instrument)__$(filter.name)")
     @debug "Saving filter to $filter_path"
     filter_str = ""
