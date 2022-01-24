@@ -16,7 +16,7 @@ using Test
             data_path = joinpath(base_path, "Data")
             filter_path = joinpath(base_path, "Filters")
             logging = false
-            log_file = joinpath(output_path, "log.txt")
+            log_file = nothing 
 
             toml = Dict{Any, Any}("toml_path" => toml_path) # Minimum toml 
             Supernovae.setup_global_config!(toml)
