@@ -35,7 +35,8 @@ struct Filter
     transmission :: Vector{Float64} # Unitless 
 end
 
-function Filter(facility::AbstractString, instrument::AbstractString, name::AbstractString, svo::PyCall.PyObject)
+function Filter(identifier, svo::PyCall.PyObject)
+    facility, instrument, name = identifier
     wavelength = svo.__getitem__("Wavelength")
     transmission = svo.__getitem__("Transmission")
     filter = Filter(facility, instrument, name, wavelength .* u"Å", transmission)
@@ -43,7 +44,8 @@ function Filter(facility::AbstractString, instrument::AbstractString, name::Abst
     return filter
 end
 
-function Filter(facility::AbstractString, instrument::AbstractString, name::AbstractString, path::AbstractString) 
+function Filter(identifier, path::AbstractString) 
+    facility, instrument, name = identifier
     lines = open(path) do io
         ls = [line for line in readlines(io) if line != ""]
         return ls
@@ -64,14 +66,14 @@ function Filter(filter_dir::AbstractString, facility::AbstractString, instrument
     # First see if the requested filter is stored locally
     for filter_file in readdir(filter_dir, join=false)
         if filter_file == "$(facility)__$(instrument)__$(name)"
-            return Filter(facility, instrument, name, joinpath(filter_dir, filter_file))
+            return Filter((facility, instrument, name), joinpath(filter_dir, filter_file))
         end
     end
     @debug "Could not find $(facility)__$(instrument)__$(name) in local files, attempting to find it on SVO FPS"
     # Next see if the filter can be found on SVO FPS
     filter_svo = svo(facility, instrument, name)
     if !isnothing(filter_svo)
-        return Filter(facility, instrument, name, filter_svo)
+        return Filter((facility, instrument, name), filter_svo)
     end
     # Finally, give up
     @error "Count not find $(facility)__$(instrument)__$(name) anywhere"
