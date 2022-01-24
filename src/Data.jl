@@ -21,17 +21,16 @@ export Supernova
 
 mutable struct Supernova
     name :: AbstractString # Human readable name
-    redshift :: Real # Unitless
-    distance_modulus :: Real # Unitless
     lightcurve :: Lightcurve
 end
 
 # Read in a supernova object from a toml dictionary
 function Supernova(data::Dict)
+    # TODO add checks for other supernova properties
+    # Redshift, zero point, etc.
+    # TODO add magnitudes
     name = data["name"]
     @info "Loading in Supernova $name"
-    redshift = data["redshift"]
-    distance_modulus = data["distance_modulus"]
     max_flux_err = nothing
     max_flux_err_val = get(data, "max_flux_err", nothing)
     if !isnothing(max_flux_err_val)
