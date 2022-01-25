@@ -193,7 +193,7 @@ function time(lightcurve::Lightcurve)
     return [obs.time for obs in lightcurve.observations]
 end
 
-function flux(lightcurve::Lightcurve)
+function Filters.flux(lightcurve::Lightcurve)
     return [obs.flux for obs in lightcurve.observations]
 end
 
