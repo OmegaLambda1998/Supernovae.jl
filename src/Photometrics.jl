@@ -198,7 +198,7 @@ function flux(lightcurve::Lightcurve)
 end
 
 function flux_err(lightcurve::Lightcurve)
-    return [obs.flux_err for ob in lightcurve.observations]
+    return [obs.flux_err for obs in lightcurve.observations]
 end
 
 end
