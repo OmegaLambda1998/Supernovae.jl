@@ -9,7 +9,7 @@ using ..Filters
 # Exports
 export Lightcurve
 export Observation
-export time, flux, flux_err
+export time, flux_err
 
 mutable struct Observation
     name :: AbstractString # Human readable name
