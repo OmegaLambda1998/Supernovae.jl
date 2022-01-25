@@ -100,7 +100,8 @@ function planck(T, λ)
     h = 6.626e-34 * u"J / Hz" # Planck Constant
     k = 1.381e-23 * u"J / K" # Boltzmann Constant
     c = 299.792 * u"km / s" # Speed of light in a vacuum
-    B = 2π * h * c * c / ((λ ^ 5) * (exp(h * c / (λ * k * T)) - 1)) # Spectral Radiance
+    exponent = h * c / (λ * k * T)
+    B = (2π * h * c * c / (λ ^ 5)) / (exp(exponent) - 1) # Spectral Radiance
     return B
 end
 
