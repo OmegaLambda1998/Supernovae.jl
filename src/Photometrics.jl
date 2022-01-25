@@ -9,7 +9,7 @@ using ..Filters
 # Exports
 export Lightcurve
 export Observation
-export time, flux_err
+export time, flux, flux_err
 
 mutable struct Observation
     name :: AbstractString # Human readable name
@@ -193,7 +193,7 @@ function time(lightcurve::Lightcurve)
     return [obs.time for obs in lightcurve.observations]
 end
 
-function Filters.flux(lightcurve::Lightcurve)
+function flux(lightcurve::Lightcurve)
     return [obs.flux for obs in lightcurve.observations]
 end
 

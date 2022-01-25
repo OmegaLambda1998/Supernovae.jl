@@ -70,7 +70,7 @@ function Photometrics.time(supernova::Supernova)
     return time(supernova.lightcurve)
 end
 
-function Filters.flux(supernova::Supernova)
+function Photometrics.flux(supernova::Supernova)
     return flux(supernova.lightcurve)
 end
 

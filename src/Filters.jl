@@ -9,7 +9,7 @@ using Trapz
 # Exports
 export Filter
 export planck
-export flux
+export synthetic_flux
 
 function svo(facility, instrument, name)
     py"""
@@ -106,7 +106,7 @@ function planck(T, λ)
 end
 
 # Calculates the flux of a blackbody at temperature T, as seen through the filter
-function flux(filter::Filter, T)
+function synthetic_flux(filter::Filter, T)
     c = 299.792 * u"km / s" # Speed of light in a vacuum
     numer = @. planck(T, filter.wavelength) * filter.transmission * filter.wavelength
     numer = trapz(numer, filter.wavelength)
