@@ -18,7 +18,6 @@ using ..Photometrics
 
 # Exports
 export Supernova
-export time, flux, flux_err
 
 mutable struct Supernova
     name :: AbstractString # Human readable name
