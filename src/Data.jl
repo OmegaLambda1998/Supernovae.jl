@@ -62,7 +62,7 @@ function Supernova(data::Dict)
         lightcurve = Lightcurve(observations, max_flux_err)
     end
     @info "Loading supernova"
-    supernova = Supernova(name, redshift, distance_modulus, lightcurve)
+    supernova = Supernova(name, lightcurve)
     @info "All done"
     return supernova
 end
