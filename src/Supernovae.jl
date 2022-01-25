@@ -17,7 +17,8 @@ using .Plotting
 # Exports
 export process_supernova 
 export Filter
-export planck, time, flux, flux_err
+export planck, synthetic_flux
+export time, flux, flux_err
 export Observation, Lightcurve, Supernova
 export plot_lightcurve, plot_lightcurve!
 
