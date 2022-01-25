@@ -9,6 +9,7 @@ using ..Filters
 # Exports
 export Lightcurve
 export Observation
+export time, flux, flux_err
 
 mutable struct Observation
     name :: AbstractString # Human readable name
@@ -186,6 +187,18 @@ function Lightcurve(observations::Vector, max_flux_err, peak_time, peak_time_uni
         obs.time -= peak_time
     end
     return lightcurve
+end
+
+function time(lightcurve::Lightcurve)
+    return [obs.time for obs in lightcurve.observations]
+end
+
+function flux(lightcurve::Lightcurve)
+    return [obs.flux for obs in lightcurve.observations]
+end
+
+function flux_err(lightcurve::Lightcurve)
+    return [obs.flux_err for ob in lightcurve.observations]
 end
 
 end

@@ -18,6 +18,7 @@ using ..Photometrics
 
 # Exports
 export Supernova
+export time, flux, flux_err
 
 mutable struct Supernova
     name :: AbstractString # Human readable name
@@ -64,6 +65,18 @@ function Supernova(data::Dict)
     supernova = Supernova(name, redshift, distance_modulus, lightcurve)
     @info "All done"
     return supernova
+end
+
+function time(supernova::Supernova)
+    return time(supernova.lightcurve)
+end
+
+function flux(supernova::Supernova)
+    return flux(supernova.lightcurve)
+end
+
+function flux_err(supernova::Supernova)
+    return flux_err(supernova.lightcurve)
 end
 
 end
