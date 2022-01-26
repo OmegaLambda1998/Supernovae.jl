@@ -67,15 +67,15 @@ function Supernova(data::Dict)
 end
 
 function Photometrics.get_time(supernova::Supernova)
-    return time(supernova.lightcurve)
+    return get_time(supernova.lightcurve)
 end
 
 function Photometrics.get_flux(supernova::Supernova)
-    return flux(supernova.lightcurve)
+    return get_flux(supernova.lightcurve)
 end
 
 function Photometrics.get_flux_err(supernova::Supernova)
-    return flux_err(supernova.lightcurve)
+    return get_flux_err(supernova.lightcurve)
 end
 
 end
