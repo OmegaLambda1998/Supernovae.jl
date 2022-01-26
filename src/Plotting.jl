@@ -63,7 +63,6 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
         errorbars!(ax, time[time_key], flux[flux_key], flux_err[flux_err_key], color = plot_config["colour"][time_key[2]], marker = Meta.parse(plot_config["marker"][time_key[1]]))
     end
     Legend(fig[1, 2], legend_plots, legend_names)
-    return fig, ax
 end
 
 function plot_lightcurve(supernova::Supernova, plot_config::Dict)
@@ -72,7 +71,7 @@ function plot_lightcurve(supernova::Supernova, plot_config::Dict)
     time_unit = uparse(get(units, "time", "d"))
     flux_unit = uparse(get(units, "flux", "μJy"))
     ax = Axis(fig[1, 1], xlabel = "Time [$time_unit]", ylabel = "Flux [$flux_unit]", title = supernova.name)
-    fig, ax = plot_lightcurve!(fig, ax, supernova, plot_config)
+    plot_lightcurve!(fig, ax, supernova, plot_config)
     path = get(plot_config, "path", nothing)
     if !isnothing(path)
         save(path, fig)
