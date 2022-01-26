@@ -9,7 +9,7 @@ using ..Filters
 # Exports
 export Lightcurve
 export Observation
-export time, flux, flux_err
+export get_time, get_flux, get_flux_err
 
 mutable struct Observation
     name :: AbstractString # Human readable name
@@ -162,8 +162,8 @@ end
 
 function Lightcurve(observations::Vector, max_flux_err, peak_time::Bool)
     lightcurve = Lightcurve(observations, max_flux_err)
-    @debug "Offsetting peak time"
     if peak_time
+        @debug "Offsetting peak time"
         max_obs = lightcurve.observations[1]
         for obs in lightcurve.observations
             if obs.flux > max_obs.flux
@@ -171,6 +171,7 @@ function Lightcurve(observations::Vector, max_flux_err, peak_time::Bool)
             end
         end
         peak_time = max_obs.time
+        @debug "Peak time set to $peak_time"
         for obs in lightcurve.observations
             obs.time -= peak_time
         end
@@ -183,21 +184,22 @@ function Lightcurve(observations::Vector, max_flux_err, peak_time, peak_time_uni
     peak_time_unit = uparse(toml["data"], "peak_time_unit", "d")
     peak_time = peak_time * peak_time_unit
     @debug "Offsetting peak time"
+    @debug "Peak time set to $peak_time"
     for obs in lightcurve
         obs.time -= peak_time
     end
     return lightcurve
 end
 
-function time(lightcurve::Lightcurve)
+function get_time(lightcurve::Lightcurve)
     return [obs.time for obs in lightcurve.observations]
 end
 
-function flux(lightcurve::Lightcurve)
+function get_flux(lightcurve::Lightcurve)
     return [obs.flux for obs in lightcurve.observations]
 end
 
-function flux_err(lightcurve::Lightcurve)
+function get_flux_err(lightcurve::Lightcurve)
     return [obs.flux_err for obs in lightcurve.observations]
 end
 
