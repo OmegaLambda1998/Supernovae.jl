@@ -32,8 +32,8 @@ end
 
 function Base.get(supernova::Supernova, key::AbstractString, default::Any=nothing)
     # First see if it's a property
-    if key in keys(properties)
-        return properties[key]
+    if key in keys(supernova.properties)
+        return supernova.properties[key]
     end
     # Otherwise get key from the lightcurve
     # Will return default if it doesn't exist
