@@ -26,7 +26,7 @@ mutable struct Lightcurve
 end
 
 function Base.get(lightcurve::Lightcurve, key::AbstractString, default::Any=nothing)
-    if Symbol(key) in getfields(Observation)
+    if Symbol(key) in fieldnames(Observation)
         return [getfield(obs, Symbol(key)) for obs in lightcurve.observations]
     end
     return default
