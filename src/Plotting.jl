@@ -4,12 +4,39 @@ module Plotting
 using CairoMakie
 CairoMakie.activate!(type = "svg")
 using Unitful, UnitfulAstro
+using Colors
+using Random
+Random.seed!(0)
 
 # Internal Packages
 using ..Data
 
 # Exports
 export plot_lightcurve, plot_lightcurve!
+
+# Markers
+markers_labels = shuffle([
+    :rect,
+    :star5,
+    :diamond,
+    :hexagon,
+    :cross,
+    :xcross,
+    :utriangle,
+    :dtriangle,
+    :ltriangle,
+    :rtriangle,
+    :pentagon,
+    :star4,
+    :star8,
+    :vline,
+    :hline,
+    :x,
+    :+,
+    :circle
+])
+
+colour_labels = shuffle(collect(keys(Colors.color_names)))
 
 # Plotting functions
 function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
@@ -41,12 +68,20 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
             end
         end
         if !(obs.name in instruments)
-            elem = MarkerElement(color = :black, marker = Meta.parse(plot_config["marker"][obs.name]))
+            marker = Meta.parse(get(get(plot_config, "marker", Dict()), obs.name, "nothing"))
+            if marker == :nothing
+                marker = markers_labels[length(marker_plots) + 1]
+            end
+            elem = MarkerElement(color = :black, marker = marker)
             push!(marker_plots, elem)
             push!(marker_names, obs.name)
         end
         if !(obs.filter.name in filters)
-            elem = MarkerElement(color = plot_config["colour"][obs.filter.name], marker = :circle)
+            color = get(get(plot_config, "colour", Dict()), obs.filter.name, nothing)
+            if isnothing(color)
+                color = colour_labels[length(colour_plots) + 1]
+            end
+            elem = MarkerElement(marker = :circle, color = color) 
             push!(colour_plots, elem)
             push!(colour_names, obs.filter.name)
         end
@@ -71,8 +106,16 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
     for (i, time_key) in enumerate(collect(keys(time)))
         data_key = collect(keys(data))[i]
         data_err_key = collect(keys(data_err))[i]
-        scatter!(ax, time[time_key], data[data_key], color = plot_config["colour"][time_key[2]], marker = Meta.parse(plot_config["marker"][time_key[1]]))
-        errorbars!(ax, time[time_key], data[data_key], data_err[data_err_key], color = plot_config["colour"][time_key[2]], marker = Meta.parse(plot_config["marker"][time_key[1]]))
+        marker = Meta.parse(get(get(plot_config, "marker", Dict()), time_key[1], "nothing"))
+        if marker == :nothing
+            marker = markers_labels[i]
+        end
+        color = get(get(plot_config, "colour", Dict()), time_key[2], nothing)
+        if isnothing(color)
+            color = colour_labels[i]
+        end
+        scatter!(ax, time[time_key], data[data_key], color = color, marker = marker)
+        errorbars!(ax, time[time_key], data[data_key], data_err[data_err_key], color = color, marker = marker) 
     end
     Legend(fig[1, 2], legend_plots, legend_names)
 end
