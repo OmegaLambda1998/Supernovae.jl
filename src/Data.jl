@@ -21,7 +21,40 @@ export Supernova
 
 mutable struct Supernova
     name :: AbstractString # Human readable name
+    zeropoint :: typeof(1u"AB_mag") 
     lightcurve :: Lightcurve
+    properties :: Dict
+end
+
+function Supernova(name::AbstractString, zeropoint, lightcurve::Lightcurve)
+    return Supernova(name, zeropoint, lightcurve, Dict())
+end
+
+function Base.get(supernova::Supernova, key::AbstractString, default::Any=nothing)
+    # First see if it's a property
+    if key in keys(properties)
+        return properties[key]
+    end
+    # Otherwise get key from the lightcurve
+    # Will return default if it doesn't exist
+    return get(supernova.lightcurve, key, default)
+end
+
+function Base.get!(supernova::Supernova, key::AbstractString, default::Any=nothing)
+    value = get(supernova, key, default)
+    # If using the default value, set the key in properties
+    if value == default
+        supernova.properties[key] = value
+    end
+    return value
+end
+
+function Base.filter(f::Function, supernova::Supernova)
+    return filter(f, supernova.lightcurve)
+end
+
+function Base.filter!(f::Function, supernova::Supernova)
+    return filter!(f, supernova.lightcurve)
 end
 
 # Read in a supernova object from a toml dictionary
@@ -31,6 +64,9 @@ function Supernova(data::Dict)
     # TODO add magnitudes
     name = data["name"]
     @info "Loading in Supernova $name"
+    zeropoint = data["zeropoint"]
+    zeropoint_unit = uparse(get(data, "zeropoint_unit", "AB_mag"))
+    zeropoint = zeropoint * zeropoint_unit
     max_flux_err = nothing
     max_flux_err_val = get(data, "max_flux_err", nothing)
     if !isnothing(max_flux_err_val)
@@ -52,30 +88,18 @@ function Supernova(data::Dict)
     @debug "Loading lightcurve with peak_time = $peak_time"
     if !isnothing(peak_time)
         if peak_time == true
-            lightcurve = Lightcurve(observations, max_flux_err, peak_time)
+            lightcurve = Lightcurve(observations, zeropoint, max_flux_err, peak_time)
         else
             peak_time_unit = uparse(data, "peak_time_unit", "d")
-            lightcurve = Lightcurve(observations, max_flux_err, peak_time, peak_time_unit)
+            lightcurve = Lightcurve(observations, zeropoint, max_flux_err, peak_time, peak_time_unit)
         end
     else
-        lightcurve = Lightcurve(observations, max_flux_err)
+        lightcurve = Lightcurve(observations, zeropoint, max_flux_err)
     end
     @info "Loading supernova"
-    supernova = Supernova(name, lightcurve)
+    supernova = Supernova(name, zeropoint, lightcurve)
     @info "All done"
     return supernova
-end
-
-function Photometrics.get_time(supernova::Supernova)
-    return get_time(supernova.lightcurve)
-end
-
-function Photometrics.get_flux(supernova::Supernova)
-    return get_flux(supernova.lightcurve)
-end
-
-function Photometrics.get_flux_err(supernova::Supernova)
-    return get_flux_err(supernova.lightcurve)
 end
 
 end
