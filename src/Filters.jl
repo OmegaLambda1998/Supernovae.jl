@@ -77,7 +77,7 @@ function Filter(filter_dir::AbstractString, facility::AbstractString, instrument
         return filter
     end
     # Finally, give up
-    @error "Count not find $(facility)__$(instrument)__$(name) anywhere"
+    @error "Could not find $(facility)__$(instrument)__$(name) anywhere"
     throw(ErrorException("No filter found with facilty: $facility, instrument: $instrument, and name: $name"))
 end
 
