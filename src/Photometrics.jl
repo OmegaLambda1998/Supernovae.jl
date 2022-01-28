@@ -360,7 +360,7 @@ function Lightcurve(observations::Vector, zeropoint, redshift, max_flux_err, pea
     peak_time = peak_time * peak_time_unit
     @debug "Offsetting peak time"
     @debug "Peak time set to $peak_time"
-    for obs in lightcurve
+    for obs in lightcurve.observations
         obs.time -= peak_time
     end
     return lightcurve
