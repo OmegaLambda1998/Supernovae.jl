@@ -110,10 +110,8 @@ function synthetic_flux(filter::Filter, T)
     c = 299792458 * u"m / s" # Speed of light in a vacuum
     numer = @. planck(T, filter.wavelength) * filter.transmission * filter.wavelength
     numer = trapz(numer, filter.wavelength)
-    @info numer
     denom = @. filter.transmission / filter.wavelength
     denom = c .* trapz(denom, filter.wavelength)
-    @info denom
 
     return abs(numer / denom)
 end
