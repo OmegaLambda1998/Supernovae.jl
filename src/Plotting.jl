@@ -55,8 +55,12 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
     time_unit = uparse(get(units, "time", "d"))
     if data_type == "flux"
         data_unit = uparse(get(units, "data", "µJy"))
-    else
+    elseif data_type == "magnitude"
         data_unit = uparse(get(units, "data", "AB_mag"))
+    elseif data_type == "abs_magnitude"
+        data_unit = uparse(get(units, "data", "AB_mag"))
+    else
+        error("Unknown data type: $data_type. Possible options are [flux, magnitude, abs_magnitude]")
     end
     @debug "Plotting data unit set to $data_unit"
     names = get(plot_config, "names", nothing)
@@ -95,9 +99,14 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
         if data_type == "flux"
             push!(get!(data, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(data_unit, obs.flux)))
             push!(get!(data_err, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(data_unit, obs.flux_err)))
-        else
+        elseif data_type == "magnitude"
             push!(get!(data, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(data_unit, obs.magnitude)))
             push!(get!(data_err, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(data_unit, obs.magnitude_err)))
+        elseif data_type == "abs_magnitude"
+            push!(get!(data, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(data_unit, obs.abs_magnitude)))
+            push!(get!(data_err, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(data_unit, obs.abs_magnitude_err)))
+        else
+            error("Unknown data type: $data_type. Possible options are [flux, magnitude, abs_magnitude]")
         end
     end
     legend_plots = MarkerElement[marker_plots; colour_plots]
@@ -128,10 +137,16 @@ function plot_lightcurve(supernova::Supernova, plot_config::Dict)
     if data_type == "flux"
         data_unit = uparse(get(units, "data", "µJy"))
         ax = Axis(fig[1, 1], xlabel = "Time [$time_unit]", ylabel = "Flux [$data_unit]", title = supernova.name)
-    else
+    elseif data_type == "magnitude"
         data_unit = uparse(get(units, "data", "AB_mag"))
         ax = Axis(fig[1, 1], xlabel = "Time [$time_unit]", ylabel = "Magnitude [$data_unit]", title = supernova.name)
         ax.yreversed = true
+    elseif data_type == "abs_magnitude"
+        data_unit = uparse(get(units, "data", "AB_mag"))
+        ax = Axis(fig[1, 1], xlabel = "Time [$time_unit]", ylabel = "Absolute Magnitude [$data_unit]", title = supernova.name)
+        ax.yreversed = true
+    else
+        error("Unknown data type: $data_type. Possible options are [flux, magnitude, abs_magnitude]")
     end
     plot_lightcurve!(fig, ax, supernova, plot_config)
     path = get(plot_config, "path", nothing)

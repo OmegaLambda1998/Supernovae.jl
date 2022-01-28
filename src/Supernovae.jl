@@ -21,6 +21,7 @@ export planck, synthetic_flux
 export Observation, Lightcurve, Supernova
 export plot_lightcurve, plot_lightcurve!
 export mag_to_flux, flux_to_mag
+export mag_to_absmag, absmag_to_mag
 
 function setup_global_config!(toml::Dict)
     config = get(toml, "global", Dict())
