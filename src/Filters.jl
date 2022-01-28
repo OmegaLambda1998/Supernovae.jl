@@ -99,7 +99,7 @@ end
 function planck(T, λ)
     h = 6.626e-34 * u"J / Hz" # Planck Constant
     k = 1.381e-23 * u"J / K" # Boltzmann Constant
-    c = 299.792 * u"km / s" # Speed of light in a vacuum
+    c = 299792458 * u"m / s" # Speed of light in a vacuum
     exponent = h * c / (λ * k * T)
     B = (2π * h * c * c / (λ ^ 5)) / (exp(exponent) - 1) # Spectral Radiance
     return B
@@ -107,13 +107,15 @@ end
 
 # Calculates the flux of a blackbody at temperature T, as seen through the filter
 function synthetic_flux(filter::Filter, T)
-    c = 299.792 * u"km / s" # Speed of light in a vacuum
+    c = 299792458 * u"m / s" # Speed of light in a vacuum
     numer = @. planck(T, filter.wavelength) * filter.transmission * filter.wavelength
     numer = trapz(numer, filter.wavelength)
-    denom = @. c * filter.transmission / filter.wavelength
-    denom = trapz(denom, filter.wavelength)
+    @info numer
+    denom = @. filter.transmission / filter.wavelength
+    denom = c .* trapz(denom, filter.wavelength)
+    @info denom
 
-    return numer / denom
+    return abs(numer / denom)
 end
 
 end
