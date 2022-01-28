@@ -76,7 +76,7 @@ function Supernova(data::Dict)
         if peak_time == true
             lightcurve = Lightcurve(observations, zeropoint, redshift, max_flux_err, peak_time)
         else
-            peak_time_unit = uparse(data, "peak_time_unit", "d")
+            peak_time_unit = uparse(get(data, "peak_time_unit", "d"))
             lightcurve = Lightcurve(observations, zeropoint, redshift, max_flux_err, peak_time, peak_time_unit)
         end
     else
