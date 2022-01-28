@@ -357,7 +357,6 @@ end
 
 function Lightcurve(observations::Vector, zeropoint, redshift, max_flux_err, peak_time, peak_time_unit; H0=70u"km / s / Mpc")
     lightcurve = Lightcurve(observations, zeropoint, redshift, max_flux_err; H0=H0)
-    peak_time_unit = uparse(toml["data"], "peak_time_unit", "d")
     peak_time = peak_time * peak_time_unit
     @debug "Offsetting peak time"
     @debug "Peak time set to $peak_time"
