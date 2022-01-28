@@ -11,6 +11,7 @@ export Lightcurve
 export Observation
 export mag_to_flux
 export flux_to_mag
+export mag_to_absmag, absmag_to_mag
 
 mutable struct Observation
     name :: AbstractString # Human readable name
@@ -19,6 +20,8 @@ mutable struct Observation
     flux_err :: typeof(1.0u"Jy") # Default unit of Janksy
     magnitude :: typeof(1.0u"AB_mag") # Default unit of AB mag
     magnitude_err :: typeof(1.0u"AB_mag") # Default unit of AB mag
+    abs_magnitude :: typeof(1.0u"AB_mag") # Default unit of AB mag
+    abs_magnitude_err :: typeof(1.0u"AB_mag") # Default unit of AB mag
     is_upperlimit :: Bool
     filter :: Filter
 end
@@ -205,7 +208,23 @@ function mag_to_flux(mag, zeropoint)
     return (10 ^ (0.4 * (ustrip(zeropoint |> u"AB_mag") - ustrip(mag |> u"AB_mag")))) * u"Jy"
 end
 
-function Lightcurve(observations::Vector, zeropoint, max_flux_err)
+function mag_to_absmag(mag, redshift; H0=70u"km / s / Mpc")
+    c = 299792458u"m / s"
+    d = c * redshift / H0
+    μ = 5 * log10(d / 10u"pc")
+    absmag = (ustrip(mag |> u"AB_mag") - μ) * u"AB_mag"
+    return absmag
+end
+
+function absmag_to_mag(absmag, redshift; H0=70u"km / s / Mpc")
+    c = 299792458u"m / s"
+    d = c * redshift / H0
+    μ = 5 * log10(d / 10u"pc")
+    mag = (ustrip(absmag |> u"AB_mag") + μ) * u"AB_mag"
+    return absmag
+end
+
+function Lightcurve(observations::Vector, zeropoint, redshift, max_flux_err; H0=70u"km / s / Mpc")
     lc = Observation[]
     for observation in observations
         obs_name = observation["name"]
@@ -306,16 +325,18 @@ function Lightcurve(observations::Vector, zeropoint, max_flux_err)
             if !isnothing(filter_col)
                 filter_name = string(line[filter_col])
             end
+            abs_magnitude = mag_to_absmag(magnitude, redshift; H0=H0)
+            abs_magnitude_err = magnitude_err
             filter = Filter(observation["filter_path"], facility, instrument, filter_name)
-            obs = Observation(obs_name, time, flux, flux_err, magnitude, magnitude_err, upperlimit, filter)
+            obs = Observation(obs_name, time, flux, flux_err, magnitude, magnitude_err, abs_magnitude, abs_magnitude_err, upperlimit, filter)
             push!(lc, obs)
         end
     end
     return Lightcurve(lc)
 end
 
-function Lightcurve(observations::Vector, zeropoint, max_flux_err, peak_time::Bool)
-    lightcurve = Lightcurve(observations, zeropoint, max_flux_err)
+function Lightcurve(observations::Vector, zeropoint, redshift, max_flux_err, peak_time::Bool; H0=70u"km / s / Mpc")
+    lightcurve = Lightcurve(observations, zeropoint, redshift, max_flux_err; H0=H0)
     if peak_time
         @debug "Offsetting peak time"
         max_obs = lightcurve.observations[1]
@@ -333,8 +354,8 @@ function Lightcurve(observations::Vector, zeropoint, max_flux_err, peak_time::Bo
     return lightcurve 
 end
 
-function Lightcurve(observations::Vector, zeropoint, max_flux_err, peak_time, peak_time_unit)
-    lightcurve = Lightcurve(observations, zeropoint, max_flux_err)
+function Lightcurve(observations::Vector, zeropoint, redshift, max_flux_err, peak_time, peak_time_unit; H0=70u"km / s / Mpc")
+    lightcurve = Lightcurve(observations, zeropoint, redshift, max_flux_err; H0=H0)
     peak_time_unit = uparse(toml["data"], "peak_time_unit", "d")
     peak_time = peak_time * peak_time_unit
     @debug "Offsetting peak time"
