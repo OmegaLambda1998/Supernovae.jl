@@ -188,6 +188,7 @@ function get_column_index(obs_file::Vector{String}, delimiter::AbstractString, h
         magnitude_err_unit = "$(header[magnitude_err_col][10:end-1])"
     else
         magnitude_err_unit = nothing
+
     end
     if isnothing(flux_col) & isnothing(magnitude_col)
         error("You must specify either flux columns or magnitude columns")
@@ -221,7 +222,7 @@ function absmag_to_mag(absmag, redshift; H0=70u"km / s / Mpc")
     d = c * redshift / H0
     μ = 5 * log10(d / 10u"pc")
     mag = (ustrip(absmag |> u"AB_mag") + μ) * u"AB_mag"
-    return absmag
+    return mag 
 end
 
 function Lightcurve(observations::Vector, zeropoint, redshift, max_flux_err; H0=70u"km / s / Mpc")
