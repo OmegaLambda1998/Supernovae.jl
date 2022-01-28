@@ -9,6 +9,8 @@ using ..Filters
 # Exports
 export Lightcurve
 export Observation
+export mag_to_flux
+export flux_to_mag
 
 mutable struct Observation
     name :: AbstractString # Human readable name
