@@ -4,12 +4,10 @@ module Plotting
 using CairoMakie
 CairoMakie.activate!(type = "svg")
 using Unitful, UnitfulAstro
-using Colors
-using Random
-Random.seed!(0)
-
 # Internal Packages
 using ..Data
+using Random
+Random.seed!(0)
 
 # Exports
 export plot_lightcurve, plot_lightcurve!
@@ -34,23 +32,21 @@ markers_labels = shuffle([
     :x,
     :+,
     :circle
-])
+   ])
 
-colour_labels = shuffle(collect(keys(Colors.color_names)))
+colour_labels = shuffle(["salmon", "coral", "tomato", "firebrick", "crimson", "red", "orange", "green", "forestgreen", "seagreen", "olive", "lime", "charteuse", "teal", "turquoise", "cyan", "navyblue", "midnightblue", "indigo", "royalblue", "slateblue", "steelblue", "blue", "purple", "orchid", "magenta", "maroon", "hotpink", "deeppink", "saddlebrown", "brown", "peru", "tan"])
 
 # Plotting functions
 function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
-    instruments = String[]
-    filters = String[]
     time = Dict()
     data_type = get(plot_config, "data_type", "flux")
     @debug "Plotting data type set to $data_type"
     data = Dict()
     data_err = Dict()
-    marker_plots = MarkerElement[]
-    marker_names = String[]
-    colour_plots = MarkerElement[]
-    colour_names = String[]
+    marker_plots = Dict()
+    markers = Dict()
+    colour_plots = Dict() 
+    colours = Dict()
     units = get(plot_config, "unit", Dict())
     time_unit = uparse(get(units, "time", "d"))
     if data_type == "flux"
@@ -71,29 +67,23 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
                 continue
             end
         end
-        if !(obs.name in instruments)
+        if !(obs.name in keys(markers))
             marker = Meta.parse(get(get(plot_config, "marker", Dict()), obs.name, "nothing"))
             if marker == :nothing
                 marker = markers_labels[length(marker_plots) + 1]
             end
-            elem = MarkerElement(color = :black, marker = marker)
-            push!(marker_plots, elem)
-            push!(marker_names, obs.name)
+            elem = MarkerElement(color = :black, marker = marker, markersize = 11)
+            marker_plots[obs.name] = elem
+            markers[obs.name] = marker
         end
-        if !(obs.filter.name in filters)
-            color = get(get(plot_config, "colour", Dict()), obs.filter.name, nothing)
-            if isnothing(color)
-                color = colour_labels[length(colour_plots) + 1]
+        if !(obs.filter.name in keys(colours))
+            colour = get(get(plot_config, "colour", Dict()), obs.filter.name, nothing)
+            if isnothing(colour)
+                colour = colour_labels[length(colour_plots) + 1]
             end
-            elem = MarkerElement(marker = :circle, color = color) 
-            push!(colour_plots, elem)
-            push!(colour_names, obs.filter.name)
-        end
-        if !(obs.name in instruments)
-            push!(instruments, obs.name)
-        end
-        if !(obs.filter.name in filters)
-            push!(filters, obs.filter.name)
+            elem = MarkerElement(marker = :circle, color = colour, markersize = 11) 
+            colour_plots[obs.filter.name] = elem
+            colours[obs.filter.name] = colour
         end
         push!(get!(time, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(time_unit, obs.time)))
         if data_type == "flux"
@@ -109,22 +99,28 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
             error("Unknown data type: $data_type. Possible options are [flux, magnitude, abs_magnitude]")
         end
     end
-    legend_plots = MarkerElement[marker_plots; colour_plots]
-    legend_names = String[marker_names; colour_names]
+    legend_plots = MarkerElement[]
+    legend_names = String[]
+    for k in sort(collect(keys(marker_plots)))
+        push!(legend_names, k)
+        push!(legend_plots, marker_plots[k])
+    end
+    for k in sort(collect(keys(colour_plots)))
+        push!(legend_names, k)
+        push!(legend_plots, colour_plots[k])
+    end
     @debug "Plotting"
-    for (i, time_key) in enumerate(collect(keys(time)))
-        data_key = collect(keys(data))[i]
-        data_err_key = collect(keys(data_err))[i]
-        marker = Meta.parse(get(get(plot_config, "marker", Dict()), time_key[1], "nothing"))
+    for (i, key) in enumerate(collect(keys(time)))
+        marker = Meta.parse(get(get(plot_config, "marker", Dict()), key[1], "nothing"))
         if marker == :nothing
-            marker = markers_labels[i]
+            marker = markers[key[1]]
         end
-        color = get(get(plot_config, "colour", Dict()), time_key[2], nothing)
-        if isnothing(color)
-            color = colour_labels[i]
+        colour = get(get(plot_config, "colour", Dict()), key[2], nothing)
+        if isnothing(colour)
+            colour = colours[key[2]]
         end
-        scatter!(ax, time[time_key], data[data_key], color = color, marker = marker)
-        errorbars!(ax, time[time_key], data[data_key], data_err[data_err_key], color = color, marker = marker) 
+        scatter!(ax, time[key], data[key], color = colour, marker = marker, marker_size = 11)
+        errorbars!(ax, time[key], data[key], data_err[key], color = colour, marker = marker, marker_size=11) 
     end
     Legend(fig[1, 2], legend_plots, legend_names)
 end
