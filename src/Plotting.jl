@@ -124,6 +124,7 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
         errorbars!(ax, time[key], data[key], data_err[key], color = colour, marker = marker, marker_size=11) 
     end
     Legend(fig[1, 2], legend_plots, legend_names)
+    return colours, markers
 end
 
 function plot_lightcurve(supernova::Supernova, plot_config::Dict)
