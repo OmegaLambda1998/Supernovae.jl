@@ -250,7 +250,7 @@ function Lightcurve(observations::Vector, zeropoint, redshift, max_flux_err; H0=
         header_keys = get(observation, "header", nothing)
         obs_file, time_col, time_unit, flux_col, flux_unit, flux_err_col, flux_err_unit, magnitude_col, magnitude_unit, magnitude_err_col, magnitude_err_unit, facility_col, instrument_col, filter_col, upperlimit_col = get_column_index(obs_file, delimiter, header_keys, facility, instrument, filter_name, upperlimit)
         flux_offset_val = get(observation, "flux_offset", 0)
-        flux_offset_unit = uparse(get(observation, "flux_offset_unit", flux_unit))
+        flux_offset_unit = uparse(get(observation, "flux_offset_unit", flux_unit), unit_context = [Unitful, UnitfulAstro])
         flux_offset = flux_offset_val * flux_offset_unit
         @debug "Processing file"
         for line in obs_file
@@ -258,7 +258,7 @@ function Lightcurve(observations::Vector, zeropoint, redshift, max_flux_err; H0=
                 continue
             end
             line = [l for l in split(line, delimiter) if l != ""]
-            time = parse(Float64, string(line[time_col])) * uparse(time_unit)
+            time = parse(Float64, string(line[time_col])) * uparse(time_unit, unit_context = [Unitful, UnitfulAstro])
             if !isnothing(upperlimit_col)
                 upperlimit = string(line[upperlimit_col])
                 if upperlimit in upperlimit_true
@@ -274,21 +274,21 @@ function Lightcurve(observations::Vector, zeropoint, redshift, max_flux_err; H0=
             if isnothing(flux_col)
                 flux = flux_err = nothing
             else
-                flux = parse(Float64, string(line[flux_col])) * uparse(flux_unit)
+                flux = parse(Float64, string(line[flux_col])) * uparse(flux_unit, unit_context = [Unitful, UnitfulAstro])
                 if !upperlimit
-                    flux_err = parse(Float64, string(line[flux_err_col])) * uparse(flux_err_unit)
+                    flux_err = parse(Float64, string(line[flux_err_col])) * uparse(flux_err_unit, unit_context = [Unitful, UnitfulAstro])
                 else
-                    flux_err = 0 * uparse(flux_err_unit)
+                    flux_err = 0 * uparse(flux_err_unit, unit_context = [Unitful, UnitfulAstro])
                 end
             end
             if isnothing(magnitude_col)
                 magnitude = magnitude_err = nothing
             else
-                magnitude = parse(Float64, string(line[magnitude_col])) * uparse(magnitude_unit)
+                magnitude = parse(Float64, string(line[magnitude_col])) * uparse(magnitude_unit, unit_context = [Unitful, UnitfulAstro])
                 if !upperlimit
-                    magnitude_err = parse(Float64, string(line[magnitude_err_col])) * uparse(magnitude_err_unit)
+                    magnitude_err = parse(Float64, string(line[magnitude_err_col])) * uparse(magnitude_err_unit, unit_context = [Unitful, UnitfulAstro])
                 else
-                    magnitude_err = 0 * uparse(magnitude_err_unit)
+                    magnitude_err = 0 * uparse(magnitude_err_unit, unit_context = [Unitful, UnitfulAstro])
                 end
             end
             if isnothing(flux) & isnothing(magnitude)
