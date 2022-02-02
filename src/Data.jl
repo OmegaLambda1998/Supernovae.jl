@@ -26,11 +26,15 @@ function Base.get!(supernova::Supernova, key::AbstractString, default::Any=nothi
 end
 
 function Base.filter(f::Function, supernova::Supernova)
-    return filter(f, supernova.lightcurve)
+    filt = filter(f, supernova.lightcurve.observations)
+    lc = Lightcurve(filt)
+    return Supernova(supernova.name, supernova.zeropoint, supernova.redshift, lc)
 end
 
 function Base.filter!(f::Function, supernova::Supernova)
-    return filter!(f, supernova.lightcurve)
+    filt = filter(f, supernova.lightcurve.observations)
+    lc = Lightcurve(filt)
+    supernova.lightcurve = lightcurve
 end
 
 # Read in a supernova object from a toml dictionary
