@@ -48,13 +48,13 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
     colour_plots = Dict() 
     colours = Dict()
     units = get(plot_config, "unit", Dict())
-    time_unit = uparse(get(units, "time", "d"))
+    time_unit = uparse(get(units, "time", "d"), unit_context = [Unitful, UnitfulAstro])
     if data_type == "flux"
-        data_unit = uparse(get(units, "data", "µJy"))
+        data_unit = uparse(get(units, "data", "µJy"), unit_context = [Unitful, UnitfulAstro])
     elseif data_type == "magnitude"
-        data_unit = uparse(get(units, "data", "AB_mag"))
+        data_unit = uparse(get(units, "data", "AB_mag"), unit_context = [Unitful, UnitfulAstro])
     elseif data_type == "abs_magnitude"
-        data_unit = uparse(get(units, "data", "AB_mag"))
+        data_unit = uparse(get(units, "data", "AB_mag"), unit_context = [Unitful, UnitfulAstro])
     else
         error("Unknown data type: $data_type. Possible options are [flux, magnitude, abs_magnitude]")
     end
@@ -128,17 +128,17 @@ end
 function plot_lightcurve(supernova::Supernova, plot_config::Dict)
     fig = Figure()
     units = get(plot_config, "unit", Dict())
-    time_unit = uparse(get(units, "time", "d"))
+    time_unit = uparse(get(units, "time", "d"), unit_context = [Unitful, UnitfulAstro])
     data_type = get(plot_config, "data_type", "flux")
     if data_type == "flux"
-        data_unit = uparse(get(units, "data", "µJy"))
+        data_unit = uparse(get(units, "data", "µJy"), unit_context = [Unitful, UnitfulAstro])
         ax = Axis(fig[1, 1], xlabel = "Time [$time_unit]", ylabel = "Flux [$data_unit]", title = supernova.name)
     elseif data_type == "magnitude"
-        data_unit = uparse(get(units, "data", "AB_mag"))
+        data_unit = uparse(get(units, "data", "AB_mag"), unit_context = [Unitful, UnitfulAstro])
         ax = Axis(fig[1, 1], xlabel = "Time [$time_unit]", ylabel = "Magnitude [$data_unit]", title = supernova.name)
         ax.yreversed = true
     elseif data_type == "abs_magnitude"
-        data_unit = uparse(get(units, "data", "AB_mag"))
+        data_unit = uparse(get(units, "data", "AB_mag"), unit_context = [Unitful, UnitfulAstro])
         ax = Axis(fig[1, 1], xlabel = "Time [$time_unit]", ylabel = "Absolute Magnitude [$data_unit]", title = supernova.name)
         ax.yreversed = true
     else
