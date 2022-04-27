@@ -31,7 +31,7 @@ function process_supernova(toml::Dict, verbose::Bool)
         "data_path" => ("base_path", "Data"),
         "filter_path" => ("base_path", "Filters")
     )
-    setup_global!(toml, verbose, path)
+    setup_global!(toml, verbose, paths)
     config = toml["global"]
     # Pass path's down a layer
     toml["data"]["base_path"] = config["base_path"]
