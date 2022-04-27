@@ -3,6 +3,7 @@ module Supernovae
 # External Packages
 using TOML
 using LoggingExtras
+using OLUtils
 
 # Internal Packages 
 include("Filters.jl")
