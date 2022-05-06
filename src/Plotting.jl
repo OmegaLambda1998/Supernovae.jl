@@ -79,7 +79,7 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
             marker_plots[obs.name] = elem
             markers[obs.name] = marker
         end
-        if !(filter_name in keys(colours))
+        if !(obs.filter.name in keys(colours))
             colour = get(get(plot_config, "colour", Dict()), obs.filter.name, nothing)
             if isnothing(colour)
                 colour = colour_labels[length(colour_plots) + 1]
