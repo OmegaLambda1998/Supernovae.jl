@@ -61,6 +61,7 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
     end
     @debug "Plotting data unit set to $data_unit"
     names = get(plot_config, "names", nothing)
+    rename = get(plot_config, "rename", nothing)
     @debug "Generating all plot vectors"
     for obs in supernova.lightcurve.observations
         if !isnothing(names)
@@ -68,6 +69,7 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
                 continue
             end
         end
+        filter_name = get(rename, obs.filter.name, obs.filter.name)
         if !(obs.name in keys(markers))
             marker = Meta.parse(get(get(plot_config, "marker", Dict()), obs.name, "nothing"))
             if marker == :nothing
@@ -77,16 +79,16 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
             marker_plots[obs.name] = elem
             markers[obs.name] = marker
         end
-        if !(obs.filter.name in keys(colours))
+        if !(filter_name in keys(colours))
             colour = get(get(plot_config, "colour", Dict()), obs.filter.name, nothing)
             if isnothing(colour)
                 colour = colour_labels[length(colour_plots) + 1]
             end
             elem = MarkerElement(marker = :circle, color = colour, markersize = 11) 
-            colour_plots[obs.filter.name] = elem
+            colour_plots[filter_name] = elem
             colours[obs.filter.name] = colour
         end
-        push!(get!(time, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(time_unit, obs.time)))
+        push!(get!(time, (obs.name, filter_name), Float64[]), ustrip(uconvert(time_unit, obs.time)))
         if data_type == "flux"
             push!(get!(data, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(data_unit, obs.flux)))
             push!(get!(data_err, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(data_unit, obs.flux_err)))
