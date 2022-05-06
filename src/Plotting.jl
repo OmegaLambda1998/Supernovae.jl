@@ -88,7 +88,7 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
             colour_plots[filter_name] = elem
             colours[obs.filter.name] = colour
         end
-        push!(get!(time, (obs.name, filter_name), Float64[]), ustrip(uconvert(time_unit, obs.time)))
+        push!(get!(time, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(time_unit, obs.time)))
         if data_type == "flux"
             push!(get!(data, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(data_unit, obs.flux)))
             push!(get!(data_err, (obs.name, obs.filter.name), Float64[]), ustrip(uconvert(data_unit, obs.flux_err)))
