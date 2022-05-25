@@ -1,0 +1,13 @@
+name = "Test"
+uuid = "5bb6ce43-b543-4110-9e2f-b5bf77b01de7"
+authors = ["Patrick Armstrong <u6096820@anu.edu.au> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
