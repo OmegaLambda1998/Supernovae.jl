@@ -1,6 +1,6 @@
-using Test
+using REPLACE_PKG
 using Test
 
-@testset "Test.jl" begin
+@testset "REPLACE_PKG.jl" begin
     # Write your tests here.
 end
