@@ -39,7 +39,7 @@ function main()
     args = get_args()
     verbose = args["verbose"]
     toml_path = args["input"]
-    toml = TOML.parsefil(abspath(toml_path))
+    toml = TOML.parsefile(abspath(toml_path))
     if !("global" in keys(toml))
         toml["global"] = Dict()
     end
