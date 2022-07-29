@@ -61,7 +61,7 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
     end
     @debug "Plotting data unit set to $data_unit"
     names = get(plot_config, "names", nothing)
-    rename = get(plot_config, "rename", nothing)
+    rename = get(plot_config, "rename", Dict())
     @debug "Generating all plot vectors"
     for obs in supernova.lightcurve.observations
         if !isnothing(names)
@@ -125,7 +125,9 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
         scatter!(ax, time[key], data[key], color = colour, marker = marker, marker_size = 11)
         errorbars!(ax, time[key], data[key], data_err[key], color = colour, marker = marker, marker_size=11) 
     end
-    Legend(fig[1, 2], legend_plots, legend_names)
+    if get(plot_config, "legend", true)
+        Legend(fig[1, 2], legend_plots, legend_names)
+    end
     return colours, markers
 end
 
