@@ -1,0 +1,9 @@
+OLUtils | [Info] Logging to /home/patricka/.julia/dev/Supernovae/Examples/Outputs/2021zby/log.txt
+Main.Supernovae.Data | [Info] Loading in Supernova 2021zby
+Main.Supernovae.Data | [Info] Found 2 photometry sources
+Main.Supernovae.Data | [Info] Loading in lightcurves
+Main.Supernovae.Photometrics | [Info] Loading observations for atlas
+Main.Supernovae.Photometrics | [Info] Loading observations for tess 6hr
+Main.Supernovae.Data | [Info] Loading supernova
+Main.Supernovae.Data | [Info] All done
+Main.Supernovae | [Info] Plotting lightcurve
