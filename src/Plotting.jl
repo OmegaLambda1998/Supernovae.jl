@@ -75,7 +75,7 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
             if marker == :nothing
                 marker = markers_labels[length(marker_plots) + 1]
             end
-            elem = MarkerElement(color = :black, marker = marker, markersize = 11)
+            elem = MarkerElement(color = :black, marker = marker, markersize = 21)
             marker_plots[obs.name] = elem
             markers[obs.name] = marker
         end
@@ -84,7 +84,7 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
             if isnothing(colour)
                 colour = colour_labels[length(colour_plots) + 1]
             end
-            elem = MarkerElement(marker = :circle, color = colour, markersize = 11) 
+            elem = MarkerElement(marker = :circle, color = colour, markersize = 21) 
             colour_plots[filter_name] = elem
             colours[obs.filter.name] = colour
         end
@@ -122,8 +122,8 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
         if isnothing(colour)
             colour = colours[key[2]]
         end
-        scatter!(ax, time[key], data[key], color = colour, marker = marker, marker_size = 11)
-        errorbars!(ax, time[key], data[key], data_err[key], color = colour, marker = marker, marker_size=11) 
+        scatter!(ax, time[key], data[key], color = colour, marker = marker, marker_size = 21)
+        errorbars!(ax, time[key], data[key], data_err[key], color = colour, marker = marker, marker_size=21) 
     end
     if get(plot_config, "legend", true)
         Legend(fig[1, 2], legend_plots, legend_names)
