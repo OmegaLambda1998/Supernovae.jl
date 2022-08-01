@@ -122,8 +122,9 @@ function plot_lightcurve!(fig, ax, supernova::Supernova, plot_config::Dict)
         if isnothing(colour)
             colour = colours[key[2]]
         end
-        scatter!(ax, time[key], data[key], color = colour, marker = marker, marker_size = 21)
-        errorbars!(ax, time[key], data[key], data_err[key], color = colour, marker = marker, marker_size=21) 
+        sc = scatter!(ax, time[key], data[key], color = colour, marker = marker)
+        sc.markersize = 21
+        errorbars!(ax, time[key], data[key], data_err[key], color = colour) 
     end
     if get(plot_config, "legend", true)
         Legend(fig[1, 2], legend_plots, legend_names)
