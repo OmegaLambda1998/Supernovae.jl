@@ -2,7 +2,7 @@ module REPLACE_PKG
 
 # External packages
 using TOML
-using OLUtils
+using BetterInputFiles 
 using ArgParse
 
 # Internal Packages
@@ -39,12 +39,7 @@ function main()
     args = get_args()
     verbose = args["verbose"]
     toml_path = args["input"]
-    toml = TOML.parsefile(abspath(toml_path))
-    if !("global" in keys(toml))
-        toml["global"] = Dict()
-    end
-    toml["global"]["toml_path"] = dirname(abspath(toml_path))
-    setup_global!(toml, verbose)
+    toml = setup_input(toml_path, verbose)
     run_REPLACE_PKG(toml)
 end
 
