@@ -1,11 +1,11 @@
 using Documenter
 using REPLACE_PKG
 
-DocMeta.setdocmeta!(REPLACE_PKG, :DocTestSetup, :(using REPALCE_PKG); recursive=true)
+DocMeta.setdocmeta!(REPLACE_PKG, :DocTestSetup, :(using REPLACE_PKG); recursive=true)
 
 makedocs(
     sitename="REPLACE_PKG Documentation",
-    modules = [REPLACE_PKG, OLUtils.SetupModule],
+    modules = [REPLACE_PKG, BetterInputFiles.SetupModule],
     pages = [
         "REPLACE_PKG" => "index.md",
     ],
@@ -15,5 +15,5 @@ makedocs(
 )
 
 deploydocs(
-    repo = "github.com/OmegaLambda1998/REPALCE_PKG.jl.git"
+    repo = "github.com/OmegaLambda1998/REPLACE_PKG.jl.git"
 )
