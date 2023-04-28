@@ -1,11 +1,12 @@
 using Documenter
+push!(LOAD_PATH, "../src/")
 using REPLACE_PKG
 
 DocMeta.setdocmeta!(REPLACE_PKG, :DocTestSetup, :(using REPLACE_PKG); recursive=true)
 
 makedocs(
     sitename="REPLACE_PKG Documentation",
-    modules = [REPLACE_PKG, BetterInputFiles.SetupModule],
+    modules = [REPLACE_PKG],
     pages = [
         "REPLACE_PKG" => "index.md",
     ],
