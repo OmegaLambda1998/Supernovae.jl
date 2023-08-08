@@ -1,0 +1,4 @@
+BetterInputFiles.SetupModule | [Info] Logging to /home/patricka/.julia/dev/Template/Examples/Inputs/Output/log.txt
+Profile | [Warn] There were no samples collected.
+Run your program longer (perhaps by running it multiple times),
+or adjust the delay between samples with `Profile.init()`.
