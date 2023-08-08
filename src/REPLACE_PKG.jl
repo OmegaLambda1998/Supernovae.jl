@@ -23,6 +23,11 @@ Base.@ccallable function julia_main()::Cint
     return 0
 end
 
+"""
+    get_args()
+
+Helper function to get the ARGS passed to julia.
+"""
 function get_args()
     s = ArgParseSettings()
     @add_arg_table s begin
@@ -39,6 +44,11 @@ function get_args()
     return parse_args(s)
 end
 
+"""
+    main()
+
+Read the args, prepare the input TOML and run the actual package functionality.
+"""
 function main()
     args = get_args()
     verbose = args["verbose"]
