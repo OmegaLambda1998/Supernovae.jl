@@ -4,6 +4,7 @@ module REPLACE_PKG
 using TOML
 using BetterInputFiles 
 using ArgParse
+using StatProfilerHTML
 
 # Internal Packages
 include("RunModule.jl")
@@ -28,6 +29,9 @@ function get_args()
         "--verbose", "-v"
             help = "Increase level of logging verbosity"
             action = :store_true
+        "--profile", "-p"
+            help = "Run profiler"
+            action = :store_true
         "input"
             help = "Path to .toml file"
             required = true
@@ -40,7 +44,11 @@ function main()
     verbose = args["verbose"]
     toml_path = args["input"]
     toml = setup_input(toml_path, verbose)
-    run_REPLACE_PKG(toml)
+    if args["profile"]
+        @profilehtml run_REPLACE_PKG(toml)
+    else
+        run_REPLACE_PKG(toml)
+    end
 end
 
 if abspath(PROGRAM_FILE) == @__FILE__
