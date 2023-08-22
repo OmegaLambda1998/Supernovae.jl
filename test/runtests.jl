@@ -1,6 +1,6 @@
-using REPLACE_PKG
+using Supernovae
 using Test
 
-@testset "REPLACE_PKG.jl" begin
+@testset "Supernovae.jl" begin
     # Write your tests here.
 end

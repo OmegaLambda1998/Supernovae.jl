@@ -5,30 +5,30 @@
 Pages = ["api.md"]
 Depth = 5
 ```
-## REPLACE_PKG Functions
+## Supernovae Functions
 
 ```@meta
-CurrentModule = REPLACE_PKG
+CurrentModule = Supernovae
 ```
 
 ### Public Objects
 
 ```@autodocs
-Modules = [REPLACE_PKG]
+Modules = [Supernovae]
 Private = false
 ```
 
 ### Private Objects
 
 ```@autodocs
-Modules = [REPLACE_PKG]
+Modules = [Supernovae]
 Public = false
 ```
 
-## REPLACE_PKG.RunModule Functions
+## Supernovae.RunModule Functions
 
 ```@meta
-CurrentModule = REPLACE_PKG.RunModule
+CurrentModule = Supernovae.RunModule
 ```
 
 ### Public Objects
