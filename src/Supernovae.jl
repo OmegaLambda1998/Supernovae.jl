@@ -2,16 +2,17 @@ module Supernovae
 
 # External packages
 using TOML
-using BetterInputFiles 
+using BetterInputFiles
 using ArgParse
 using StatProfilerHTML
+using OrderedCollections
 
 # Internal Packages
 include("RunModule.jl")
 using .RunModule: run_Supernovae
 
 # Exports
-export main 
+export main
 
 Base.@ccallable function julia_main()::Cint
     try
@@ -32,14 +33,14 @@ function get_args()
     s = ArgParseSettings()
     @add_arg_table s begin
         "--verbose", "-v"
-            help = "Increase level of logging verbosity"
-            action = :store_true
+        help = "Increase level of logging verbosity"
+        action = :store_true
         "--profile", "-p"
-            help = "Run profiler"
-            action = :store_true
+        help = "Run profiler"
+        action = :store_true
         "input"
-            help = "Path to .toml file"
-            required = true
+        help = "Path to .toml file"
+        required = true
     end
     return parse_args(s)
 end
@@ -53,7 +54,11 @@ function main()
     args = get_args()
     verbose = args["verbose"]
     toml_path = args["input"]
-    toml = setup_input(toml_path, verbose)
+    paths = OrderedDict(
+        "data_path" => ("base_path", "Data"),
+        "filter_path" => ("base_path", "Filters")
+    )
+    toml = setup_input(toml_path, verbose; paths=paths)
     if args["profile"]
         @profilehtml run_Supernovae(toml)
     else
