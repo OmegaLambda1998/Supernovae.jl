@@ -13,16 +13,7 @@ using .RunModule: run_Supernovae
 
 # Exports
 export main
-
-Base.@ccallable function julia_main()::Cint
-    try
-        main()
-    catch
-        Base.invokelatest(Base.display_error, Base.catch_stack())
-        return 1
-    end
-    return 0
-end
+export run_Supernovae
 
 """
     get_args()

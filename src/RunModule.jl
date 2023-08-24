@@ -12,6 +12,7 @@ using .SupernovaModule
 
 # Exports
 export run_Supernovae
+export Supernova
 
 """
     run_Supernovae(toml::Dict{String, Any})
@@ -33,6 +34,7 @@ function run_Supernovae(toml::Dict{String,Any})
             @info "Plotting Lightcurve"
         end
     end
+    return supernova
 end
 
 end
