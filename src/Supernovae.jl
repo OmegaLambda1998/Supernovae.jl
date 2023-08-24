@@ -9,7 +9,6 @@ using OrderedCollections
 
 # Internal Packages
 include("RunModule.jl")
-using .RunModule: run_Supernovae
 
 # Exports
 export main
