@@ -14,6 +14,7 @@ using .RunModule: run_Supernovae
 # Exports
 export main
 export run_Supernovae
+export Supernova
 
 """
     get_args()
