@@ -11,12 +11,21 @@ const UNITS = [Unitful, UnitfulAstro]
 # Exports
 export Observation
 export Lightcurve
+export flux_to_mag, mag_to_flux
+export absmag_to_mag, mag_to_absmag
+
+const c::typeof(1.0u"m/s") = 299792458.0u"m / s"
+
 
 mutable struct Observation
     name::String
     time::typeof(1.0u"d")
     flux::typeof(1.0u"Jy")
     flux_err::typeof(1.0u"Jy")
+    mag::typeof(1.0u"AB_mag")
+    mag_err::typeof(1.0u"AB_mag")
+    absmag::typeof(1.0u"AB_mag")
+    absmag_err::typeof(1.0u"AB_mag")
     filter::Filter
     is_upperlimit::Bool
 end
@@ -27,11 +36,12 @@ end
 
 function parse_file(lines::Vector{String}; delimiter::String=", ", comment::String="#")
     parsed_file = Vector{Vector{String}}()
-    for (i, line) in enumerate(lines)
+    for line in lines
         # Remove comments
         # Assumes once a comment starts, it takes up the rest of the line
-        if occursin(comment, line)
-            comment_index = findfirst(comment, line)[1] - 1
+        first = findfirst(comment, line)
+        if !isnothing(first)
+            comment_index = first[1] - 1
             line = line[1:comment_index]
         end
         line = string.([l for l in split(line, delimiter) if l != ""])
@@ -46,10 +56,10 @@ function get_column_index(header::Vector{String}, header_keys::Dict{String,Any})
     columns = Dict{String,Tuple{Any,Any}}()
     for key in keys(header_keys)
         opts = header_keys[key]
-        column_id = opts["COL"]
+        column_id::String = opts["COL"]
         unit = get(opts, "UNIT", nothing)
         unit_column_id = get(opts, "UNIT_COL", nothing)
-        column_index = get_column_index(header, column_id)
+        column_index = get_column_id(header, column_id)
         if !isnothing(unit)
             if unit == "DEFAULT"
                 column_unit = get_default_unit(header, column_id, column_index)
@@ -57,7 +67,7 @@ function get_column_index(header::Vector{String}, header_keys::Dict{String,Any})
                 column_unit = uparse(unit, unit_context=UNITS)
             end
         elseif !isnothing(unit_column_id)
-            column_unit = get_column_index(header, unit_column_id)
+            column_unit = get_column_id(header, unit_column_id)
         else
             column_unit = nothing
         end
@@ -66,12 +76,16 @@ function get_column_index(header::Vector{String}, header_keys::Dict{String,Any})
     return columns
 end
 
-function get_column_index(header::Vector{String}, column_id::Int64)
+function get_column_id(::Vector{String}, column_id::Int64)
     return column_id
 end
 
-function get_column_index(header::Vector{String}, column_id::String)
-    return findfirst(f -> occursin(column_id, f), header)
+function get_column_id(header::Vector{String}, column_id::String)
+    first = findfirst(f -> occursin(column_id, f), header)
+    if !isnothing(first)
+        return first
+    end
+    error("Can not find column $(column_id) in header: $header")
 end
 
 function get_default_unit(header::Vector{String}, column_id::String, column_index::Int64)
@@ -80,7 +94,7 @@ function get_default_unit(header::Vector{String}, column_id::String, column_inde
     return uparse(unit, unit_context=UNITS)
 end
 
-function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::typeof(1.0u"AB_mag"), redshift::Float64, config::Dict{String,Any}; max_flux_err::typeof(1.0u"μJy")=Inf * 1.0u"μJy", peak_time::Bool=false)
+function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Union{Level,Nothing}, redshift::Float64, config::Dict{String,Any}; max_flux_err::Unitful.Quantity{Float64}=Inf * 1.0u"μJy", peak_time::Union{Bool,Float64}=false, peak_time_unit::Unitful.FreeUnits)
     lightcurve = Lightcurve()
     for observation in observations
         # File path
@@ -119,7 +133,7 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::typeof(1.
         header = obs_file[1]
         data = obs_file[2:end]
 
-        columns = get_column_index(header, header_keys)
+        columns::Dict{String,Tuple{Any,Any}} = get_column_index(header, header_keys)
 
         if "TIME" in keys(columns)
             time_col = columns["TIME"][1]
@@ -132,6 +146,7 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::typeof(1.
             error("Missing time column. Please specify a time column.")
         end
 
+
         if "FLUX" in keys(columns)
             flux_col = columns["FLUX"][1]
             if isnothing(flux_col)
@@ -143,6 +158,8 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::typeof(1.
             error("Missing flux column. Please specify a flux column.")
         end
 
+
+
         if "FLUX_ERR" in keys(columns)
             flux_err_col = columns["FLUX_ERR"][1]
             if isnothing(flux_err_col)
@@ -153,6 +170,11 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::typeof(1.
         else
             error("Missing flux_err column. Please specify a flux_err column.")
         end
+
+        mag = flux_to_mag.(flux, zeropoint)
+        mag_err = flux_err_to_mag_err.(flux, flux_err)
+        absmag = mag_to_absmag.(mag, redshift)
+        absmag_err = mag_err
 
         if isnothing(facility)
             if "FACILITY" in keys(columns)
@@ -193,7 +215,7 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::typeof(1.
                 error("Missing passband details. Please either specify a passband column, or provide a passband")
             end
         else
-            passband = [passband for d in data]
+            passband = [passband for _ in data]
         end
 
         get_equiv = Dict("time" => time, "flux" => flux, "flux_err" => flux_err)
@@ -209,7 +231,7 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::typeof(1.
             end
         else
             if typeof(upperlimit) == Bool
-                upperlimit = [upperlimit for d in data]
+                upperlimit = [upperlimit for _ in data]
             elseif typeof(upperlimit) == String
                 if upperlimit in keys(get_equiv)
                     upperlimit_equivalent = get_equiv[upperlimit]
@@ -222,11 +244,89 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::typeof(1.
 
         filter = [Filter(facility[i], instrument[i], passband[i], config) for i in 1:length(data)]
 
-        obs = [Observation(obs_name, time[i], flux[i], flux_err[i], filter[i], upperlimit[i]) for i in 1:length(data)]
+        obs = [Observation(obs_name, time[i], flux[i], flux_err[i], mag[i], mag_err[i], absmag[i], absmag_err[i], filter[i], upperlimit[i]) for i in 1:length(data) if flux_err[i] < max_flux_err]
 
         lightcurve.observations = vcat(lightcurve.observations, obs)
     end
+    # If peak_time is a value, set all time relative to that value
+    if peak_time isa Float64
+        peak_time *= peak_time_unit
+        for obs in lightcurve.observations
+            obs.time -= peak_time
+        end
+        # Otherwise if peak_time is true, set all time relative to maximum flux time
+    elseif peak_time
+        max_ind = argmax(get(lightcurve, "flux"))
+        time = get(lightcurve, "time")
+        max_time = time[max_ind]
+        for obs in lightcurve.observations
+            obs.time -= max_time
+        end
+    end
+
     return lightcurve
 end
+
+function Base.get(lightcurve::Lightcurve, key::String, default::Any=nothing)
+    if Symbol(key) in fieldnames(Observation)
+        return [getfield(obs, Symbol(key)) for obs in lightcurve.observations]
+    end
+    return default
+end
+
+function Base.get!(lightcurve::Lightcurve, key::String, default::Any=nothing)
+    value = get(lightcurve, key, default)
+    # If using the default value, set the key for all observations
+    if value == default
+        for obs in lightcurve.observations
+            setfield!(obs, Symbol(key), value)
+        end
+    end
+    return value
+end
+
+# When using get! you can specify either a single value for all observations or a vector of values for the default
+function Base.get!(lightcurve::Lightcurve, key::String, default::Vector)
+    if length(default) != length(lightcurve.observations)
+        error("Default value length ($(length(default))) not equal to number of observations ($(length(lightcurve.observations)))")
+    end
+    value = get(lightcurve, key, default)
+    # If using the default value, set the key for all observations
+    if value == default
+        for (i, obs) in lightcurve.observations
+            setfield(obs, Symbol(key), default[i])
+        end
+    end
+end
+
+function flux_to_mag(flux::Unitful.Quantity{Float64}, zeropoint::Level)
+    if flux < 0.0 * unit(flux)
+        flux *= 0.0
+    end
+    return (ustrip(zeropoint |> u"AB_mag") - 2.5 * log10(ustrip(flux |> u"Jy"))) * u"AB_mag"
+end
+
+function flux_err_to_mag_err(flux::Unitful.Quantity{Float64}, flux_err::Unitful.Quantity{Float64})
+    return (2.5 / log(10)) * (flux_err / flux) * u"AB_mag"
+end
+
+function mag_to_flux(mag::Level, zeropoint::Level)
+    return (10.0^(0.4 * (ustrip(zeropoint |> u"AB_mag") - ustrip(mag |> u"AB_mag")))) * u"Jy"
+end
+
+function mag_to_absmag(mag::Level, redshift::Float64; H0::Unitful.Quantity{Float64}=70.0u"km/s/Mpc")
+    d = c * redshift / H0
+    μ = 5.0 * log10(d / 10.0u"pc")
+    absmag = (ustrip(mag |> u"AB_mag") - μ) * u"AB_mag"
+    return absmag
+end
+
+function absmag_to_mag(absmag::Level, redshift::Float64; H0::Unitful.Quantity{Float64}=70.0u"km/s/Mpc")
+    d = c * redshift / H0
+    μ = 5.0 * log10(d / 10.0u"pc")
+    mag = (ustrip(absmag |> u"AB_mag") + μ) * u"AB_mag"
+    return mag
+end
+
 
 end

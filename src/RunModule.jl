@@ -9,10 +9,16 @@ include(joinpath(@__DIR__, "PhotometryModule.jl"))
 using .PhotometryModule
 include(joinpath(@__DIR__, "SupernovaModule.jl"))
 using .SupernovaModule
+include(joinpath(@__DIR__, "PlotModule.jl"))
+# `used` later only if needed
 
 # Exports
 export run_Supernovae
 export Supernova
+export Observation
+export synthetic_flux
+export flux_to_mag, mag_to_flux
+export absmag_to_mag, mag_to_absmag
 
 """
     run_Supernovae(toml::Dict{String, Any})
@@ -23,15 +29,18 @@ Main entrance function for the package
 - `toml::Dict{String, Any}`: Input toml file containing all options for the package
 """
 function run_Supernovae(toml::Dict{String,Any})
-    supernova = Supernova(toml["DATA"], toml["GLOBAL"])
+    config = toml["GLOBAL"]
+    supernova = Supernova(toml["DATA"], config)
     if "PLOT" in keys(toml)
+        @info "Plotting"
         plot_config = toml["PLOT"]
 
         # Only include PlotModule if needed to save on precompilation time if we don't need to use Makie
-        include(joinpath(@__DIR__, "PlotModule.jl"))
+        @debug "Loading Plotting Module"
         @eval using .PlotModule
         if "LIGHTCURVE" in keys(plot_config)
             @info "Plotting Lightcurve"
+            Base.@invokelatest plot_lightcurve(supernova, plot_config["LIGHTCURVE"], config)
         end
     end
     return supernova

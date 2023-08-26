@@ -46,7 +46,7 @@ instrument = "tess"
 passband = "Red"
 filter_name = "Tess"
 upperlimit = false
-flux_offset = 296 # Defaults to 0, assumes same units as flux
+flux_offset = 0.296 # Defaults to 0, assumes same units as flux
 
 [ plot.lightcurve ]
 filters = ["Red", "orange"]
@@ -54,5 +54,7 @@ markersize = 21
 marker."tess 6hr" = "utriangle"
 marker.atlas = "circle"
 colour.Red = "red"
+rename.Red = "Tess: Red"
+rename.orange = "Atlas: Orange"
 colour.orange = "orange"
 legend = true

@@ -11,8 +11,9 @@ using Trapz
 
 # Exports
 export Filter
+export synthetic_flux
 
-function svo(facility, instrument, name)
+function svo(facility::String, instrument::String, name::String)
     py"""
     from astroquery.svo_fps import SvoFps
 
@@ -60,7 +61,7 @@ end
 
 function Filter(facility::String, instrument::String, passband::String, config::Dict{String,Any})
     filter_directory = config["FILTER_PATH"]
-    filter_file = "$(facility)|$(instrument)|$(passband)"
+    filter_file = "$(facility)__$(instrument)__$(passband)"
     if !isfile(joinpath(filter_directory, filter_file))
         @debug "Could not find $(filter_file) in $(filter_directory)"
         @debug "Attempting to find filter on SVO FPS"
@@ -78,7 +79,7 @@ function Filter(facility::String, instrument::String, passband::String, config::
 end
 
 function save_filter(filter::Filter, filter_dir::AbstractString)
-    filter_path = joinpath(filter_dir, "$(filter.facility)|$(filter.instrument)|$(filter.passband)")
+    filter_path = joinpath(filter_dir, "$(filter.facility)__$(filter.instrument)__$(filter.passband)")
     @debug "Saving filter to $filter_path"
     filter_str = ""
     for i in 1:length(filter.wavelength)
@@ -89,5 +90,26 @@ function save_filter(filter::Filter, filter_dir::AbstractString)
     end
 end
 
+# Planck's law
+# Calculates the specral radiance of a blackbody at temperature T, emitting at wavelength λ
+function planck(T::Unitful.Quantity{Float64}, λ::Unitful.Quantity{Float64})
+    h = 6.626e-34 * u"J / Hz" # Planck Constant
+    k = 1.381e-23 * u"J / K" # Boltzmann Constant
+    c = 299792458 * u"m / s" # Speed of light in a vacuum
+    exponent = h * c / (λ * k * T)
+    B = (2π * h * c * c / (λ^5)) / (exp(exponent) - 1) # Spectral Radiance
+    return B
+end
+
+# Calculates the flux of a blackbody at temperature T, as seen through the filter
+function synthetic_flux(filter::Filter, T::Unitful.Quantity{Float64})
+    c = 299792458 * u"m / s" # Speed of light in a vacuum
+    numer = @. planck(T, filter.wavelength) * filter.transmission * filter.wavelength
+    numer = trapz(numer, filter.wavelength)
+    denom = @. filter.transmission / filter.wavelength
+    denom = c .* trapz(denom, filter.wavelength)
+
+    return abs(numer / denom)
+end
 
 end

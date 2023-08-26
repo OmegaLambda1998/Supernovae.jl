@@ -37,15 +37,35 @@ function Supernova(data::Dict{String,Any}, config::Dict{String,Any})
     @debug "Maximum flux error set to: $max_flux_err"
 
     # Whether times are absolute or relative to the peak
+    # Alternative choose a time for other times to be relative to
     peak_time = get(data, "PEAK_TIME", false)
+    peak_time_unit = uparse(get(data, "PEAK_TIME_UNIT", "d"), unit_context=UNITS)
 
     # Load in observations
     observations = get(data, "OBSERVATIONS", Vector{Dict{String,Any}}())
     @info "Found $(length(observations)) observations"
-    lightcurve = Lightcurve(observations, zeropoint, redshift, config; max_flux_err=max_flux_err, peak_time=peak_time)
+    lightcurve = Lightcurve(observations, zeropoint, redshift, config; max_flux_err=max_flux_err, peak_time=peak_time, peak_time_unit=peak_time_unit)
     @info "Finished loading Supernova"
 
     return Supernova(name, zeropoint, redshift, lightcurve)
 end
+
+function Base.get(supernova::Supernova, key::AbstractString, default::Any=nothing)
+    return get(supernova.lightcurve, key, default)
+end
+
+function Base.get!(supernova::Supernova, key::AbstractString, default::Any=nothing)
+    return get!(supernova.lightcurve, key, default)
+end
+
+function Base.filter(f::Function, supernova::Supernova)
+    filt = filter(f, supernova.lightcurve.observations)
+    return Supernova(supernova.name, supernova.zeropoint, supernova.redshift, Lightcurve(filt))
+end
+
+function Base.filter!(f::Function, supernova::Supernova)
+    supernova.lightcurve = Lightcurve(filter(f, supernova.lightcurve.observations))
+end
+
 
 end

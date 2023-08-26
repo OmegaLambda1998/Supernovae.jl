@@ -9,11 +9,16 @@ using OrderedCollections
 
 # Internal Packages
 include("RunModule.jl")
+using .RunModule
 
 # Exports
 export main
 export run_Supernovae
 export Supernova
+export Observation
+export synthetic_flux
+export flux_to_mag, mag_to_flux
+export absmag_to_mag, mag_to_absmag
 
 """
     get_args()
@@ -43,18 +48,26 @@ Read the args, prepare the input TOML and run the actual package functionality.
 """
 function main()
     args = get_args()
-    verbose = args["verbose"]
     toml_path = args["input"]
+    verbose = args["verbose"]
+    profile = args["profile"]
+    main(toml_path, verbose, profile)
+end
+
+function main(toml_path::AbstractString, verbose::Bool, profile::Bool)
     paths = OrderedDict(
         "data_path" => ("base_path", "Data"),
         "filter_path" => ("base_path", "Filters")
     )
     toml = setup_input(toml_path, verbose; paths=paths)
-    if args["profile"]
+    if profile
+        @warn "Running everything once to precompile before profiling"
+        run_Supernovae(toml)
         @profilehtml run_Supernovae(toml)
     else
         run_Supernovae(toml)
     end
+
 end
 
 if abspath(PROGRAM_FILE) == @__FILE__
