@@ -14,7 +14,7 @@ export Lightcurve
 export flux_to_mag, mag_to_flux
 export absmag_to_mag, mag_to_absmag
 
-const c::typeof(1.0u"m/s") = 299792458.0u"m / s"
+const c = 299792458.0u"m / s"
 
 
 mutable struct Observation
