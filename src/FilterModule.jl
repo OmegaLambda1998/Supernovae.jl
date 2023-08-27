@@ -13,7 +13,22 @@ using Trapz
 export Filter
 export synthetic_flux
 
-function svo(facility::String, instrument::String, name::String)
+const h = 6.626e-34 * u"J / Hz" # Planck Constant
+const k = 1.381e-23 * u"J / K" # Boltzmann Constant
+const c = 299792458 * u"m / s" # Speed of light in a vacuum
+
+
+"""
+    svo(facility::String, instrument::String, passband::String)
+
+Attempt to get filter transmission curve from [SVO](http://svo2.cab.inta-csic.es/theory/fps/). Uses the python package `astroquery` via PyCall.
+
+# Arguments
+- `facility::String`: SVO name for the filter's facility
+- `instrument::String`: SVO name for the filter's instrument
+- `passband::String`: SVO name for the filter's passband
+"""
+function svo(facility::String, instrument::String, passband::String)
     py"""
     from astroquery.svo_fps import SvoFps
 
@@ -24,10 +39,22 @@ function svo(facility::String, instrument::String, name::String)
             return None
     """
 
-    svo_name = "$facility/$instrument.$name"
+    svo_name = "$facility/$instrument.$passband"
     return py"svo"(svo_name)
 end
 
+"""
+    Filter
+
+Photometric filter transmission curve.
+
+# Fields
+- `facility::String`: Name of the filter's facility
+- `instrument::String`: Name of the filter's instrument
+- `passband::String`: Name of the filter's passband
+- `wavelength::Vector{Å}`: Transmission curve wavelength
+- `transmission::Vector{Float64}`: Transmission curve transmission
+"""
 struct Filter
     facility::String # Facility name (NewHorizons, Keper, Tess, etc...)
     instrument::String # Instrument name (Bessell, CTIO, Landolt, etc...)
@@ -36,12 +63,34 @@ struct Filter
     transmission::Vector{Float64} # Unitless
 end
 
+"""
+    Filter(facility::String, instrument::String, passband::String, svo::PyCall.PyObject)
+
+Make [`Filter`](@ref) object from [`svo`](@ref) transmission curve.
+
+# Arguments
+- `facility::String`: Name of the filter's facility
+- `instrument::String`: Name of the filter's instrument
+- `passband::String`: Name of the filter's passband
+- `svo::Pycall.PyObject`: SVO transmission curve
+"""
 function Filter(facility::String, instrument::String, passband::String, svo::PyCall.PyObject)
     wavelength = svo.__getitem__("Wavelength")
     transmission = svo.__getitem__("Transmission")
     return Filter(facility, instrument, passband, wavelength .* u"Å", transmission)
 end
 
+"""
+    Filter(facility::String, instrument::String, passband::String, filter_file::AbstractString) 
+
+Make [`Filter`](@ref) object from `filter_file` transmission curve.
+
+# Arguments
+- `facility::String`: Name of the filter's facility
+- `instrument::String`: Name of the filter's instrument
+- `passband::String`: Name of the filter's passband
+- `filter_file::AbstractString`: Path to transmission curve file. Assumed to be a comma delimited wavelength,transmission file.
+"""
 function Filter(facility::String, instrument::String, passband::String, filter_file::AbstractString)
     lines = open(filter_file) do io
         ls = [line for line in readlines(io) if line != ""]
@@ -59,6 +108,17 @@ function Filter(facility::String, instrument::String, passband::String, filter_f
     return Filter(facility, instrument, passband, wavelength, transmission)
 end
 
+"""
+    Filter(facility::String, instrument::String, passband::String, config::Dict{String, Any})
+
+Make [`Filter`](@ref) object from `config` options. `config` must include "FILTER_PATH" => path/to/transmission_curve. If this file exists, the transmission curve will be loaded via [`Filter(facility::String, instrument::String, passband::String, filter_file::AbstractString)`](@ref), otherwise attempt to create Filter via [`Filter(facility::String, instrument::String, passband::String, svo::PyCall.PyObject)`](@ref) and the SVO FPS database.
+
+# Arguments
+- `facility::String`: Name of the filter's facility
+- `instrument::String`: Name of the filter's instrument
+- `passband::String`: Name of the filter's passband
+- `config::Dict{String, Any}`: Options for creating a Filter.
+"""
 function Filter(facility::String, instrument::String, passband::String, config::Dict{String,Any})
     filter_directory = config["FILTER_PATH"]
     filter_file = "$(facility)__$(instrument)__$(passband)"
@@ -78,6 +138,15 @@ function Filter(facility::String, instrument::String, passband::String, config::
     end
 end
 
+"""
+    save_filter(filter::Filter, filter_dir::AbstractString)
+
+Save `filter` to directory `filter_dir`.
+
+# Arguments
+- `filter::Filter`: The [`Filter`](@ref) to save.
+- `filter_dir::AbstractString`: The directory to save `filter` to.
+"""
 function save_filter(filter::Filter, filter_dir::AbstractString)
     filter_path = joinpath(filter_dir, "$(filter.facility)__$(filter.instrument)__$(filter.passband)")
     @debug "Saving filter to $filter_path"
@@ -90,20 +159,31 @@ function save_filter(filter::Filter, filter_dir::AbstractString)
     end
 end
 
-# Planck's law
-# Calculates the specral radiance of a blackbody at temperature T, emitting at wavelength λ
+"""
+    planck(T::Unitful.Quantity{Float64}, λ::Unitful.Quantity{Float64})
+
+Planck's law: Calculates the specral radiance of a blackbody at temperature T, emitting at wavelength λ
+
+# Arguments
+- `T::Unitful.Quantity{Float64}`: Temperature of blackbody
+- `λ::Unitful.Quantity{Float64}`: Wavelength of blackbody
+"""
 function planck(T::Unitful.Quantity{Float64}, λ::Unitful.Quantity{Float64})
-    h = 6.626e-34 * u"J / Hz" # Planck Constant
-    k = 1.381e-23 * u"J / K" # Boltzmann Constant
-    c = 299792458 * u"m / s" # Speed of light in a vacuum
     exponent = h * c / (λ * k * T)
     B = (2π * h * c * c / (λ^5)) / (exp(exponent) - 1) # Spectral Radiance
     return B
 end
 
-# Calculates the flux of a blackbody at temperature T, as seen through the filter
+"""
+    synthetic_flux(filter::Filter, T::Unitful.Quantity{Float64})
+
+Calculates the flux of a blackbody at temperature `T`, as observed with the `filter`
+
+# Arguments
+- `filter::Filter`: The [`Filter`](@ref) through which the blackbody is observed
+- `T::Unitful.Quantity{Float64}`: The temperature of the blackbody
+"""
 function synthetic_flux(filter::Filter, T::Unitful.Quantity{Float64})
-    c = 299792458 * u"m / s" # Speed of light in a vacuum
     numer = @. planck(T, filter.wavelength) * filter.transmission * filter.wavelength
     numer = trapz(numer, filter.wavelength)
     denom = @. filter.transmission / filter.wavelength

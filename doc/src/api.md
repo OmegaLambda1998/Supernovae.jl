@@ -44,3 +44,23 @@ Private = false
 Modules = [RunModule]
 Public = false
 ```
+
+## Supernovae.RunModule.FilterModule Functions
+
+```@meta
+CurrentModule = Supernovae.RunModule.FilterModule
+```
+
+### Public Objects
+
+```@autodocs
+Modules = [FilterModule]
+Private = false
+```
+
+### Private Objects
+
+```@autodocs
+Modules = [FilterModule]
+Public = false
+```

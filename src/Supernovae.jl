@@ -44,7 +44,7 @@ end
 """
     main()
 
-Read the args, prepare the input TOML and run the actual package functionality.
+Read the args, prepare the input TOML and run the actual package functionality. Runs [`main(toml_path, verbose, profile)`](@ref).
 """
 function main()
     args = get_args()
@@ -54,6 +54,16 @@ function main()
     main(toml_path, verbose, profile)
 end
 
+"""
+    main(toml_path::AbstractString, verbose::Bool, profile::Bool)
+
+Loads `toml_path`, and sets up logging with verbosity based on `verbose`. Runs [`run_Supernovae`](@ref) and if `profile` is `true`, also profiles the code.
+
+# Arguments
+- `toml_path::AbstractString`: Path to toml input file.
+- `verbose::Bool`: Set verbosity of logging
+- `profile::Bool`: If true, profile [`run_Supernovae`](@ref)
+"""
 function main(toml_path::AbstractString, verbose::Bool, profile::Bool)
     paths = OrderedDict(
         "data_path" => ("base_path", "Data"),
