@@ -3,7 +3,6 @@
 $ cd Supernovae.jl
 $ make</code></pre><h2 id="Usage"><a class="docs-heading-anchor" href="#Usage">Usage</a><a id="Usage-1"></a><a class="docs-heading-anchor-permalink" href="#Usage" title="Permalink"></a></h2><pre><code class="language-bash hljs">$ ./scripts/Supernovae -v path/to/input.toml</code></pre><p>Details on how to build the input files which control <code>Supernovae.jl</code> can be found in <a href="usage/">Usage</a>.</p><h2 id="Example-data-file"><a class="docs-heading-anchor" href="#Example-data-file">Example data file</a><a id="Example-data-file-1"></a><a class="docs-heading-anchor-permalink" href="#Example-data-file" title="Permalink"></a></h2><p>The following example input file can be found in the Examples directory.</p><pre><code class="language-toml hljs">[ global ]
 filter_path = &quot;../Filters&quot; # Defaults to base_path / Filters
-data_path = &quot;Data&quot;
 output_path = &quot;../../Outputs/2021zby&quot; # Defaults to base_path / Output
 
 # Data
@@ -15,6 +14,7 @@ redshift = 0.02559 # Required
 max_flux_err = 2.5e2 # Optional, set&#39;s the maximum allowed value for the uncertainty in the flux
 max_flux_err_unit = &quot;µJy&quot; # Optional, default to µJy
 peak_time = true # Default false. Can either be true, in which case all times will become relative to the peak data point. Alternatively, give a value, and all times will be relative to that value
+peak_time_unit = &quot;d&quot; # Optional, default to d
 
 [[ data.observations ]] # Now load in different observations of the supernova. This can either be one file with all observations, or you can load in multiple files
 name = &quot;atlas&quot; # Required, Human readable name to distinguish observations
@@ -50,13 +50,16 @@ filter_name = &quot;Tess&quot;
 upperlimit = false
 flux_offset = 0.296 # Defaults to 0, assumes same units as flux
 
-[ plot.lightcurve ]
+[[ plot.lightcurve ]]
 filters = [&quot;Red&quot;, &quot;orange&quot;]
 markersize = 21
 marker.&quot;tess 6hr&quot; = &quot;utriangle&quot;
+rename.&quot;tess 6hr&quot; = &quot;Tess (6hr)&quot;
 marker.atlas = &quot;circle&quot;
+rename.atlas = &quot;Atlas&quot;
 colour.Red = &quot;red&quot;
 rename.Red = &quot;Tess: Red&quot;
-rename.orange = &quot;Atlas: Orange&quot;
+rename.orange = &quot;Atlas: Orange (+150 μJy)&quot;
 colour.orange = &quot;orange&quot;
-legend = true</code></pre></article><nav class="docs-footer"><a class="docs-footer-nextpage" href="usage/">Usage »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.1.2 on <span class="colophon-date" title="Thursday 26 October 2023 14:52">Thursday 26 October 2023</span>. Using Julia version 1.9.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+offset.orange = 150
+legend = true</code></pre></article><nav class="docs-footer"><a class="docs-footer-nextpage" href="usage/">Usage »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="auto">Automatic (OS)</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.1.2 on <span class="colophon-date" title="Thursday 26 October 2023 15:31">Thursday 26 October 2023</span>. Using Julia version 1.9.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

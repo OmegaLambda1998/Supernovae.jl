@@ -1,6 +1,8 @@
-push!(LOAD_PATH, joinpath(@__DIR__, "../src/"))
-using Supernovae
 using Documenter
+using Pkg
+push!(LOAD_PATH, joinpath(@__DIR__, "../src/"))
+Pkg.develop(path=abspath(joinpath(@__DIR__, "../")))
+using Supernovae
 
 DocMeta.setdocmeta!(Supernovae, :DocTestSetup, :(using Supernovae); recursive=true)
 

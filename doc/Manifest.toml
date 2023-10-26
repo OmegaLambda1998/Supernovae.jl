@@ -1441,7 +1441,7 @@ version = "5.10.1+6"
 
 [[deps.Supernovae]]
 deps = ["ArgParse", "BetterInputFiles", "CairoMakie", "Makie", "OrderedCollections", "PyCall", "Random", "StatProfilerHTML", "TOML", "Trapz", "Unitful", "UnitfulAstro"]
-path = ".."
+path = "/home/patricka/.julia/dev/Supernovae/"
 uuid = "f00d7deb-a70b-45c2-b896-7f55cd638e72"
 version = "0.1.0"
 
