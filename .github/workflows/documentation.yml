@@ -20,7 +20,10 @@ jobs:
           version: 'nightly' 
       - name: Install dependencies
         run: julia --project=doc/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
+        env:
+          PYTHON: ""
       - name: Build and deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PYTHON: ""
         run: julia --project=doc/ doc/make.jl
