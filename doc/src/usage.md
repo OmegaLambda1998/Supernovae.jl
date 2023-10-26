@@ -37,7 +37,7 @@ max_flux_err_unit::String="μJy" # The unit of the maximum flux error.
 peak_time::Union{Bool, Float64}=false # If true, set time relatative to the time of maximum flux. Alternatively, provide a value for time to be set relative to.
 peak_time_unit::String="d" # The unit of the peak_time, only used if peak_time is a value.
 ```
-In addition to these options, you must specify `[[ data.observations ]]`, which contain details on the data files you with to associate with this supernova. The main assumption is that columns are different parameters and rows are different datapoints. `observations` keys include:
+In addition to these options, you must specify `[[ data.observations ]]`, which contain details on the data files you with to associate with this supernova. The main assumption is that columns are different parameters and rows are different datapoints. Since `[[ data.observations ]]` is a list object, you can include as many files as you want, and they will all get collated into the one supernova object. `observations` keys include:
 ```toml
 [[ data.observations ]]
 name::String # Human readable name of the observations. Typically this is the survey responsible for the observations
@@ -90,10 +90,10 @@ Transission curve files should be comma seperated files containing the wavelengt
 ### `[ plot ]`
 The `plot` key is optional, with `Supernovae.jl` only producing plots if this key exists. At the moment only lightcurve plots are implemented, but in the future there will be filter, and spectra plots.
 
-#### `[ plot.lightcurve ]`
-The lightcurve plot has a number of keys used to customise your plot.
+#### `[[ plot.lightcurve ]]`
+The lightcurve plot has a number of keys used to customise your plot. You can make any number of lightcurve plots by defining multiple `[[ plot.lightcurve ]]` keys.
 ```toml
-[ plot.lightcurve ]
+[ plot.lightcurve ]]
 path::String="$(supernova.name)_lightcurve.svg" # Where to save the plot, relative to output_path
 datatype::String="flux" # What type of data to plot. Options include "flux", "magnitude", and "abs_magnitude".
 unit.time::String="d" # Time unit

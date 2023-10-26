@@ -100,7 +100,7 @@ function plot_lightcurve!(fig::Figure, ax::Axis, supernova::Supernova, plot_conf
             if isnothing(colour)
                 colour = colour_labels[length(colour_plots)+1]
             end
-            elem = MarkerElement(marker=:circle, color=colour, markersize=0.5 * markersize)
+            elem = MarkerElement(marker=:hline, color=colour, markersize=0.5 * markersize)
             colour_plots[passband] = elem
             colours[obs.filter.passband] = colour
         end

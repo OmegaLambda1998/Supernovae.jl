@@ -40,7 +40,9 @@ function run_Supernovae(toml::Dict{String,Any})
         @eval using .PlotModule
         if "LIGHTCURVE" in keys(plot_config)
             @info "Plotting Lightcurve"
-            Base.@invokelatest plot_lightcurve(supernova, plot_config["LIGHTCURVE"], config)
+            for lightcurve_config in plot_config["LIGHTCURVE"]
+                Base.@invokelatest plot_lightcurve(supernova, lightcurve_config, config)
+            end
         end
     end
     return supernova
