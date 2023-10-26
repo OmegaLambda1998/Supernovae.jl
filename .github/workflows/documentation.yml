@@ -19,7 +19,7 @@ jobs:
         with:
           version: 'nightly' 
       - name: Install dependencies
-        run: julia --project=doc/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
+        run: JULIA_LOAD_PATH="@stdlib" julia --project=doc/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
         env:
           PYTHON: ""
       - name: Build and deploy
