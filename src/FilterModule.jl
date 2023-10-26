@@ -44,7 +44,7 @@ function svo(facility::String, instrument::String, passband::String)
 end
 
 """
-    Filter
+    struct Filter
 
 Photometric filter transmission curve.
 

@@ -1,6 +1,6 @@
-using Documenter
 push!(LOAD_PATH, joinpath(@__DIR__, "../src/"))
 using Supernovae
+using Documenter
 
 DocMeta.setdocmeta!(Supernovae, :DocTestSetup, :(using Supernovae); recursive=true)
 
@@ -9,6 +9,7 @@ makedocs(
     modules = [Supernovae],
     pages = [
         "Supernovae" => "index.md",
+        "Usage" => "usage.md",
         "API" => "api.md"
     ],
     format = Documenter.HTML(

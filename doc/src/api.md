@@ -25,7 +25,7 @@ Modules = [Supernovae]
 Public = false
 ```
 
-## Supernovae.RunModule Functions
+## RunModule Functions
 
 ```@meta
 CurrentModule = Supernovae.RunModule
@@ -45,7 +45,7 @@ Modules = [RunModule]
 Public = false
 ```
 
-## Supernovae.RunModule.FilterModule Functions
+## FilterModule Functions
 
 ```@meta
 CurrentModule = Supernovae.RunModule.FilterModule
@@ -62,5 +62,65 @@ Private = false
 
 ```@autodocs
 Modules = [FilterModule]
+Public = false
+```
+
+## PhotometryModule Functions
+
+```@meta
+CurrentModule = Supernovae.RunModule.PhotometryModule
+```
+
+### Public Objects
+
+```@autodocs
+Modules = [PhotometryModule]
+Private = false
+```
+
+### Private Objects
+
+```@autodocs
+Modules = [PhotometryModule]
+Public = false
+```
+
+## SupernovaModule Functions
+
+```@meta
+CurrentModule = Supernovae.RunModule.SupernovaModule
+```
+
+### Public Objects
+
+```@autodocs
+Modules = [SupernovaModule]
+Private = false
+```
+
+### Private Objects
+
+```@autodocs
+Modules = [SupernovaModule]
+Public = false
+```
+
+## PlotModule Objects
+
+```@meta
+CurrentModule = Supernovae.RunModule.PlotModule
+```
+
+### Public Objects
+
+```@autodocs
+Modules = [PlotModule]
+Private = false
+```
+
+### Private Objects
+
+```@autodocs
+Modules = [PlotModule]
 Public = false
 ```
