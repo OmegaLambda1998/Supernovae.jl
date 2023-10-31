@@ -27,7 +27,7 @@ Helper function to get the ARGS passed to julia.
 """
 function get_args()
     s = ArgParseSettings()
-    @add_arg_table s begin
+    @add_arg_table! s begin
         "--verbose", "-v"
         help = "Increase level of logging verbosity"
         action = :store_true
