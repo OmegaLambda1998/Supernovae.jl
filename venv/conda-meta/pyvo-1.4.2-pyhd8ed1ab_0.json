@@ -1,0 +1,1897 @@
+{
+  "build": "pyhd8ed1ab_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "constrains": [],
+  "depends": [
+    "astropy >=4.1",
+    "python >=3.8",
+    "requests"
+  ],
+  "extracted_package_dir": "/home/patricka/.conda/pkgs/pyvo-1.4.2-pyhd8ed1ab_0",
+  "files": [
+    "lib/python3.12/site-packages/pyvo-1.4.2.dist-info/INSTALLER",
+    "lib/python3.12/site-packages/pyvo-1.4.2.dist-info/LICENSE.rst",
+    "lib/python3.12/site-packages/pyvo-1.4.2.dist-info/METADATA",
+    "lib/python3.12/site-packages/pyvo-1.4.2.dist-info/RECORD",
+    "lib/python3.12/site-packages/pyvo-1.4.2.dist-info/REQUESTED",
+    "lib/python3.12/site-packages/pyvo-1.4.2.dist-info/WHEEL",
+    "lib/python3.12/site-packages/pyvo-1.4.2.dist-info/direct_url.json",
+    "lib/python3.12/site-packages/pyvo-1.4.2.dist-info/top_level.txt",
+    "lib/python3.12/site-packages/pyvo/__init__.py",
+    "lib/python3.12/site-packages/pyvo/_astropy_init.py",
+    "lib/python3.12/site-packages/pyvo/auth/__init__.py",
+    "lib/python3.12/site-packages/pyvo/auth/authsession.py",
+    "lib/python3.12/site-packages/pyvo/auth/authurls.py",
+    "lib/python3.12/site-packages/pyvo/auth/credentialstore.py",
+    "lib/python3.12/site-packages/pyvo/auth/securitymethods.py",
+    "lib/python3.12/site-packages/pyvo/auth/tests/__init__.py",
+    "lib/python3.12/site-packages/pyvo/auth/tests/conftest.py",
+    "lib/python3.12/site-packages/pyvo/auth/tests/data/tap/capabilities.xml",
+    "lib/python3.12/site-packages/pyvo/auth/tests/test_auth.py",
+    "lib/python3.12/site-packages/pyvo/conftest.py",
+    "lib/python3.12/site-packages/pyvo/dal/__init__.py",
+    "lib/python3.12/site-packages/pyvo/dal/adhoc.py",
+    "lib/python3.12/site-packages/pyvo/dal/dbapi2.py",
+    "lib/python3.12/site-packages/pyvo/dal/exceptions.py",
+    "lib/python3.12/site-packages/pyvo/dal/mimetype.py",
+    "lib/python3.12/site-packages/pyvo/dal/params.py",
+    "lib/python3.12/site-packages/pyvo/dal/query.py",
+    "lib/python3.12/site-packages/pyvo/dal/scs.py",
+    "lib/python3.12/site-packages/pyvo/dal/sia.py",
+    "lib/python3.12/site-packages/pyvo/dal/sia2.py",
+    "lib/python3.12/site-packages/pyvo/dal/sla.py",
+    "lib/python3.12/site-packages/pyvo/dal/ssa.py",
+    "lib/python3.12/site-packages/pyvo/dal/tap.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__init__.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/conftest.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/datalink/cutout1.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/datalink/cutout2.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/datalink/datalink-obscore.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/datalink/datalink-ssa.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/datalink/datalink.desise",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/datalink/datalink.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/datalink/proc.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/datalink/proc_inf.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/datalink/proc_units.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/mimetype/ivoa_logo.jpg",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/mimetype/test.fits",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/monkeypatch.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/query/basic.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/query/dataset.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/query/errorstatus.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/query/firstresource.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/query/missingcolumns.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/query/missingresource.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/query/missingtable.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/query/overflowstatus.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/query/rootinfo.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/query/tableinfo.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/querydata/image.fits",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/scs/result.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/sia/dataset.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/sia2/capabilities-basicauth.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/sia2/capabilities-newformat.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/sia2/capabilities-priv.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/sia2/capabilities.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/sia2/dataset.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/sla/dataset.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/ssa/result.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/tap/capabilities.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/tap/examples.htm",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/tap/lazy-table1.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/tap/lazy-table2.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/tap/obscore-image.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/data/tap/tables.xml",
+    "lib/python3.12/site-packages/pyvo/dal/tests/make_testdata.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/test_adhoc.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/test_datalink.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/test_mimetype.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/test_monkeypatch.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/test_params.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/test_query.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/test_scs.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/test_sia.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/test_sia2.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/test_sia2_remote.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/test_sla.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/test_ssa.py",
+    "lib/python3.12/site-packages/pyvo/dal/tests/test_tap.py",
+    "lib/python3.12/site-packages/pyvo/dal/vosi.py",
+    "lib/python3.12/site-packages/pyvo/dam/__init__.py",
+    "lib/python3.12/site-packages/pyvo/dam/obscore.py",
+    "lib/python3.12/site-packages/pyvo/io/__init__.py",
+    "lib/python3.12/site-packages/pyvo/io/uws/__init__.py",
+    "lib/python3.12/site-packages/pyvo/io/uws/endpoint.py",
+    "lib/python3.12/site-packages/pyvo/io/uws/tests/__init__.py",
+    "lib/python3.12/site-packages/pyvo/io/uws/tests/data/job-error.xml",
+    "lib/python3.12/site-packages/pyvo/io/uws/tests/data/job-implicit-v1.0.xml",
+    "lib/python3.12/site-packages/pyvo/io/uws/tests/data/job.xml",
+    "lib/python3.12/site-packages/pyvo/io/uws/tests/test_job.py",
+    "lib/python3.12/site-packages/pyvo/io/uws/tree.py",
+    "lib/python3.12/site-packages/pyvo/io/vosi/__init__.py",
+    "lib/python3.12/site-packages/pyvo/io/vosi/availability.py",
+    "lib/python3.12/site-packages/pyvo/io/vosi/endpoint.py",
+    "lib/python3.12/site-packages/pyvo/io/vosi/exceptions.py",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tapregext.py",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/__init__.py",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/availability.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/capabilities.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/capabilities/multiple_capa_descriptions.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/datatypes_tap.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/datatypes_votable.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_column_datatypes.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_column_descriptions.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_column_names.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_column_ucds.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_column_units.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_column_utypes.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_foreignkey_descriptions.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_foreignkey_utypes.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_fromcolumns.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_schema_descriptions.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_schema_names.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_schema_titles.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_schema_utypes.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_table_descriptions.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_table_names.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_table_titles.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_table_utypes.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_targetcolumns.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/multiple_targettables.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/no_fromcolumn.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/no_schema_name.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/no_schemas.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/no_table_description.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/no_table_name.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/no_targetcolumn.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/single_table_description.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/sizenegative.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/wrong_arraysize.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/wrong_datatypes_tap.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/wrong_datatypes_votable.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/data/tables/wrong_flag.xml",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/test_availability.py",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/test_capabilities.py",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/test_tables.py",
+    "lib/python3.12/site-packages/pyvo/io/vosi/vodataservice.py",
+    "lib/python3.12/site-packages/pyvo/io/vosi/voresource.py",
+    "lib/python3.12/site-packages/pyvo/registry/__init__.py",
+    "lib/python3.12/site-packages/pyvo/registry/regtap.py",
+    "lib/python3.12/site-packages/pyvo/registry/rtcons.py",
+    "lib/python3.12/site-packages/pyvo/registry/tests/__init__.py",
+    "lib/python3.12/site-packages/pyvo/registry/tests/commonfixtures.py",
+    "lib/python3.12/site-packages/pyvo/registry/tests/conftest.py",
+    "lib/python3.12/site-packages/pyvo/registry/tests/data/capabilities.xml",
+    "lib/python3.12/site-packages/pyvo/registry/tests/data/messenger.desise",
+    "lib/python3.12/site-packages/pyvo/registry/tests/data/multi-interface.xml",
+    "lib/python3.12/site-packages/pyvo/registry/tests/data/regtap.xml",
+    "lib/python3.12/site-packages/pyvo/registry/tests/test_regtap.py",
+    "lib/python3.12/site-packages/pyvo/registry/tests/test_rtcons.py",
+    "lib/python3.12/site-packages/pyvo/samp.py",
+    "lib/python3.12/site-packages/pyvo/utils/__init__.py",
+    "lib/python3.12/site-packages/pyvo/utils/compat.py",
+    "lib/python3.12/site-packages/pyvo/utils/decorators.py",
+    "lib/python3.12/site-packages/pyvo/utils/formatting.py",
+    "lib/python3.12/site-packages/pyvo/utils/http.py",
+    "lib/python3.12/site-packages/pyvo/utils/protofeature.py",
+    "lib/python3.12/site-packages/pyvo/utils/prototype.py",
+    "lib/python3.12/site-packages/pyvo/utils/tests/__init__.py",
+    "lib/python3.12/site-packages/pyvo/utils/tests/test_http.py",
+    "lib/python3.12/site-packages/pyvo/utils/tests/test_prototype.py",
+    "lib/python3.12/site-packages/pyvo/utils/tests/test_url.py",
+    "lib/python3.12/site-packages/pyvo/utils/tests/test_vocabularies_remote.py",
+    "lib/python3.12/site-packages/pyvo/utils/url.py",
+    "lib/python3.12/site-packages/pyvo/utils/vocabularies.py",
+    "lib/python3.12/site-packages/pyvo/utils/xml/__init__.py",
+    "lib/python3.12/site-packages/pyvo/utils/xml/elements.py",
+    "lib/python3.12/site-packages/pyvo/utils/xml/exceptions.py",
+    "lib/python3.12/site-packages/pyvo/version.py",
+    "lib/python3.12/site-packages/pyvo/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/__pycache__/_astropy_init.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/auth/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/auth/__pycache__/authsession.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/auth/__pycache__/authurls.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/auth/__pycache__/credentialstore.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/auth/__pycache__/securitymethods.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/auth/tests/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/auth/tests/__pycache__/conftest.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/auth/tests/__pycache__/test_auth.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/__pycache__/conftest.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/adhoc.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/dbapi2.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/exceptions.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/mimetype.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/params.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/query.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/scs.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/sia.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/sia2.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/sla.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/ssa.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/tap.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/conftest.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/make_testdata.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_adhoc.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_datalink.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_mimetype.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_monkeypatch.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_params.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_query.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_scs.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_sia.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_sia2.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_sia2_remote.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_sla.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_ssa.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_tap.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dal/__pycache__/vosi.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dam/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/dam/__pycache__/obscore.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/uws/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/uws/__pycache__/endpoint.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/uws/tests/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/uws/tests/__pycache__/test_job.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/uws/__pycache__/tree.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/availability.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/endpoint.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/exceptions.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/tapregext.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/__pycache__/test_availability.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/__pycache__/test_capabilities.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/vosi/tests/__pycache__/test_tables.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/vodataservice.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/voresource.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/registry/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/registry/__pycache__/regtap.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/registry/__pycache__/rtcons.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/registry/tests/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/registry/tests/__pycache__/commonfixtures.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/registry/tests/__pycache__/conftest.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/registry/tests/__pycache__/test_regtap.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/registry/tests/__pycache__/test_rtcons.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/__pycache__/samp.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/__pycache__/compat.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/__pycache__/decorators.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/__pycache__/formatting.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/__pycache__/http.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/__pycache__/protofeature.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/__pycache__/prototype.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/tests/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/tests/__pycache__/test_http.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/tests/__pycache__/test_prototype.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/tests/__pycache__/test_url.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/tests/__pycache__/test_vocabularies_remote.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/__pycache__/url.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/__pycache__/vocabularies.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/xml/__pycache__/__init__.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/xml/__pycache__/elements.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/utils/xml/__pycache__/exceptions.cpython-312.pyc",
+    "lib/python3.12/site-packages/pyvo/__pycache__/version.cpython-312.pyc"
+  ],
+  "fn": "pyvo-1.4.2-pyhd8ed1ab_0.conda",
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "link": {
+    "source": "/home/patricka/.conda/pkgs/pyvo-1.4.2-pyhd8ed1ab_0",
+    "type": 1
+  },
+  "md5": "115f466da51f3fd00bcd21be3f584be4",
+  "name": "pyvo",
+  "noarch": "python",
+  "package_tarball_full_path": "/home/patricka/.conda/pkgs/pyvo-1.4.2-pyhd8ed1ab_0.conda",
+  "package_type": "noarch_python",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "site-packages/pyvo-1.4.2.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5
+      },
+      {
+        "_path": "site-packages/pyvo-1.4.2.dist-info/LICENSE.rst",
+        "path_type": "hardlink",
+        "sha256": "25333bdcd4f61a1f605520dc0fbcd02b1cfd5411e8aaf5c894ab867d56ecb1bd",
+        "sha256_in_prefix": "25333bdcd4f61a1f605520dc0fbcd02b1cfd5411e8aaf5c894ab867d56ecb1bd",
+        "size_in_bytes": 1532
+      },
+      {
+        "_path": "site-packages/pyvo-1.4.2.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "ae7555eadb48fcf9aa4eff6c4bfb5b99224f4f48ad5d89fdc931bf2c42561201",
+        "sha256_in_prefix": "ae7555eadb48fcf9aa4eff6c4bfb5b99224f4f48ad5d89fdc931bf2c42561201",
+        "size_in_bytes": 4207
+      },
+      {
+        "_path": "site-packages/pyvo-1.4.2.dist-info/RECORD",
+        "path_type": "hardlink",
+        "sha256": "9a215a00c365fdd7c8dd8e6db41b2b4665671bd81802e895d572826d3a5bca7a",
+        "sha256_in_prefix": "9a215a00c365fdd7c8dd8e6db41b2b4665671bd81802e895d572826d3a5bca7a",
+        "size_in_bytes": 21150
+      },
+      {
+        "_path": "site-packages/pyvo-1.4.2.dist-info/REQUESTED",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0
+      },
+      {
+        "_path": "site-packages/pyvo-1.4.2.dist-info/WHEEL",
+        "path_type": "hardlink",
+        "sha256": "e6c5174a0f5ee1b8bb9532ce1dc9ba4046303b94c81754cd6d34951558dc25c7",
+        "sha256_in_prefix": "e6c5174a0f5ee1b8bb9532ce1dc9ba4046303b94c81754cd6d34951558dc25c7",
+        "size_in_bytes": 92
+      },
+      {
+        "_path": "site-packages/pyvo-1.4.2.dist-info/direct_url.json",
+        "path_type": "hardlink",
+        "sha256": "ae175669d6b32bfea2b4fee150b7c839c5699ca91b5f39d3b84d0081a55dd79e",
+        "sha256_in_prefix": "ae175669d6b32bfea2b4fee150b7c839c5699ca91b5f39d3b84d0081a55dd79e",
+        "size_in_bytes": 100
+      },
+      {
+        "_path": "site-packages/pyvo-1.4.2.dist-info/top_level.txt",
+        "path_type": "hardlink",
+        "sha256": "517c99da63c30ff7fd7b6f41945547689db1ff09fe24d7a0dc4d631dd6dd87c7",
+        "sha256_in_prefix": "517c99da63c30ff7fd7b6f41945547689db1ff09fe24d7a0dc4d631dd6dd87c7",
+        "size_in_bytes": 5
+      },
+      {
+        "_path": "site-packages/pyvo/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "0caab9fb4fe4f7d6c59e231496cd74a38459fe2d0af1b7bdd920bfa5df4beafd",
+        "sha256_in_prefix": "0caab9fb4fe4f7d6c59e231496cd74a38459fe2d0af1b7bdd920bfa5df4beafd",
+        "size_in_bytes": 1391
+      },
+      {
+        "_path": "site-packages/pyvo/_astropy_init.py",
+        "path_type": "hardlink",
+        "sha256": "f111499fe214aa5395a3acd681166f4cbc51ec63853f611cb8dae40bea71656c",
+        "sha256_in_prefix": "f111499fe214aa5395a3acd681166f4cbc51ec63853f611cb8dae40bea71656c",
+        "size_in_bytes": 355
+      },
+      {
+        "_path": "site-packages/pyvo/auth/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "e7d527d54fed550085d72e6405f613117485a5fbf2f15610766c1f0fb9d8e994",
+        "sha256_in_prefix": "e7d527d54fed550085d72e6405f613117485a5fbf2f15610766c1f0fb9d8e994",
+        "size_in_bytes": 236
+      },
+      {
+        "_path": "site-packages/pyvo/auth/authsession.py",
+        "path_type": "hardlink",
+        "sha256": "b07d32da75e0ff768c01311dc9dea0290cd5a06a029f61f73e231e434937c852",
+        "sha256_in_prefix": "b07d32da75e0ff768c01311dc9dea0290cd5a06a029f61f73e231e434937c852",
+        "size_in_bytes": 3696
+      },
+      {
+        "_path": "site-packages/pyvo/auth/authurls.py",
+        "path_type": "hardlink",
+        "sha256": "0d004ad8e8d2e978d4f0665c6e26c7d6049bec8ce1c3e87dcda00626bc6cba52",
+        "sha256_in_prefix": "0d004ad8e8d2e978d4f0665c6e26c7d6049bec8ce1c3e87dcda00626bc6cba52",
+        "size_in_bytes": 3926
+      },
+      {
+        "_path": "site-packages/pyvo/auth/credentialstore.py",
+        "path_type": "hardlink",
+        "sha256": "fd338a17c71ff0bc956019c3b77c5a3753d0b3e338cb2ddf64221b319a144e2d",
+        "sha256_in_prefix": "fd338a17c71ff0bc956019c3b77c5a3753d0b3e338cb2ddf64221b319a144e2d",
+        "size_in_bytes": 4878
+      },
+      {
+        "_path": "site-packages/pyvo/auth/securitymethods.py",
+        "path_type": "hardlink",
+        "sha256": "bfa8ef9aa19778a893c5a537316f047638121e478b279ef20ac569791bd58e9a",
+        "sha256_in_prefix": "bfa8ef9aa19778a893c5a537316f047638121e478b279ef20ac569791bd58e9a",
+        "size_in_bytes": 161
+      },
+      {
+        "_path": "site-packages/pyvo/auth/tests/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "ca4a951e07b61262034cc39df7a8760f218768cfe0a69ff02b3dcad4c9596627",
+        "sha256_in_prefix": "ca4a951e07b61262034cc39df7a8760f218768cfe0a69ff02b3dcad4c9596627",
+        "size_in_bytes": 64
+      },
+      {
+        "_path": "site-packages/pyvo/auth/tests/conftest.py",
+        "path_type": "hardlink",
+        "sha256": "cd35b609d3046685c20f5aef2a2045ce2c22939e053e71dbf0d78e3c31a60123",
+        "sha256_in_prefix": "cd35b609d3046685c20f5aef2a2045ce2c22939e053e71dbf0d78e3c31a60123",
+        "size_in_bytes": 694
+      },
+      {
+        "_path": "site-packages/pyvo/auth/tests/data/tap/capabilities.xml",
+        "path_type": "hardlink",
+        "sha256": "fd4c2bb992b9a8245e1d26c6355a26abc8eb5cff13915037b3151fd457539424",
+        "sha256_in_prefix": "fd4c2bb992b9a8245e1d26c6355a26abc8eb5cff13915037b3151fd457539424",
+        "size_in_bytes": 3653
+      },
+      {
+        "_path": "site-packages/pyvo/auth/tests/test_auth.py",
+        "path_type": "hardlink",
+        "sha256": "43682907fd126aeb13769f617cb2b15da2f2f39f89a92bb1bb8e4ea5c0189bd1",
+        "sha256_in_prefix": "43682907fd126aeb13769f617cb2b15da2f2f39f89a92bb1bb8e4ea5c0189bd1",
+        "size_in_bytes": 6768
+      },
+      {
+        "_path": "site-packages/pyvo/conftest.py",
+        "path_type": "hardlink",
+        "sha256": "5203ae5e6cce3312f6d2b5d7c47a8b17dd990af5f7e186abd5f43d56329fbbb8",
+        "sha256_in_prefix": "5203ae5e6cce3312f6d2b5d7c47a8b17dd990af5f7e186abd5f43d56329fbbb8",
+        "size_in_bytes": 1399
+      },
+      {
+        "_path": "site-packages/pyvo/dal/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "05e39bdf666159eb0cf7774c352b88125b452c561f847315e1114b8319a0ef53",
+        "sha256_in_prefix": "05e39bdf666159eb0cf7774c352b88125b452c561f847315e1114b8319a0ef53",
+        "size_in_bytes": 1417
+      },
+      {
+        "_path": "site-packages/pyvo/dal/adhoc.py",
+        "path_type": "hardlink",
+        "sha256": "6dea1a7f26357ae25ddeafcea082a5c92270e38f445a03468c9b3c7d94bce950",
+        "sha256_in_prefix": "6dea1a7f26357ae25ddeafcea082a5c92270e38f445a03468c9b3c7d94bce950",
+        "size_in_bytes": 33951
+      },
+      {
+        "_path": "site-packages/pyvo/dal/dbapi2.py",
+        "path_type": "hardlink",
+        "sha256": "0b5d169ab2885d26a0e6c3c0f5b82dbae333ee4b847fa5214a9f2f63a918b783",
+        "sha256_in_prefix": "0b5d169ab2885d26a0e6c3c0f5b82dbae333ee4b847fa5214a9f2f63a918b783",
+        "size_in_bytes": 7180
+      },
+      {
+        "_path": "site-packages/pyvo/dal/exceptions.py",
+        "path_type": "hardlink",
+        "sha256": "16f23bd6d876588c7616ee7246d4078d98ef477f954d541a6047bf441d423713",
+        "sha256_in_prefix": "16f23bd6d876588c7616ee7246d4078d98ef477f954d541a6047bf441d423713",
+        "size_in_bytes": 7557
+      },
+      {
+        "_path": "site-packages/pyvo/dal/mimetype.py",
+        "path_type": "hardlink",
+        "sha256": "ca0c8404fa8b119412a9880ea07bec187ff26976d3e93263fd1a81c7820f9e0f",
+        "sha256_in_prefix": "ca0c8404fa8b119412a9880ea07bec187ff26976d3e93263fd1a81c7820f9e0f",
+        "size_in_bytes": 3366
+      },
+      {
+        "_path": "site-packages/pyvo/dal/params.py",
+        "path_type": "hardlink",
+        "sha256": "6c1898031568f27d19c6da7a23bf30b57cb5bc9f3f8295bfa2579eac14d36a94",
+        "sha256_in_prefix": "6c1898031568f27d19c6da7a23bf30b57cb5bc9f3f8295bfa2579eac14d36a94",
+        "size_in_bytes": 14487
+      },
+      {
+        "_path": "site-packages/pyvo/dal/query.py",
+        "path_type": "hardlink",
+        "sha256": "f3bc32c59651ba37382701898ac12d7531bf11d876c686f498bfe3000be716b6",
+        "sha256_in_prefix": "f3bc32c59651ba37382701898ac12d7531bf11d876c686f498bfe3000be716b6",
+        "size_in_bytes": 33761
+      },
+      {
+        "_path": "site-packages/pyvo/dal/scs.py",
+        "path_type": "hardlink",
+        "sha256": "fcd9b29dc45470f015718bcc3dddd8210efb22334966a5f05c725f643b5e149e",
+        "sha256_in_prefix": "fcd9b29dc45470f015718bcc3dddd8210efb22334966a5f05c725f643b5e149e",
+        "size_in_bytes": 18959
+      },
+      {
+        "_path": "site-packages/pyvo/dal/sia.py",
+        "path_type": "hardlink",
+        "sha256": "400cc25e029314f8cb2ad3f46b4e69c6b7c3dee2f6c76a744ff6b720bb793403",
+        "sha256_in_prefix": "400cc25e029314f8cb2ad3f46b4e69c6b7c3dee2f6c76a744ff6b720bb793403",
+        "size_in_bytes": 33030
+      },
+      {
+        "_path": "site-packages/pyvo/dal/sia2.py",
+        "path_type": "hardlink",
+        "sha256": "2037d04b7b532af546e00ab661e95d6e9f5a0a33df397a49ca0394b64e237c7c",
+        "sha256_in_prefix": "2037d04b7b532af546e00ab661e95d6e9f5a0a33df397a49ca0394b64e237c7c",
+        "size_in_bytes": 38815
+      },
+      {
+        "_path": "site-packages/pyvo/dal/sla.py",
+        "path_type": "hardlink",
+        "sha256": "04f494094ad1c853156c90e988cb5dbcaa432b7ff8ef95fc0c3105efd1a290f2",
+        "sha256_in_prefix": "04f494094ad1c853156c90e988cb5dbcaa432b7ff8ef95fc0c3105efd1a290f2",
+        "size_in_bytes": 15814
+      },
+      {
+        "_path": "site-packages/pyvo/dal/ssa.py",
+        "path_type": "hardlink",
+        "sha256": "14fef33e6215ae2b62666aaeb654a02f8f9ab3231bfd7b5972b889f65f580a7c",
+        "sha256_in_prefix": "14fef33e6215ae2b62666aaeb654a02f8f9ab3231bfd7b5972b889f65f580a7c",
+        "size_in_bytes": 26435
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tap.py",
+        "path_type": "hardlink",
+        "sha256": "6ddb37ea831a4077d3d62474a4d448146d7c1429fd6d269d28fbe7335c9464d9",
+        "sha256_in_prefix": "6ddb37ea831a4077d3d62474a4d448146d7c1429fd6d269d28fbe7335c9464d9",
+        "size_in_bytes": 37796
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "ca4a951e07b61262034cc39df7a8760f218768cfe0a69ff02b3dcad4c9596627",
+        "sha256_in_prefix": "ca4a951e07b61262034cc39df7a8760f218768cfe0a69ff02b3dcad4c9596627",
+        "size_in_bytes": 64
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/conftest.py",
+        "path_type": "hardlink",
+        "sha256": "cd35b609d3046685c20f5aef2a2045ce2c22939e053e71dbf0d78e3c31a60123",
+        "sha256_in_prefix": "cd35b609d3046685c20f5aef2a2045ce2c22939e053e71dbf0d78e3c31a60123",
+        "size_in_bytes": 694
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/datalink/cutout1.xml",
+        "path_type": "hardlink",
+        "sha256": "be9b96e21238bf5c2a077846bd5b12b159c8698d6da65e657a46d9e53a1e4f45",
+        "sha256_in_prefix": "be9b96e21238bf5c2a077846bd5b12b159c8698d6da65e657a46d9e53a1e4f45",
+        "size_in_bytes": 11324
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/datalink/cutout2.xml",
+        "path_type": "hardlink",
+        "sha256": "34ecf390c2f2cdab15d82c84e3e3980fd1852357dbec9d2480b2ff2ad4d81e5c",
+        "sha256_in_prefix": "34ecf390c2f2cdab15d82c84e3e3980fd1852357dbec9d2480b2ff2ad4d81e5c",
+        "size_in_bytes": 6297
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/datalink/datalink-obscore.xml",
+        "path_type": "hardlink",
+        "sha256": "fcae85f922418065d83636ca375f9665a9e1ef6b5b4f365c42c6efca58c425bd",
+        "sha256_in_prefix": "fcae85f922418065d83636ca375f9665a9e1ef6b5b4f365c42c6efca58c425bd",
+        "size_in_bytes": 13183
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/datalink/datalink-ssa.xml",
+        "path_type": "hardlink",
+        "sha256": "c557401180a12fe3b05219b80e404cf224b2861943e9e8509d75328e3a7f6eb0",
+        "sha256_in_prefix": "c557401180a12fe3b05219b80e404cf224b2861943e9e8509d75328e3a7f6eb0",
+        "size_in_bytes": 21219
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/datalink/datalink.desise",
+        "path_type": "hardlink",
+        "sha256": "b3fecdc9fa01f54e059350957b2b8574e2c7dd022ad2865effd58143cb8a3bd5",
+        "sha256_in_prefix": "b3fecdc9fa01f54e059350957b2b8574e2c7dd022ad2865effd58143cb8a3bd5",
+        "size_in_bytes": 5449
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/datalink/datalink.xml",
+        "path_type": "hardlink",
+        "sha256": "41cedc3279a3cdf5f1490c4e67009cab776ce19261a9870f03a8bfe05d727736",
+        "sha256_in_prefix": "41cedc3279a3cdf5f1490c4e67009cab776ce19261a9870f03a8bfe05d727736",
+        "size_in_bytes": 5877
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/datalink/proc.xml",
+        "path_type": "hardlink",
+        "sha256": "98b1a627d6a1cee889868de8fb9cc06e9cd9928891269311d064bd24a0042991",
+        "sha256_in_prefix": "98b1a627d6a1cee889868de8fb9cc06e9cd9928891269311d064bd24a0042991",
+        "size_in_bytes": 8068
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/datalink/proc_inf.xml",
+        "path_type": "hardlink",
+        "sha256": "b6bf31159f89edc925672a7ccc6ff3094e360f3d86cba2ff265b44df27285f78",
+        "sha256_in_prefix": "b6bf31159f89edc925672a7ccc6ff3094e360f3d86cba2ff265b44df27285f78",
+        "size_in_bytes": 7278
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/datalink/proc_units.xml",
+        "path_type": "hardlink",
+        "sha256": "5ab58b70f39fe5b7982e4a859e52e8b42df278335c3a57bc8acb0322d59ae8f3",
+        "sha256_in_prefix": "5ab58b70f39fe5b7982e4a859e52e8b42df278335c3a57bc8acb0322d59ae8f3",
+        "size_in_bytes": 7280
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/mimetype/ivoa_logo.jpg",
+        "path_type": "hardlink",
+        "sha256": "3e8eed716abc14d9deb5dc380e7af29f2ff7c716525760046a3d30b2f66a0887",
+        "sha256_in_prefix": "3e8eed716abc14d9deb5dc380e7af29f2ff7c716525760046a3d30b2f66a0887",
+        "size_in_bytes": 12589
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/mimetype/test.fits",
+        "path_type": "hardlink",
+        "sha256": "2330a1cd3cdaa462d3bcd4a9bd977ea424523879c0db221c4a6d4d233670950f",
+        "sha256_in_prefix": "2330a1cd3cdaa462d3bcd4a9bd977ea424523879c0db221c4a6d4d233670950f",
+        "size_in_bytes": 31680
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/monkeypatch.xml",
+        "path_type": "hardlink",
+        "sha256": "76a453edcb85049285bf513afba70a179250e3b2a34b5a356f19cb009183d325",
+        "sha256_in_prefix": "76a453edcb85049285bf513afba70a179250e3b2a34b5a356f19cb009183d325",
+        "size_in_bytes": 8263
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/query/basic.xml",
+        "path_type": "hardlink",
+        "sha256": "74e6b278176faa37e3dd285d96a021ec4f5c4e238fc0dadf2eec731ff6a39bd0",
+        "sha256_in_prefix": "74e6b278176faa37e3dd285d96a021ec4f5c4e238fc0dadf2eec731ff6a39bd0",
+        "size_in_bytes": 901
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/query/dataset.xml",
+        "path_type": "hardlink",
+        "sha256": "404e2023792e2edf53b538c1ecc8449b0371f5c704aa7d42b19079d172b32912",
+        "sha256_in_prefix": "404e2023792e2edf53b538c1ecc8449b0371f5c704aa7d42b19079d172b32912",
+        "size_in_bytes": 1144
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/query/errorstatus.xml",
+        "path_type": "hardlink",
+        "sha256": "741c343a3585c19869fe7aab0aefa7f9c98767da4e19959acc3916b7adad41db",
+        "sha256_in_prefix": "741c343a3585c19869fe7aab0aefa7f9c98767da4e19959acc3916b7adad41db",
+        "size_in_bytes": 907
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/query/firstresource.xml",
+        "path_type": "hardlink",
+        "sha256": "74e6b278176faa37e3dd285d96a021ec4f5c4e238fc0dadf2eec731ff6a39bd0",
+        "sha256_in_prefix": "74e6b278176faa37e3dd285d96a021ec4f5c4e238fc0dadf2eec731ff6a39bd0",
+        "size_in_bytes": 901
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/query/missingcolumns.xml",
+        "path_type": "hardlink",
+        "sha256": "0e93791833073c8ceb2f6eb1ab4de089ffc48d9f5177e5f6f203acfdcb86de40",
+        "sha256_in_prefix": "0e93791833073c8ceb2f6eb1ab4de089ffc48d9f5177e5f6f203acfdcb86de40",
+        "size_in_bytes": 610
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/query/missingresource.xml",
+        "path_type": "hardlink",
+        "sha256": "996482d5c0b88353110c5600010a0ff42b5979785123a2a4db4c10dc07a7ca20",
+        "sha256_in_prefix": "996482d5c0b88353110c5600010a0ff42b5979785123a2a4db4c10dc07a7ca20",
+        "size_in_bytes": 355
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/query/missingtable.xml",
+        "path_type": "hardlink",
+        "sha256": "cb27a9472c842a4e6a4953ce7568e87b9161c5ad34e35f94fb9e2d00231bf316",
+        "sha256_in_prefix": "cb27a9472c842a4e6a4953ce7568e87b9161c5ad34e35f94fb9e2d00231bf316",
+        "size_in_bytes": 472
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/query/overflowstatus.xml",
+        "path_type": "hardlink",
+        "sha256": "c2b9dde3c040f78ded8584394129db928272f99fb167ab18d8cdbf61461bb0ae",
+        "sha256_in_prefix": "c2b9dde3c040f78ded8584394129db928272f99fb167ab18d8cdbf61461bb0ae",
+        "size_in_bytes": 958
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/query/rootinfo.xml",
+        "path_type": "hardlink",
+        "sha256": "48eb992ed2c4206887d9acd5dfe71f13df616bb49f675d4c8955b678a412c2b4",
+        "sha256_in_prefix": "48eb992ed2c4206887d9acd5dfe71f13df616bb49f675d4c8955b678a412c2b4",
+        "size_in_bytes": 900
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/query/tableinfo.xml",
+        "path_type": "hardlink",
+        "sha256": "30c235c8286ad402936da14f74364a79d8a51dd30c1826869579f0658daf306c",
+        "sha256_in_prefix": "30c235c8286ad402936da14f74364a79d8a51dd30c1826869579f0658daf306c",
+        "size_in_bytes": 902
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/querydata/image.fits",
+        "path_type": "hardlink",
+        "sha256": "9214afbfad8fa75c4e39f78ae24608b358d03addb11342f74b67af5347a46ebc",
+        "sha256_in_prefix": "9214afbfad8fa75c4e39f78ae24608b358d03addb11342f74b67af5347a46ebc",
+        "size_in_bytes": 532800
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/scs/result.xml",
+        "path_type": "hardlink",
+        "sha256": "25e6d50d7413eac852b97d3d0a2682ad4686d5513a0bdcb94f5a16d24f623553",
+        "sha256_in_prefix": "25e6d50d7413eac852b97d3d0a2682ad4686d5513a0bdcb94f5a16d24f623553",
+        "size_in_bytes": 117973
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/sia/dataset.xml",
+        "path_type": "hardlink",
+        "sha256": "88c29b5c7db90ceb9fcbf687c588c595368b28d1a7aae37a45b60ebaf378dc6e",
+        "sha256_in_prefix": "88c29b5c7db90ceb9fcbf687c588c595368b28d1a7aae37a45b60ebaf378dc6e",
+        "size_in_bytes": 3235
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/sia2/capabilities-basicauth.xml",
+        "path_type": "hardlink",
+        "sha256": "dd286b69750099fd7a915753b73f68547f78baaf6c4851e325adf6826127353e",
+        "sha256_in_prefix": "dd286b69750099fd7a915753b73f68547f78baaf6c4851e325adf6826127353e",
+        "size_in_bytes": 1034
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/sia2/capabilities-newformat.xml",
+        "path_type": "hardlink",
+        "sha256": "c23a8203f95b2d053f3e0e3fff593171763d9c85a6dadec457acac3bad4fe057",
+        "sha256_in_prefix": "c23a8203f95b2d053f3e0e3fff593171763d9c85a6dadec457acac3bad4fe057",
+        "size_in_bytes": 1199
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/sia2/capabilities-priv.xml",
+        "path_type": "hardlink",
+        "sha256": "f2b88ab19c5a5f932b858522394d4d6c9c854e955f43216810a752ffa5e1dbdc",
+        "sha256_in_prefix": "f2b88ab19c5a5f932b858522394d4d6c9c854e955f43216810a752ffa5e1dbdc",
+        "size_in_bytes": 1492
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/sia2/capabilities.xml",
+        "path_type": "hardlink",
+        "sha256": "7395d25b2469226121c7e202c037ffc38f5b1d1a2d11bca9086f0f7adc9054fb",
+        "sha256_in_prefix": "7395d25b2469226121c7e202c037ffc38f5b1d1a2d11bca9086f0f7adc9054fb",
+        "size_in_bytes": 1649
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/sia2/dataset.xml",
+        "path_type": "hardlink",
+        "sha256": "f9ad65cdc978c1cba230d9fec7cb32eebe795a0eb9cdfbc21b469dec62797158",
+        "sha256_in_prefix": "f9ad65cdc978c1cba230d9fec7cb32eebe795a0eb9cdfbc21b469dec62797158",
+        "size_in_bytes": 10174
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/sla/dataset.xml",
+        "path_type": "hardlink",
+        "sha256": "58223b3f8404762c5b4e1139db2bdf0e5e0a7803d118ba87a2de090b94b3657b",
+        "sha256_in_prefix": "58223b3f8404762c5b4e1139db2bdf0e5e0a7803d118ba87a2de090b94b3657b",
+        "size_in_bytes": 11363
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/ssa/result.xml",
+        "path_type": "hardlink",
+        "sha256": "588b5f0800ff9dcf8053fa8781a52cbabb4b5f53d7dbe63561f85608edc98630",
+        "sha256_in_prefix": "588b5f0800ff9dcf8053fa8781a52cbabb4b5f53d7dbe63561f85608edc98630",
+        "size_in_bytes": 40667
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/tap/capabilities.xml",
+        "path_type": "hardlink",
+        "sha256": "dd30a36609211d2f9af436863aa99a791ba373ae86bcf93c050f1884d65cbcda",
+        "sha256_in_prefix": "dd30a36609211d2f9af436863aa99a791ba373ae86bcf93c050f1884d65cbcda",
+        "size_in_bytes": 11989
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/tap/examples.htm",
+        "path_type": "hardlink",
+        "sha256": "94dd531662b9fa4b6f33391245cbd4a4a44d279da5d1f44db072a5c516987ca4",
+        "sha256_in_prefix": "94dd531662b9fa4b6f33391245cbd4a4a44d279da5d1f44db072a5c516987ca4",
+        "size_in_bytes": 4380
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/tap/lazy-table1.xml",
+        "path_type": "hardlink",
+        "sha256": "2982a2c8ac2c5b45bb75eb1e89416b1a5092fc5f94f9ba1a1960e43eb17a99f7",
+        "sha256_in_prefix": "2982a2c8ac2c5b45bb75eb1e89416b1a5092fc5f94f9ba1a1960e43eb17a99f7",
+        "size_in_bytes": 731
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/tap/lazy-table2.xml",
+        "path_type": "hardlink",
+        "sha256": "8e74d576d75c9cb1243c0707dc8b07e906a3a948f8072a5fcc1cb765bb679f08",
+        "sha256_in_prefix": "8e74d576d75c9cb1243c0707dc8b07e906a3a948f8072a5fcc1cb765bb679f08",
+        "size_in_bytes": 1427
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/tap/obscore-image.xml",
+        "path_type": "hardlink",
+        "sha256": "070cf64b0c5767ae7e5295c2de730246a4d0f5bd43964d18eb18d64f6594ad60",
+        "sha256_in_prefix": "070cf64b0c5767ae7e5295c2de730246a4d0f5bd43964d18eb18d64f6594ad60",
+        "size_in_bytes": 26255
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/data/tap/tables.xml",
+        "path_type": "hardlink",
+        "sha256": "98e6cf9dafecaf00faab8dcad46d715b33c2af0063ba60e913856876fb1a9ae0",
+        "sha256_in_prefix": "98e6cf9dafecaf00faab8dcad46d715b33c2af0063ba60e913856876fb1a9ae0",
+        "size_in_bytes": 729
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/make_testdata.py",
+        "path_type": "hardlink",
+        "sha256": "1c868eef6103101f482097dc749c390c0bba51914feb0ebb2b0bf27e25484260",
+        "sha256_in_prefix": "1c868eef6103101f482097dc749c390c0bba51914feb0ebb2b0bf27e25484260",
+        "size_in_bytes": 4482
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/test_adhoc.py",
+        "path_type": "hardlink",
+        "sha256": "91e1977b92d5d2d527ee2d5d35743cbb518893e0548d1720548fa37dd6b42049",
+        "sha256_in_prefix": "91e1977b92d5d2d527ee2d5d35743cbb518893e0548d1720548fa37dd6b42049",
+        "size_in_bytes": 8343
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/test_datalink.py",
+        "path_type": "hardlink",
+        "sha256": "c0bc752af1b957eeb6fcd3ef8e287931d1669298fc1a29acc142eafca217fc34",
+        "sha256_in_prefix": "c0bc752af1b957eeb6fcd3ef8e287931d1669298fc1a29acc142eafca217fc34",
+        "size_in_bytes": 6981
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/test_mimetype.py",
+        "path_type": "hardlink",
+        "sha256": "e5fcb8a510c75258fd674d38397571856cc68d26fb7a11bdb80a0d13ab0fccbe",
+        "sha256_in_prefix": "e5fcb8a510c75258fd674d38397571856cc68d26fb7a11bdb80a0d13ab0fccbe",
+        "size_in_bytes": 1640
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/test_monkeypatch.py",
+        "path_type": "hardlink",
+        "sha256": "5ab42543ad2c012f5417a7bac394209ed71e34d897ebecf8128e00323722682e",
+        "sha256_in_prefix": "5ab42543ad2c012f5417a7bac394209ed71e34d897ebecf8128e00323722682e",
+        "size_in_bytes": 387
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/test_params.py",
+        "path_type": "hardlink",
+        "sha256": "b2c274c0b881015ed082d8997038a162798418d03fd2b42a8124a1ed6362835f",
+        "sha256_in_prefix": "b2c274c0b881015ed082d8997038a162798418d03fd2b42a8124a1ed6362835f",
+        "size_in_bytes": 7391
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/test_query.py",
+        "path_type": "hardlink",
+        "sha256": "78ed1e0d03cd3877656465a12405e019584ea20257baaa39f3b5ba0fd5cf7f8d",
+        "sha256_in_prefix": "78ed1e0d03cd3877656465a12405e019584ea20257baaa39f3b5ba0fd5cf7f8d",
+        "size_in_bytes": 16307
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/test_scs.py",
+        "path_type": "hardlink",
+        "sha256": "a4bf2eabbd91e9e455ddace14cfd293aa5297a6a17d41883ed2882242cbfb373",
+        "sha256_in_prefix": "a4bf2eabbd91e9e455ddace14cfd293aa5297a6a17d41883ed2882242cbfb373",
+        "size_in_bytes": 1330
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/test_sia.py",
+        "path_type": "hardlink",
+        "sha256": "79fea21a361f9a95cd803decd68fc604e54e6cbd2195ee1638e44be25387e0f3",
+        "sha256_in_prefix": "79fea21a361f9a95cd803decd68fc604e54e6cbd2195ee1638e44be25387e0f3",
+        "size_in_bytes": 2014
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/test_sia2.py",
+        "path_type": "hardlink",
+        "sha256": "7cb2d8a2917b726036f07c8a63aede961988e0e8d18e0c7c3c3ce121d4e32e7a",
+        "sha256_in_prefix": "7cb2d8a2917b726036f07c8a63aede961988e0e8d18e0c7c3c3ce121d4e32e7a",
+        "size_in_bytes": 6479
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/test_sia2_remote.py",
+        "path_type": "hardlink",
+        "sha256": "1302124095a71a7cceaa6eec9da89ae30dd3f5a9e492ba525c87948b425a1059",
+        "sha256_in_prefix": "1302124095a71a7cceaa6eec9da89ae30dd3f5a9e492ba525c87948b425a1059",
+        "size_in_bytes": 8515
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/test_sla.py",
+        "path_type": "hardlink",
+        "sha256": "cc3712beff78d18a8d354bc4e78ce6dc96bc39effc98610d2f5051c743464619",
+        "sha256_in_prefix": "cc3712beff78d18a8d354bc4e78ce6dc96bc39effc98610d2f5051c743464619",
+        "size_in_bytes": 1303
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/test_ssa.py",
+        "path_type": "hardlink",
+        "sha256": "d34f8a1224c00b43dea5c1d1aa0322cdc0967f8c30e050a856c7d11f9eefe876",
+        "sha256_in_prefix": "d34f8a1224c00b43dea5c1d1aa0322cdc0967f8c30e050a856c7d11f9eefe876",
+        "size_in_bytes": 1216
+      },
+      {
+        "_path": "site-packages/pyvo/dal/tests/test_tap.py",
+        "path_type": "hardlink",
+        "sha256": "c283dff09441175e7f5d9f77e2f2144b9b38dff6fbed4fa2e5e5aa86950006d8",
+        "sha256_in_prefix": "c283dff09441175e7f5d9f77e2f2144b9b38dff6fbed4fa2e5e5aa86950006d8",
+        "size_in_bytes": 27123
+      },
+      {
+        "_path": "site-packages/pyvo/dal/vosi.py",
+        "path_type": "hardlink",
+        "sha256": "9637979cb6f8050a8ad9583416582110b24a3deaf774b28d4dc3165a28d06cf1",
+        "sha256_in_prefix": "9637979cb6f8050a8ad9583416582110b24a3deaf774b28d4dc3165a28d06cf1",
+        "size_in_bytes": 5857
+      },
+      {
+        "_path": "site-packages/pyvo/dam/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "6c3d8287ea344c01edd02f82f4af394e41f74b1aed391049004a71975fd83dfd",
+        "sha256_in_prefix": "6c3d8287ea344c01edd02f82f4af394e41f74b1aed391049004a71975fd83dfd",
+        "size_in_bytes": 118
+      },
+      {
+        "_path": "site-packages/pyvo/dam/obscore.py",
+        "path_type": "hardlink",
+        "sha256": "ac488a6179b14982bc8bbf89227b4bd09aa3355a5c6355f5361d5cd02156fbf5",
+        "sha256_in_prefix": "ac488a6179b14982bc8bbf89227b4bd09aa3355a5c6355f5361d5cd02156fbf5",
+        "size_in_bytes": 2944
+      },
+      {
+        "_path": "site-packages/pyvo/io/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "ca4a951e07b61262034cc39df7a8760f218768cfe0a69ff02b3dcad4c9596627",
+        "sha256_in_prefix": "ca4a951e07b61262034cc39df7a8760f218768cfe0a69ff02b3dcad4c9596627",
+        "size_in_bytes": 64
+      },
+      {
+        "_path": "site-packages/pyvo/io/uws/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "c91ec47ab27761ab9b9b3e9fbdcd832ead8c66e73f898e688e01a862cf1dc6e8",
+        "sha256_in_prefix": "c91ec47ab27761ab9b9b3e9fbdcd832ead8c66e73f898e688e01a862cf1dc6e8",
+        "size_in_bytes": 162
+      },
+      {
+        "_path": "site-packages/pyvo/io/uws/endpoint.py",
+        "path_type": "hardlink",
+        "sha256": "d263d9db9280f8a0e48cfe6dc271011cd9111b05cd7985f889df927caab907b6",
+        "sha256_in_prefix": "d263d9db9280f8a0e48cfe6dc271011cd9111b05cd7985f889df927caab907b6",
+        "size_in_bytes": 4224
+      },
+      {
+        "_path": "site-packages/pyvo/io/uws/tests/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0
+      },
+      {
+        "_path": "site-packages/pyvo/io/uws/tests/data/job-error.xml",
+        "path_type": "hardlink",
+        "sha256": "d8b6ba54ba1d552b9d34c53cde973d2636fc8c8073f656bf6f680923162de04a",
+        "sha256_in_prefix": "d8b6ba54ba1d552b9d34c53cde973d2636fc8c8073f656bf6f680923162de04a",
+        "size_in_bytes": 1337
+      },
+      {
+        "_path": "site-packages/pyvo/io/uws/tests/data/job-implicit-v1.0.xml",
+        "path_type": "hardlink",
+        "sha256": "2240ea619bcca470fe67224ac7812998aefc920ebefe61d59efdbd272572f3e6",
+        "sha256_in_prefix": "2240ea619bcca470fe67224ac7812998aefc920ebefe61d59efdbd272572f3e6",
+        "size_in_bytes": 856
+      },
+      {
+        "_path": "site-packages/pyvo/io/uws/tests/data/job.xml",
+        "path_type": "hardlink",
+        "sha256": "31d9db79bd573718b9af49800660667ed8e312b0d90dd32bbc032663bf469848",
+        "sha256_in_prefix": "31d9db79bd573718b9af49800660667ed8e312b0d90dd32bbc032663bf469848",
+        "size_in_bytes": 1326
+      },
+      {
+        "_path": "site-packages/pyvo/io/uws/tests/test_job.py",
+        "path_type": "hardlink",
+        "sha256": "f75b38c1e4666c9c275bc60db4c3548a1b02003355abf8999bbd7cd6779b9c9f",
+        "sha256_in_prefix": "f75b38c1e4666c9c275bc60db4c3548a1b02003355abf8999bbd7cd6779b9c9f",
+        "size_in_bytes": 878
+      },
+      {
+        "_path": "site-packages/pyvo/io/uws/tree.py",
+        "path_type": "hardlink",
+        "sha256": "4e80d6aea04bc21bff9fac930b0da5f07b4c9f5fa57347f714898ce2605fdeda",
+        "sha256_in_prefix": "4e80d6aea04bc21bff9fac930b0da5f07b4c9f5fa57347f714898ce2605fdeda",
+        "size_in_bytes": 11984
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "542a669fc6d3947e0f996e44cca11fd8e4afd954203ddac694c1bf6b4f523721",
+        "sha256_in_prefix": "542a669fc6d3947e0f996e44cca11fd8e4afd954203ddac694c1bf6b4f523721",
+        "size_in_bytes": 139
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/availability.py",
+        "path_type": "hardlink",
+        "sha256": "b9049668e2cc69bf14c71ad00348f9d7ec428af8d47144542a6754143ae3f939",
+        "sha256_in_prefix": "b9049668e2cc69bf14c71ad00348f9d7ec428af8d47144542a6754143ae3f939",
+        "size_in_bytes": 1807
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/endpoint.py",
+        "path_type": "hardlink",
+        "sha256": "e89664b9c3eb41fd75afc8924afdde9d345f87f05cb206e9167744021c2eed9d",
+        "sha256_in_prefix": "e89664b9c3eb41fd75afc8924afdde9d345f87f05cb206e9167744021c2eed9d",
+        "size_in_bytes": 11755
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/exceptions.py",
+        "path_type": "hardlink",
+        "sha256": "92c5f628444d93afc7403b24b3e6ea5bd499a6c338c9f62043baa13b7b386daf",
+        "sha256_in_prefix": "92c5f628444d93afc7403b24b3e6ea5bd499a6c338c9f62043baa13b7b386daf",
+        "size_in_bytes": 14330
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tapregext.py",
+        "path_type": "hardlink",
+        "sha256": "c898fc6218a13d44b0298aa0ad2e35b72061588d35c1b16b33e1f787285ad00c",
+        "sha256_in_prefix": "c898fc6218a13d44b0298aa0ad2e35b72061588d35c1b16b33e1f787285ad00c",
+        "size_in_bytes": 14159
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "ca4a951e07b61262034cc39df7a8760f218768cfe0a69ff02b3dcad4c9596627",
+        "sha256_in_prefix": "ca4a951e07b61262034cc39df7a8760f218768cfe0a69ff02b3dcad4c9596627",
+        "size_in_bytes": 64
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/availability.xml",
+        "path_type": "hardlink",
+        "sha256": "ecd0c36e70ea4e0376b3e73a47b47db76e88d5ee3cb99436c691709251a0c396",
+        "sha256_in_prefix": "ecd0c36e70ea4e0376b3e73a47b47db76e88d5ee3cb99436c691709251a0c396",
+        "size_in_bytes": 613
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/capabilities.xml",
+        "path_type": "hardlink",
+        "sha256": "99d7985db2bb3968ab5cf7958c75d4f8b1422fec620080edf31f62c5323fe2cf",
+        "sha256_in_prefix": "99d7985db2bb3968ab5cf7958c75d4f8b1422fec620080edf31f62c5323fe2cf",
+        "size_in_bytes": 4087
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/capabilities/multiple_capa_descriptions.xml",
+        "path_type": "hardlink",
+        "sha256": "569883b41ea11d74fe17f2330ac445d69b26f256311fe2c8b2970d267c34ba67",
+        "sha256_in_prefix": "569883b41ea11d74fe17f2330ac445d69b26f256311fe2c8b2970d267c34ba67",
+        "size_in_bytes": 1160
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables.xml",
+        "path_type": "hardlink",
+        "sha256": "000c5f3372f4b9db595d03b3554d0492c7546f0ece09e73383082bb176d750b8",
+        "sha256_in_prefix": "000c5f3372f4b9db595d03b3554d0492c7546f0ece09e73383082bb176d750b8",
+        "size_in_bytes": 1430
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/datatypes_tap.xml",
+        "path_type": "hardlink",
+        "sha256": "08c8c727193f6941af188acfa44e2e824e0c904b0232469a37e6fb3fff990aea",
+        "sha256_in_prefix": "08c8c727193f6941af188acfa44e2e824e0c904b0232469a37e6fb3fff990aea",
+        "size_in_bytes": 4578
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/datatypes_votable.xml",
+        "path_type": "hardlink",
+        "sha256": "c9ddad91b24f4f07de25b7a790a565872f5b0d89bf9867f18665f6090c13137f",
+        "sha256_in_prefix": "c9ddad91b24f4f07de25b7a790a565872f5b0d89bf9867f18665f6090c13137f",
+        "size_in_bytes": 3944
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_column_datatypes.xml",
+        "path_type": "hardlink",
+        "sha256": "a9947b76f6e02e7acf3b1d40f8fce1507944ccf35975f885637c116483ea6f7a",
+        "sha256_in_prefix": "a9947b76f6e02e7acf3b1d40f8fce1507944ccf35975f885637c116483ea6f7a",
+        "size_in_bytes": 780
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_column_descriptions.xml",
+        "path_type": "hardlink",
+        "sha256": "eb19be519769e61177b3e2cbc7d9e5b6f08c7a952243ae5bb694de53f5269e14",
+        "sha256_in_prefix": "eb19be519769e61177b3e2cbc7d9e5b6f08c7a952243ae5bb694de53f5269e14",
+        "size_in_bytes": 743
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_column_names.xml",
+        "path_type": "hardlink",
+        "sha256": "f41b4be190fa424add7fe84dd99d66ec6677997cd2c92a05cdab9b4d329b7c0a",
+        "sha256_in_prefix": "f41b4be190fa424add7fe84dd99d66ec6677997cd2c92a05cdab9b4d329b7c0a",
+        "size_in_bytes": 690
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_column_ucds.xml",
+        "path_type": "hardlink",
+        "sha256": "cdc90ac43e522dc89e5554cd85da5ebeafdefb427fdefc4c222c01d63908798d",
+        "sha256_in_prefix": "cdc90ac43e522dc89e5554cd85da5ebeafdefb427fdefc4c222c01d63908798d",
+        "size_in_bytes": 711
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_column_units.xml",
+        "path_type": "hardlink",
+        "sha256": "cfa6b4f647406cdd374a8da4f90ab0d224c48a1a14b0a7e24590b89af5448018",
+        "sha256_in_prefix": "cfa6b4f647406cdd374a8da4f90ab0d224c48a1a14b0a7e24590b89af5448018",
+        "size_in_bytes": 716
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_column_utypes.xml",
+        "path_type": "hardlink",
+        "sha256": "91cf0f38fa3f181b7d43f1520ccf936ef1f623325c9f4ef683595f0de971216c",
+        "sha256_in_prefix": "91cf0f38fa3f181b7d43f1520ccf936ef1f623325c9f4ef683595f0de971216c",
+        "size_in_bytes": 721
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_foreignkey_descriptions.xml",
+        "path_type": "hardlink",
+        "sha256": "609ad92529f851fc5d62ae6812f5b550aaebb570cc52e9233516e3f708232e75",
+        "sha256_in_prefix": "609ad92529f851fc5d62ae6812f5b550aaebb570cc52e9233516e3f708232e75",
+        "size_in_bytes": 1033
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_foreignkey_utypes.xml",
+        "path_type": "hardlink",
+        "sha256": "2df0891eacbfdec3c4f56cb09a2c4bb3da9539f05ef324725934af05b1d399c2",
+        "sha256_in_prefix": "2df0891eacbfdec3c4f56cb09a2c4bb3da9539f05ef324725934af05b1d399c2",
+        "size_in_bytes": 1011
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_fromcolumns.xml",
+        "path_type": "hardlink",
+        "sha256": "8e4cf0b67eef2fb8cbfdac63132731d0680f17b9c6c114a98629f8937f15389b",
+        "sha256_in_prefix": "8e4cf0b67eef2fb8cbfdac63132731d0680f17b9c6c114a98629f8937f15389b",
+        "size_in_bytes": 997
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_schema_descriptions.xml",
+        "path_type": "hardlink",
+        "sha256": "6352efc675b359c37b1df8e3dc4a111072fbdfc304f94474ba293650b9d0c873",
+        "sha256_in_prefix": "6352efc675b359c37b1df8e3dc4a111072fbdfc304f94474ba293650b9d0c873",
+        "size_in_bytes": 641
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_schema_names.xml",
+        "path_type": "hardlink",
+        "sha256": "4c23a15c4394501e2252fb88656725db529b3244514a0f010f666518eec53ae5",
+        "sha256_in_prefix": "4c23a15c4394501e2252fb88656725db529b3244514a0f010f666518eec53ae5",
+        "size_in_bytes": 580
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_schema_titles.xml",
+        "path_type": "hardlink",
+        "sha256": "9ecdbcaf3ea6ade53df37d1c9393c25031285c608b63b768c52bd7e09d3ac9af",
+        "sha256_in_prefix": "9ecdbcaf3ea6ade53df37d1c9393c25031285c608b63b768c52bd7e09d3ac9af",
+        "size_in_bytes": 611
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_schema_utypes.xml",
+        "path_type": "hardlink",
+        "sha256": "57f0f5752605f433b03302754f53dbdd251a102d00c60a53f823140d9aacc51c",
+        "sha256_in_prefix": "57f0f5752605f433b03302754f53dbdd251a102d00c60a53f823140d9aacc51c",
+        "size_in_bytes": 611
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_table_descriptions.xml",
+        "path_type": "hardlink",
+        "sha256": "5b0210d5425c49da4815a5d76cb483217c2727b44bfff5da936f6d969df79c10",
+        "sha256_in_prefix": "5b0210d5425c49da4815a5d76cb483217c2727b44bfff5da936f6d969df79c10",
+        "size_in_bytes": 690
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_table_names.xml",
+        "path_type": "hardlink",
+        "sha256": "06d0ad945e1df346f7c3b6c17bbacc0ed5cbc7b3ec8f6a7ee6a44e999be1c8dd",
+        "sha256_in_prefix": "06d0ad945e1df346f7c3b6c17bbacc0ed5cbc7b3ec8f6a7ee6a44e999be1c8dd",
+        "size_in_bytes": 631
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_table_titles.xml",
+        "path_type": "hardlink",
+        "sha256": "a9433fd5a710bad28488f01d4f059bd2d00bb0a4e88c52eca2636ff5ad4e8825",
+        "sha256_in_prefix": "a9433fd5a710bad28488f01d4f059bd2d00bb0a4e88c52eca2636ff5ad4e8825",
+        "size_in_bytes": 660
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_table_utypes.xml",
+        "path_type": "hardlink",
+        "sha256": "7ccf15c6f759dcba0350cbe7f87c9a274cd73fde6a38c5ac43087a5a0aebaed7",
+        "sha256_in_prefix": "7ccf15c6f759dcba0350cbe7f87c9a274cd73fde6a38c5ac43087a5a0aebaed7",
+        "size_in_bytes": 660
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_targetcolumns.xml",
+        "path_type": "hardlink",
+        "sha256": "44e4ecbb5d271cfc1e1a1181d0d1b919f41bc4dd78629eb50e668ce90a0150ea",
+        "sha256_in_prefix": "44e4ecbb5d271cfc1e1a1181d0d1b919f41bc4dd78629eb50e668ce90a0150ea",
+        "size_in_bytes": 1003
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/multiple_targettables.xml",
+        "path_type": "hardlink",
+        "sha256": "5947e9ac06c73e0c55655a03e9f673c28c5a12e9d562298272b22d2341a3cb6f",
+        "sha256_in_prefix": "5947e9ac06c73e0c55655a03e9f673c28c5a12e9d562298272b22d2341a3cb6f",
+        "size_in_bytes": 999
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/no_fromcolumn.xml",
+        "path_type": "hardlink",
+        "sha256": "50579acbd1b67500274c59a9329319ba3870a7692e08162dbeb340706dd59032",
+        "sha256_in_prefix": "50579acbd1b67500274c59a9329319ba3870a7692e08162dbeb340706dd59032",
+        "size_in_bytes": 844
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/no_schema_name.xml",
+        "path_type": "hardlink",
+        "sha256": "7991cf82cde9e04d7c57e21447fae28229bb645f44352a63f7c6396edfb254d4",
+        "sha256_in_prefix": "7991cf82cde9e04d7c57e21447fae28229bb645f44352a63f7c6396edfb254d4",
+        "size_in_bytes": 538
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/no_schemas.xml",
+        "path_type": "hardlink",
+        "sha256": "ab31b2daa2b4bf8d7360fba57de61e113edf6ee274875dc1ddfd88d5cf924933",
+        "sha256_in_prefix": "ab31b2daa2b4bf8d7360fba57de61e113edf6ee274875dc1ddfd88d5cf924933",
+        "size_in_bytes": 515
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/no_table_description.xml",
+        "path_type": "hardlink",
+        "sha256": "33217d6245d75434f7f7f395775d7a3914d3db40dd4276ba3da5d4ce3e07c2ff",
+        "sha256_in_prefix": "33217d6245d75434f7f7f395775d7a3914d3db40dd4276ba3da5d4ce3e07c2ff",
+        "size_in_bytes": 616
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/no_table_name.xml",
+        "path_type": "hardlink",
+        "sha256": "eb6e8c7a61a6f3b17796e2f367c754becca470132479af1d96b3c3d586033178",
+        "sha256_in_prefix": "eb6e8c7a61a6f3b17796e2f367c754becca470132479af1d96b3c3d586033178",
+        "size_in_bytes": 580
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/no_targetcolumn.xml",
+        "path_type": "hardlink",
+        "sha256": "3ac65158d55405454beaf07af18d3ca228a6f39ae46eaf749535aee898fae6ee",
+        "sha256_in_prefix": "3ac65158d55405454beaf07af18d3ca228a6f39ae46eaf749535aee898fae6ee",
+        "size_in_bytes": 899
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/single_table_description.xml",
+        "path_type": "hardlink",
+        "sha256": "089ea7857270bbcdcdadc1572f1df605f2b9c9662138c78c235670efdd350dc7",
+        "sha256_in_prefix": "089ea7857270bbcdcdadc1572f1df605f2b9c9662138c78c235670efdd350dc7",
+        "size_in_bytes": 688
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/sizenegative.xml",
+        "path_type": "hardlink",
+        "sha256": "c001edc1e233cc12e41223058a9231ecad97504e3c74991664307f38e478f334",
+        "sha256_in_prefix": "c001edc1e233cc12e41223058a9231ecad97504e3c74991664307f38e478f334",
+        "size_in_bytes": 754
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/wrong_arraysize.xml",
+        "path_type": "hardlink",
+        "sha256": "66a2d808b30430e13756fdc61f3d5c66af3974022cb6414648eef7757e1f9365",
+        "sha256_in_prefix": "66a2d808b30430e13756fdc61f3d5c66af3974022cb6414648eef7757e1f9365",
+        "size_in_bytes": 775
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/wrong_datatypes_tap.xml",
+        "path_type": "hardlink",
+        "sha256": "bcf644cc390020e9fe2b4f51cd3c6dcb5fae5692e78ec25791858e762fbb11ba",
+        "sha256_in_prefix": "bcf644cc390020e9fe2b4f51cd3c6dcb5fae5692e78ec25791858e762fbb11ba",
+        "size_in_bytes": 744
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/wrong_datatypes_votable.xml",
+        "path_type": "hardlink",
+        "sha256": "62b1f3e9041402d5eda108bbef0df8c1c5f708bbdcd063113baa386d8b28f13d",
+        "sha256_in_prefix": "62b1f3e9041402d5eda108bbef0df8c1c5f708bbdcd063113baa386d8b28f13d",
+        "size_in_bytes": 752
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/data/tables/wrong_flag.xml",
+        "path_type": "hardlink",
+        "sha256": "b2919318dd3453477ccfe7dca2d8830916d684377de4b56128d6a85f91339cf6",
+        "sha256_in_prefix": "b2919318dd3453477ccfe7dca2d8830916d684377de4b56128d6a85f91339cf6",
+        "size_in_bytes": 788
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/test_availability.py",
+        "path_type": "hardlink",
+        "sha256": "f2de6caca7861bed6fee1d3928baadc3b3a7477eb6c5a90287cb73a9667ef385",
+        "sha256_in_prefix": "f2de6caca7861bed6fee1d3928baadc3b3a7477eb6c5a90287cb73a9667ef385",
+        "size_in_bytes": 675
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/test_capabilities.py",
+        "path_type": "hardlink",
+        "sha256": "36314f3d93e8eadc6b861d6248cda5d1cee0b82061c7a2815c9a0310d9524c35",
+        "sha256_in_prefix": "36314f3d93e8eadc6b861d6248cda5d1cee0b82061c7a2815c9a0310d9524c35",
+        "size_in_bytes": 8210
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/tests/test_tables.py",
+        "path_type": "hardlink",
+        "sha256": "44b49a47dea6c4de689e2f3fc2df77d7eee7e88e84106f0bd36aaf09a8047545",
+        "sha256_in_prefix": "44b49a47dea6c4de689e2f3fc2df77d7eee7e88e84106f0bd36aaf09a8047545",
+        "size_in_bytes": 14604
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/vodataservice.py",
+        "path_type": "hardlink",
+        "sha256": "89ceae8ad37c714f561b3fe1b37ca9ecfc0eb22585b7230ddcaaeac6fbc99407",
+        "sha256_in_prefix": "89ceae8ad37c714f561b3fe1b37ca9ecfc0eb22585b7230ddcaaeac6fbc99407",
+        "size_in_bytes": 30793
+      },
+      {
+        "_path": "site-packages/pyvo/io/vosi/voresource.py",
+        "path_type": "hardlink",
+        "sha256": "db904f64d7f7c62eba386bb505d0e07b7a46027aaedc8c228e68b0f0ab537e5e",
+        "sha256_in_prefix": "db904f64d7f7c62eba386bb505d0e07b7a46027aaedc8c228e68b0f0ab537e5e",
+        "size_in_bytes": 15360
+      },
+      {
+        "_path": "site-packages/pyvo/registry/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "18d2b31e833ba514cc9357efdf71dcd2ccb224586c0fe9ed3519151f7b7e6eb4",
+        "sha256_in_prefix": "18d2b31e833ba514cc9357efdf71dcd2ccb224586c0fe9ed3519151f7b7e6eb4",
+        "size_in_bytes": 531
+      },
+      {
+        "_path": "site-packages/pyvo/registry/regtap.py",
+        "path_type": "hardlink",
+        "sha256": "7c1fb48fa113816d88251cde3c39a1146dea84d14af282c89bb1b6fc09c7ad31",
+        "sha256_in_prefix": "7c1fb48fa113816d88251cde3c39a1146dea84d14af282c89bb1b6fc09c7ad31",
+        "size_in_bytes": 33321
+      },
+      {
+        "_path": "site-packages/pyvo/registry/rtcons.py",
+        "path_type": "hardlink",
+        "sha256": "5458aaf62e9bdd0de975997858fb8329cb7a65569bb9791e60784eb0a541fbf7",
+        "sha256_in_prefix": "5458aaf62e9bdd0de975997858fb8329cb7a65569bb9791e60784eb0a541fbf7",
+        "size_in_bytes": 28735
+      },
+      {
+        "_path": "site-packages/pyvo/registry/tests/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "ca4a951e07b61262034cc39df7a8760f218768cfe0a69ff02b3dcad4c9596627",
+        "sha256_in_prefix": "ca4a951e07b61262034cc39df7a8760f218768cfe0a69ff02b3dcad4c9596627",
+        "size_in_bytes": 64
+      },
+      {
+        "_path": "site-packages/pyvo/registry/tests/commonfixtures.py",
+        "path_type": "hardlink",
+        "sha256": "092ed5ef673de3a13e206c1fbab91f717f8abf774f60ebc30dfcc1891d4e09e2",
+        "sha256_in_prefix": "092ed5ef673de3a13e206c1fbab91f717f8abf774f60ebc30dfcc1891d4e09e2",
+        "size_in_bytes": 761
+      },
+      {
+        "_path": "site-packages/pyvo/registry/tests/conftest.py",
+        "path_type": "hardlink",
+        "sha256": "cd35b609d3046685c20f5aef2a2045ce2c22939e053e71dbf0d78e3c31a60123",
+        "sha256_in_prefix": "cd35b609d3046685c20f5aef2a2045ce2c22939e053e71dbf0d78e3c31a60123",
+        "size_in_bytes": 694
+      },
+      {
+        "_path": "site-packages/pyvo/registry/tests/data/capabilities.xml",
+        "path_type": "hardlink",
+        "sha256": "9236d13a63d3d0dcfa68367d3d945b6b1e880c05596674fdd388e6223854ebe1",
+        "sha256_in_prefix": "9236d13a63d3d0dcfa68367d3d945b6b1e880c05596674fdd388e6223854ebe1",
+        "size_in_bytes": 3886
+      },
+      {
+        "_path": "site-packages/pyvo/registry/tests/data/messenger.desise",
+        "path_type": "hardlink",
+        "sha256": "3cfe780220bd3bd25d33c95c98156bc1f4af434f388f39d93b79c397445db6d6",
+        "sha256_in_prefix": "3cfe780220bd3bd25d33c95c98156bc1f4af434f388f39d93b79c397445db6d6",
+        "size_in_bytes": 2528
+      },
+      {
+        "_path": "site-packages/pyvo/registry/tests/data/multi-interface.xml",
+        "path_type": "hardlink",
+        "sha256": "4164e803fb73308a2b9263fafbef45f6c7b3386af9838c8c523d9e9d7514e785",
+        "sha256_in_prefix": "4164e803fb73308a2b9263fafbef45f6c7b3386af9838c8c523d9e9d7514e785",
+        "size_in_bytes": 10679
+      },
+      {
+        "_path": "site-packages/pyvo/registry/tests/data/regtap.xml",
+        "path_type": "hardlink",
+        "sha256": "f2cf7744a0aaa8cee5fc084b0e2c14a324603774e3b7dccacb62d399dd2e879b",
+        "sha256_in_prefix": "f2cf7744a0aaa8cee5fc084b0e2c14a324603774e3b7dccacb62d399dd2e879b",
+        "size_in_bytes": 156934
+      },
+      {
+        "_path": "site-packages/pyvo/registry/tests/test_regtap.py",
+        "path_type": "hardlink",
+        "sha256": "7a2c0732f9c1439c5fbc370e79819b239dd8a1f05905909eb6caf89d2bd2bafa",
+        "sha256_in_prefix": "7a2c0732f9c1439c5fbc370e79819b239dd8a1f05905909eb6caf89d2bd2bafa",
+        "size_in_bytes": 26653
+      },
+      {
+        "_path": "site-packages/pyvo/registry/tests/test_rtcons.py",
+        "path_type": "hardlink",
+        "sha256": "8e705b861a0148005116f10534df9fe3c2965c7d8285442c2692b6c46be3a7e0",
+        "sha256_in_prefix": "8e705b861a0148005116f10534df9fe3c2965c7d8285442c2692b6c46be3a7e0",
+        "size_in_bytes": 15970
+      },
+      {
+        "_path": "site-packages/pyvo/samp.py",
+        "path_type": "hardlink",
+        "sha256": "94591e023155ed3c4b8e12425001adb943f0a6a8d6a53b6db367b6d7641f30f9",
+        "sha256_in_prefix": "94591e023155ed3c4b8e12425001adb943f0a6a8d6a53b6db367b6d7641f30f9",
+        "size_in_bytes": 3434
+      },
+      {
+        "_path": "site-packages/pyvo/utils/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "a0ab75632f6ac5bd50d2b066f2a06d9b4662d5ec2ead70e4b16b203442be7e14",
+        "sha256_in_prefix": "a0ab75632f6ac5bd50d2b066f2a06d9b4662d5ec2ead70e4b16b203442be7e14",
+        "size_in_bytes": 82
+      },
+      {
+        "_path": "site-packages/pyvo/utils/compat.py",
+        "path_type": "hardlink",
+        "sha256": "e0db9adbfd90bb2246ca5fd857ff38cf110ddf3ecf31524f4167b563eab0ec59",
+        "sha256_in_prefix": "e0db9adbfd90bb2246ca5fd857ff38cf110ddf3ecf31524f4167b563eab0ec59",
+        "size_in_bytes": 127
+      },
+      {
+        "_path": "site-packages/pyvo/utils/decorators.py",
+        "path_type": "hardlink",
+        "sha256": "e7e91cb4217d65621c558ed91ee36b39098bb845c1aa4f65a7fe19c75cf0b063",
+        "sha256_in_prefix": "e7e91cb4217d65621c558ed91ee36b39098bb845c1aa4f65a7fe19c75cf0b063",
+        "size_in_bytes": 570
+      },
+      {
+        "_path": "site-packages/pyvo/utils/formatting.py",
+        "path_type": "hardlink",
+        "sha256": "f52dcc34c7c4e92a49c5c78592d81d3b7d7556fa5c514c7f4fe3977c9699406b",
+        "sha256_in_prefix": "f52dcc34c7c4e92a49c5c78592d81d3b7d7556fa5c514c7f4fe3977c9699406b",
+        "size_in_bytes": 1886
+      },
+      {
+        "_path": "site-packages/pyvo/utils/http.py",
+        "path_type": "hardlink",
+        "sha256": "334257e44abdbf5fdcdae2e9443aaaaca51e5e8783b47875b9335a98f42fbb9d",
+        "sha256_in_prefix": "334257e44abdbf5fdcdae2e9443aaaaca51e5e8783b47875b9335a98f42fbb9d",
+        "size_in_bytes": 663
+      },
+      {
+        "_path": "site-packages/pyvo/utils/protofeature.py",
+        "path_type": "hardlink",
+        "sha256": "7b8772ba9f1c3808f3f66e40d0dfc98fae65bf74fa653b1eb84887f7fdec291c",
+        "sha256_in_prefix": "7b8772ba9f1c3808f3f66e40d0dfc98fae65bf74fa653b1eb84887f7fdec291c",
+        "size_in_bytes": 2076
+      },
+      {
+        "_path": "site-packages/pyvo/utils/prototype.py",
+        "path_type": "hardlink",
+        "sha256": "8e0448d763e39eabbf012d69c79da24d4664a6f083ce5b4996d9f0d4b4bded7a",
+        "sha256_in_prefix": "8e0448d763e39eabbf012d69c79da24d4664a6f083ce5b4996d9f0d4b4bded7a",
+        "size_in_bytes": 4203
+      },
+      {
+        "_path": "site-packages/pyvo/utils/tests/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "ca4a951e07b61262034cc39df7a8760f218768cfe0a69ff02b3dcad4c9596627",
+        "sha256_in_prefix": "ca4a951e07b61262034cc39df7a8760f218768cfe0a69ff02b3dcad4c9596627",
+        "size_in_bytes": 64
+      },
+      {
+        "_path": "site-packages/pyvo/utils/tests/test_http.py",
+        "path_type": "hardlink",
+        "sha256": "990f6774972098086a5fd39973a8be70838bb993e5951ef5e53dc87fa6dcc530",
+        "sha256_in_prefix": "990f6774972098086a5fd39973a8be70838bb993e5951ef5e53dc87fa6dcc530",
+        "size_in_bytes": 362
+      },
+      {
+        "_path": "site-packages/pyvo/utils/tests/test_prototype.py",
+        "path_type": "hardlink",
+        "sha256": "26455fe234a89b246c04d7207f4cea90e05d0ba348b825a79af650f1e18cee77",
+        "sha256_in_prefix": "26455fe234a89b246c04d7207f4cea90e05d0ba348b825a79af650f1e18cee77",
+        "size_in_bytes": 4007
+      },
+      {
+        "_path": "site-packages/pyvo/utils/tests/test_url.py",
+        "path_type": "hardlink",
+        "sha256": "e9e3d00ab0c800a743d231f3bc1c2c783c3b7f8f19a456b16b5479fc360396f9",
+        "sha256_in_prefix": "e9e3d00ab0c800a743d231f3bc1c2c783c3b7f8f19a456b16b5479fc360396f9",
+        "size_in_bytes": 309
+      },
+      {
+        "_path": "site-packages/pyvo/utils/tests/test_vocabularies_remote.py",
+        "path_type": "hardlink",
+        "sha256": "2cbbb9db74f893aae829ea07e21362cc4849eb3e14474d8e9c47632b27677411",
+        "sha256_in_prefix": "2cbbb9db74f893aae829ea07e21362cc4849eb3e14474d8e9c47632b27677411",
+        "size_in_bytes": 3299
+      },
+      {
+        "_path": "site-packages/pyvo/utils/url.py",
+        "path_type": "hardlink",
+        "sha256": "bf8c11a8d0669392621892bbe1a219c6f828897f3732d0d73679eb0eee251278",
+        "sha256_in_prefix": "bf8c11a8d0669392621892bbe1a219c6f828897f3732d0d73679eb0eee251278",
+        "size_in_bytes": 641
+      },
+      {
+        "_path": "site-packages/pyvo/utils/vocabularies.py",
+        "path_type": "hardlink",
+        "sha256": "fd300c070b7d96cbad73846fcfa2d446ac74df755fd39e3bfd6f333f201e8c01",
+        "sha256_in_prefix": "fd300c070b7d96cbad73846fcfa2d446ac74df755fd39e3bfd6f333f201e8c01",
+        "size_in_bytes": 2261
+      },
+      {
+        "_path": "site-packages/pyvo/utils/xml/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0
+      },
+      {
+        "_path": "site-packages/pyvo/utils/xml/elements.py",
+        "path_type": "hardlink",
+        "sha256": "7bac359354529ed0e4282dda783e425939de9fab61e8705c472ca100ed1ba672",
+        "sha256_in_prefix": "7bac359354529ed0e4282dda783e425939de9fab61e8705c472ca100ed1ba672",
+        "size_in_bytes": 15183
+      },
+      {
+        "_path": "site-packages/pyvo/utils/xml/exceptions.py",
+        "path_type": "hardlink",
+        "sha256": "0cc339ef27019013f56d6f5324db1c24291686ddca5e68f282a52512b7a35344",
+        "sha256_in_prefix": "0cc339ef27019013f56d6f5324db1c24291686ddca5e68f282a52512b7a35344",
+        "size_in_bytes": 1094
+      },
+      {
+        "_path": "site-packages/pyvo/version.py",
+        "path_type": "hardlink",
+        "sha256": "8889482284846ff7c7b92ee95cfb3fcd2387f18fea8425c604d83097bd74a0f6",
+        "sha256_in_prefix": "8889482284846ff7c7b92ee95cfb3fcd2387f18fea8425c604d83097bd74a0f6",
+        "size_in_bytes": 337
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/__pycache__/_astropy_init.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/auth/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/auth/__pycache__/authsession.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/auth/__pycache__/authurls.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/auth/__pycache__/credentialstore.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/auth/__pycache__/securitymethods.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/auth/tests/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/auth/tests/__pycache__/conftest.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/auth/tests/__pycache__/test_auth.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/__pycache__/conftest.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/adhoc.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/dbapi2.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/exceptions.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/mimetype.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/params.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/query.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/scs.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/sia.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/sia2.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/sla.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/ssa.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/tap.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/conftest.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/make_testdata.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_adhoc.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_datalink.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_mimetype.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_monkeypatch.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_params.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_query.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_scs.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_sia.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_sia2.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_sia2_remote.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_sla.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_ssa.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/tests/__pycache__/test_tap.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dal/__pycache__/vosi.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dam/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/dam/__pycache__/obscore.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/uws/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/uws/__pycache__/endpoint.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/uws/tests/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/uws/tests/__pycache__/test_job.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/uws/__pycache__/tree.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/availability.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/endpoint.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/exceptions.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/tapregext.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/vosi/tests/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/vosi/tests/__pycache__/test_availability.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/vosi/tests/__pycache__/test_capabilities.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/vosi/tests/__pycache__/test_tables.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/vodataservice.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/io/vosi/__pycache__/voresource.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/registry/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/registry/__pycache__/regtap.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/registry/__pycache__/rtcons.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/registry/tests/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/registry/tests/__pycache__/commonfixtures.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/registry/tests/__pycache__/conftest.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/registry/tests/__pycache__/test_regtap.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/registry/tests/__pycache__/test_rtcons.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/__pycache__/samp.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/__pycache__/compat.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/__pycache__/decorators.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/__pycache__/formatting.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/__pycache__/http.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/__pycache__/protofeature.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/__pycache__/prototype.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/tests/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/tests/__pycache__/test_http.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/tests/__pycache__/test_prototype.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/tests/__pycache__/test_url.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/tests/__pycache__/test_vocabularies_remote.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/__pycache__/url.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/__pycache__/vocabularies.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/xml/__pycache__/__init__.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/xml/__pycache__/elements.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/utils/xml/__pycache__/exceptions.cpython-312.pyc",
+        "path_type": "pyc_file"
+      },
+      {
+        "_path": "lib/python3.12/site-packages/pyvo/__pycache__/version.cpython-312.pyc",
+        "path_type": "pyc_file"
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "5610a9a928ba9a2016d31ddfb6b438d60b6c7d751407847970828b2bacb9ae23",
+  "size": 775978,
+  "subdir": "noarch",
+  "timestamp": 1692245976931,
+  "url": "https://conda.anaconda.org/conda-forge/noarch/pyvo-1.4.2-pyhd8ed1ab_0.conda",
+  "version": "1.4.2"
+}

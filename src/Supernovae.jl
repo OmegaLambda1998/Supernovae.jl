@@ -6,6 +6,7 @@ using BetterInputFiles
 using ArgParse
 using StatProfilerHTML
 using OrderedCollections
+using PyCall
 
 # Internal Packages
 include("RunModule.jl")

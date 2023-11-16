@@ -4,9 +4,6 @@ using Supernovae.RunModule.FilterModule
 using Supernovae.RunModule.PhotometryModule
 using Test
 using Unitful, UnitfulAstro
-using Conda
-
-Conda.add("astroquery")
 
 @testset "Supernovae.jl" begin
     # Write your tests here.

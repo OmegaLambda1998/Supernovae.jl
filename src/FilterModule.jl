@@ -18,7 +18,6 @@ const h = 6.626e-34 * u"J / Hz" # Planck Constant
 const k = 1.381e-23 * u"J / K" # Boltzmann Constant
 const c = 299792458 * u"m / s" # Speed of light in a vacuum
 
-
 """
     svo(facility::String, instrument::String, passband::String)
 

@@ -70,7 +70,7 @@ function Supernova(data::Dict{String,Any}, config::Dict{String,Any})
     # Load in observations
     observations = get(data, "OBSERVATIONS", Vector{Dict{String,Any}}())
     @info "Found $(length(observations)) observations"
-    lightcurve = Lightcurve(observations, zeropoint, redshift, config; max_flux_err=max_flux_err, peak_time=peak_time, peak_time_unit=peak_time_unit)
+    lightcurve = Lightcurve(observations, zeropoint, redshift, config; max_flux_err=max_flux_err, peak_time=peak_time)
     @info "Finished loading Supernova"
 
     return Supernova(name, zeropoint, redshift, lightcurve)
