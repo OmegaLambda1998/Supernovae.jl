@@ -50,9 +50,9 @@ end
 Photometric filter transmission curve.
 
 # Fields
-- `facility::String`: Name of the filter's facility
-- `instrument::String`: Name of the filter's instrument
-- `passband::String`: Name of the filter's passband
+- `facility::String`: Name of the filter's facility (NewHorizons, Keper, Tess, etc...)
+- `instrument::String`: Name of the filter's instrument (Bessell, CTIO, Landolt, etc...)
+- `passband::String`: Name of the filter's passband (g, r, i, z, etc...)
 - `wavelength::Vector{Å}`: Transmission curve wavelength
 - `transmission::Vector{Float64}`: Transmission curve transmission
 """

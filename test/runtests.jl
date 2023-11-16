@@ -1,6 +1,7 @@
 using Supernovae
 using Supernovae.RunModule
 using Supernovae.RunModule.FilterModule
+using Supernovae.RunModule.PhotometryModule
 using Test
 using Unitful, UnitfulAstro
 
@@ -32,5 +33,16 @@ using Unitful, UnitfulAstro
         @test_throws DomainError planck(1000.0u"K", zero_λ)
         @test_throws DomainError synthetic_flux(filter_1, neg_t)
         @test_throws DomainError synthetic_flux(filter_1, zero_t)
+    end
+
+    @testset "PhotometryModule" begin
+        obs_path = joinpath(@__DIR__, "observations")
+        observations = Vector{Dict{String, Any}}(
+            Dict{String, Any}(
+                "NAME" => "Default",
+                "PATH" => joinpath(obs_path, "default.txt")
+            )
+        )
+
     end
 end
