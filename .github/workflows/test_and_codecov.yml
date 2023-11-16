@@ -27,20 +27,15 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
       - uses: actions/checkout@v4
-      - uses: conda-incubator/setup-miniconda@v2
-        with:
-          activate-environment: ./venv/
-          environment-file: environment.yml
-      - run: conda install -c conda-forge astroquery
       - uses: julia-actions/setup-julia@v1
         with:
           version: ${{ matrix.julia-version }}
           arch: ${{ matrix.julia-arch }}
       - uses: julia-actions/cache@v1
       - uses: julia-actions/julia-buildpkg@v1
+      - run: julia --startup-file=no --color=yes --project=. -e 'import Pkg; Pkg.build("Supernovae")'
         env:
-          CONDA_JL_HOME = ./venv/
-          PYTHON: "./venv/bin/python3" 
+          PYTHON: "" 
       - uses: julia-actions/julia-runtest@v1
       - uses: julia-actions/julia-processcoverage@v1
         if: ${{ (matrix.julia-version == 'nightly') && (matrix.julia-arch == 'x64') && (matrix.os == 'ubuntu-latest') }}
