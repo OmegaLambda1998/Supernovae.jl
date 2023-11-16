@@ -1,0 +1,1658 @@
+PREFIX=/home/patricka/.julia/conda/3
+Unpacking payload ...
+Extracting _libgcc_mutex-0.1-conda_forge.tar.bz2
+Extracting ca-certificates-2023.7.22-hbcca054_0.conda
+Extracting ld_impl_linux-64-2.40-h41732ed_0.conda
+Extracting libstdcxx-ng-13.1.0-hfd8a6a1_0.conda
+Extracting pybind11-abi-4-hd8ed1ab_3.tar.bz2
+Extracting python_abi-3.10-3_cp310.conda
+Extracting tzdata-2023c-h71feb2d_0.conda
+Extracting libgomp-13.1.0-he5830b7_0.conda
+Extracting _openmp_mutex-4.5-2_gnu.tar.bz2
+Extracting libgcc-ng-13.1.0-he5830b7_0.conda
+Extracting bzip2-1.0.8-h7f98852_4.tar.bz2
+Extracting c-ares-1.19.1-hd590300_0.conda
+Extracting fmt-9.1.0-h924138e_0.tar.bz2
+Extracting icu-73.2-h59595ed_0.conda
+Extracting keyutils-1.6.1-h166bdaf_0.tar.bz2
+Extracting libev-4.33-h516909a_1.tar.bz2
+Extracting libffi-3.4.2-h7f98852_5.tar.bz2
+Extracting libiconv-1.17-h166bdaf_0.tar.bz2
+Extracting libnsl-2.0.0-h7f98852_0.tar.bz2
+Extracting libuuid-2.38.1-h0b41bf4_0.conda
+Extracting libzlib-1.2.13-hd590300_5.conda
+Extracting lz4-c-1.9.4-hcb278e6_0.conda
+Extracting lzo-2.10-h516909a_1000.tar.bz2
+Extracting ncurses-6.4-hcb278e6_0.conda
+Extracting openssl-3.1.2-hd590300_0.conda
+Extracting reproc-14.2.4-h0b41bf4_0.conda
+Extracting xz-5.2.6-h166bdaf_0.tar.bz2
+Extracting yaml-cpp-0.7.0-h27087fc_2.tar.bz2
+Extracting libedit-3.1.20191231-he28a2e2_2.tar.bz2
+Extracting libnghttp2-1.52.0-h61bc06f_0.conda
+Extracting libsolv-0.7.24-hfc55251_3.conda
+Extracting libsqlite-3.43.0-h2797004_0.conda
+Extracting libssh2-1.11.0-h0841786_0.conda
+Extracting libxml2-2.11.5-h232c23b_1.conda
+Extracting readline-8.2-h8228510_1.conda
+Extracting reproc-cpp-14.2.4-hcb278e6_0.conda
+Extracting tk-8.6.12-h27826a3_0.tar.bz2
+Extracting zstd-1.5.5-hfc55251_0.conda
+Extracting krb5-1.21.2-h659d440_0.conda
+Extracting libarchive-3.6.2-h039dbb9_1.conda
+Extracting python-3.10.12-hd12c33a_0_cpython.conda
+Extracting boltons-23.0.0-pyhd8ed1ab_0.conda
+Extracting brotli-python-1.1.0-py310hc6cd4ac_0.conda
+Extracting certifi-2023.7.22-pyhd8ed1ab_0.conda
+Extracting charset-normalizer-3.2.0-pyhd8ed1ab_0.conda
+Extracting colorama-0.4.6-pyhd8ed1ab_0.tar.bz2
+Extracting idna-3.4-pyhd8ed1ab_0.tar.bz2
+Extracting jsonpointer-2.0-py_0.tar.bz2
+Extracting libcurl-8.2.1-hca28451_0.conda
+Extracting packaging-23.1-pyhd8ed1ab_0.conda
+Extracting pluggy-1.3.0-pyhd8ed1ab_0.conda
+Extracting pycosat-0.6.4-py310h5764c6d_1.tar.bz2
+Extracting pycparser-2.21-pyhd8ed1ab_0.tar.bz2
+Extracting pysocks-1.7.1-pyha2e5f31_6.tar.bz2
+Extracting ruamel.yaml.clib-0.2.7-py310h1fa729e_1.conda
+Extracting setuptools-68.1.2-pyhd8ed1ab_0.conda
+Extracting toolz-0.12.0-pyhd8ed1ab_0.tar.bz2
+Extracting wheel-0.41.2-pyhd8ed1ab_0.conda
+Extracting cffi-1.15.1-py310h255011f_3.conda
+Extracting jsonpatch-1.32-pyhd8ed1ab_0.tar.bz2
+Extracting libmamba-1.4.2-hcea66bb_0.conda
+Extracting pip-23.2.1-pyhd8ed1ab_0.conda
+Extracting ruamel.yaml-0.17.32-py310h2372a71_0.conda
+Extracting tqdm-4.66.1-pyhd8ed1ab_0.conda
+Extracting urllib3-2.0.4-pyhd8ed1ab_0.conda
+Extracting cryptography-41.0.3-py310h75e40e8_0.conda
+Extracting libmambapy-1.4.2-py310h1428755_0.conda
+Extracting requests-2.31.0-pyhd8ed1ab_0.conda
+Extracting zstandard-0.19.0-py310h5764c6d_0.tar.bz2
+Extracting conda-package-streaming-0.9.0-pyhd8ed1ab_0.conda
+Extracting pyopenssl-23.2.0-pyhd8ed1ab_1.conda
+Extracting conda-package-handling-2.2.0-pyh38be061_0.conda
+Extracting conda-23.3.1-py310hff52083_0.conda
+Extracting conda-libmamba-solver-23.3.0-pyhd8ed1ab_0.conda
+Extracting mamba-1.4.2-py310h51d5547_0.conda
+
+Installing base environment...
+
+
+                                           __
+          __  ______ ___  ____ _____ ___  / /_  ____ _
+         / / / / __ `__ \/ __ `/ __ `__ \/ __ \/ __ `/
+        / /_/ / / / / / / /_/ / / / / / / /_/ / /_/ /
+       / .___/_/ /_/ /_/\__,_/_/ /_/ /_/_.___/\__,_/
+      /_/
+
+Transaction
+
+  Prefix: /home/patricka/.julia/conda/3
+
+  Updating specs:
+
+   - conda-forge/linux-64::_libgcc_mutex==0.1=conda_forge[md5=d7c89558ba9fa0495403155b64376d81]
+   - conda-forge/linux-64::ca-certificates==2023.7.22=hbcca054_0[md5=a73ecd2988327ad4c8f2c331482917f2]
+   - conda-forge/linux-64::ld_impl_linux-64==2.40=h41732ed_0[md5=7aca3059a1729aa76c597603f10b0dd3]
+   - conda-forge/linux-64::libstdcxx-ng==13.1.0=hfd8a6a1_0[md5=067bcc23164642f4c226da631f2a2e1d]
+   - conda-forge/noarch::pybind11-abi==4=hd8ed1ab_3[md5=878f923dd6acc8aeb47a75da6c4098be]
+   - conda-forge/linux-64::python_abi==3.10=3_cp310[md5=4eb33d14d794b0f4be116443ffed3853]
+   - conda-forge/noarch::tzdata==2023c=h71feb2d_0[md5=939e3e74d8be4dac89ce83b20de2492a]
+   - conda-forge/linux-64::libgomp==13.1.0=he5830b7_0[md5=56ca14d57ac29a75d23a39eb3ee0ddeb]
+   - conda-forge/linux-64::_openmp_mutex==4.5=2_gnu[md5=73aaf86a425cc6e73fcf236a5a46396d]
+   - conda-forge/linux-64::libgcc-ng==13.1.0=he5830b7_0[md5=cd93f779ff018dd85c7544c015c9db3c]
+   - conda-forge/linux-64::bzip2==1.0.8=h7f98852_4[md5=a1fd65c7ccbf10880423d82bca54eb54]
+   - conda-forge/linux-64::c-ares==1.19.1=hd590300_0[md5=e8c18d865be43e2fb3f7a145b6adf1f5]
+   - conda-forge/linux-64::fmt==9.1.0=h924138e_0[md5=b57864c85261a0fbc7132d2cc17478c7]
+   - conda-forge/linux-64::icu==73.2=h59595ed_0[md5=cc47e1facc155f91abd89b11e48e72ff]
+   - conda-forge/linux-64::keyutils==1.6.1=h166bdaf_0[md5=30186d27e2c9fa62b45fb1476b7200e3]
+   - conda-forge/linux-64::libev==4.33=h516909a_1[md5=6f8720dff19e17ce5d48cfe7f3d2f0a3]
+   - conda-forge/linux-64::libffi==3.4.2=h7f98852_5[md5=d645c6d2ac96843a2bfaccd2d62b3ac3]
+   - conda-forge/linux-64::libiconv==1.17=h166bdaf_0[md5=b62b52da46c39ee2bc3c162ac7f1804d]
+   - conda-forge/linux-64::libnsl==2.0.0=h7f98852_0[md5=39b1328babf85c7c3a61636d9cd50206]
+   - conda-forge/linux-64::libuuid==2.38.1=h0b41bf4_0[md5=40b61aab5c7ba9ff276c41cfffe6b80b]
+   - conda-forge/linux-64::libzlib==1.2.13=hd590300_5[md5=f36c115f1ee199da648e0597ec2047ad]
+   - conda-forge/linux-64::lz4-c==1.9.4=hcb278e6_0[md5=318b08df404f9c9be5712aaa5a6f0bb0]
+   - conda-forge/linux-64::lzo==2.10=h516909a_1000[md5=bb14fcb13341b81d5eb386423b9d2bac]
+   - conda-forge/linux-64::ncurses==6.4=hcb278e6_0[md5=681105bccc2a3f7f1a837d47d39c9179]
+   - conda-forge/linux-64::openssl==3.1.2=hd590300_0[md5=e5ac5227582d6c83ccf247288c0eb095]
+   - conda-forge/linux-64::reproc==14.2.4=h0b41bf4_0[md5=0f51393e019df1f0047ef864cd9ddeec]
+   - conda-forge/linux-64::xz==5.2.6=h166bdaf_0[md5=2161070d867d1b1204ea749c8eec4ef0]
+   - conda-forge/linux-64::yaml-cpp==0.7.0=h27087fc_2[md5=0449d47d8457feaa3720d4779616dde2]
+   - conda-forge/linux-64::libedit==3.1.20191231=he28a2e2_2[md5=4d331e44109e3f0e19b4cb8f9b82f3e1]
+   - conda-forge/linux-64::libnghttp2==1.52.0=h61bc06f_0[md5=613955a50485812985c059e7b269f42e]
+   - conda-forge/linux-64::libsolv==0.7.24=hfc55251_3[md5=702feab0e98333ef3eac0d948c605c2d]
+   - conda-forge/linux-64::libsqlite==3.43.0=h2797004_0[md5=903fa782a9067d5934210df6d79220f6]
+   - conda-forge/linux-64::libssh2==1.11.0=h0841786_0[md5=1f5a58e686b13bcfde88b93f547d23fe]
+   - conda-forge/linux-64::libxml2==2.11.5=h232c23b_1[md5=f3858448893839820d4bcfb14ad3ecdf]
+   - conda-forge/linux-64::readline==8.2=h8228510_1[md5=47d31b792659ce70f470b5c82fdfb7a4]
+   - conda-forge/linux-64::reproc-cpp==14.2.4=hcb278e6_0[md5=ede8e0f849f2fee2f78cb488b4ea3b33]
+   - conda-forge/linux-64::tk==8.6.12=h27826a3_0[md5=5b8c42eb62e9fc961af70bdd6a26e168]
+   - conda-forge/linux-64::zstd==1.5.5=hfc55251_0[md5=04b88013080254850d6c01ed54810589]
+   - conda-forge/linux-64::krb5==1.21.2=h659d440_0[md5=cd95826dbd331ed1be26bdf401432844]
+   - conda-forge/linux-64::libarchive==3.6.2=h039dbb9_1[md5=29cf970521d30d113f3425b84cb250f6]
+   - conda-forge/linux-64::python==3.10.12=hd12c33a_0_cpython[md5=eb6f1df105f37daedd6dca78523baa75]
+   - conda-forge/noarch::boltons==23.0.0=pyhd8ed1ab_0[md5=033eb25fffd222aceeca6d58cd953680]
+   - conda-forge/linux-64::brotli-python==1.1.0=py310hc6cd4ac_0[md5=fb6201eb1daa3a3a2f91a4833bdf27c7]
+   - conda-forge/noarch::certifi==2023.7.22=pyhd8ed1ab_0[md5=7f3dbc9179b4dde7da98dfb151d0ad22]
+   - conda-forge/noarch::charset-normalizer==3.2.0=pyhd8ed1ab_0[md5=313516e9a4b08b12dfb1e1cd390a96e3]
+   - conda-forge/noarch::colorama==0.4.6=pyhd8ed1ab_0[md5=3faab06a954c2a04039983f2c4a50d99]
+   - conda-forge/noarch::idna==3.4=pyhd8ed1ab_0[md5=34272b248891bddccc64479f9a7fffed]
+   - conda-forge/noarch::jsonpointer==2.0=py_0[md5=07d85c22a3beb102a48cd123df84c2a6]
+   - conda-forge/linux-64::libcurl==8.2.1=hca28451_0[md5=96aec6156d58591f5a4e67056521ce1b]
+   - conda-forge/noarch::packaging==23.1=pyhd8ed1ab_0[md5=91cda59e66e1e4afe9476f8ef98f5c30]
+   - conda-forge/noarch::pluggy==1.3.0=pyhd8ed1ab_0[md5=2390bd10bed1f3fdc7a537fb5a447d8d]
+   - conda-forge/linux-64::pycosat==0.6.4=py310h5764c6d_1[md5=0e565d732f6660374b45d76761c09b06]
+   - conda-forge/noarch::pycparser==2.21=pyhd8ed1ab_0[md5=076becd9e05608f8dc72757d5f3a91ff]
+   - conda-forge/noarch::pysocks==1.7.1=pyha2e5f31_6[md5=2a7de29fb590ca14b5243c4c812c8025]
+   - conda-forge/linux-64::ruamel.yaml.clib==0.2.7=py310h1fa729e_1[md5=2f9b517412af46255cef5e53a22c264e]
+   - conda-forge/noarch::setuptools==68.1.2=pyhd8ed1ab_0[md5=4fe12573bf499ff85a0a364e00cc5c53]
+   - conda-forge/noarch::toolz==0.12.0=pyhd8ed1ab_0[md5=92facfec94bc02d6ccf42e7173831a36]
+   - conda-forge/noarch::wheel==0.41.2=pyhd8ed1ab_0[md5=1ccd092478b3e0ee10d7a891adbf8a4f]
+   - conda-forge/linux-64::cffi==1.15.1=py310h255011f_3[md5=800596144bb613cd7ac58b80900ce835]
+   - conda-forge/noarch::jsonpatch==1.32=pyhd8ed1ab_0[md5=09150b51b0528a31a0f6500b96fdde82]
+   - conda-forge/linux-64::libmamba==1.4.2=hcea66bb_0[md5=0b3b4c833ea1ec555063479e2ac259dc]
+   - conda-forge/noarch::pip==23.2.1=pyhd8ed1ab_0[md5=e2783aa3f9235225eec92f9081c5b801]
+   - conda-forge/linux-64::ruamel.yaml==0.17.32=py310h2372a71_0[md5=9a03abf74d5069bda767c1bce7a41e0b]
+   - conda-forge/noarch::tqdm==4.66.1=pyhd8ed1ab_0[md5=03c97908b976498dcae97eb4e4f3149c]
+   - conda-forge/noarch::urllib3==2.0.4=pyhd8ed1ab_0[md5=18badd8fa3648d1beb1fcc7f2e0f756e]
+   - conda-forge/linux-64::cryptography==41.0.3=py310h75e40e8_0[md5=2ad1ab0b68e459f8864e74bdd5b00fe5]
+   - conda-forge/linux-64::libmambapy==1.4.2=py310h1428755_0[md5=0c942ea14a0e7a9e394882a8e4405235]
+   - conda-forge/noarch::requests==2.31.0=pyhd8ed1ab_0[md5=a30144e4156cdbb236f99ebb49828f8b]
+   - conda-forge/linux-64::zstandard==0.19.0=py310h5764c6d_0[md5=74ea667169b1296fb31bb86f13abfa49]
+   - conda-forge/noarch::conda-package-streaming==0.9.0=pyhd8ed1ab_0[md5=38253361efb303deead3eab39ae9269b]
+   - conda-forge/noarch::pyopenssl==23.2.0=pyhd8ed1ab_1[md5=34f7d568bf59d18e3fef8c405cbece21]
+   - conda-forge/noarch::conda-package-handling==2.2.0=pyh38be061_0[md5=8a3ae7f6318376aa08ea753367bb7dd6]
+   - conda-forge/linux-64::conda==23.3.1=py310hff52083_0[md5=d182178e1a62f8743044658bf3242af5]
+   - conda-forge/noarch::conda-libmamba-solver==23.3.0=pyhd8ed1ab_0[md5=2edd368915b8a1c3e294c9ac944390d9]
+   - conda-forge/linux-64::mamba==1.4.2=py310h51d5547_0[md5=a84d408833491f202a6d9f6d8fc696db]
+
+
+  Package                         Version  Build               Channel           Size
+───────────────────────────────────────────────────────────────────────────────────────
+  Install:
+───────────────────────────────────────────────────────────────────────────────────────
+
+  + _libgcc_mutex                     0.1  conda_forge         conda-forge     Cached
+  + _openmp_mutex                     4.5  2_gnu               conda-forge     Cached
+  + boltons                        23.0.0  pyhd8ed1ab_0        conda-forge     Cached
+  + brotli-python                   1.1.0  py310hc6cd4ac_0     conda-forge     Cached
+  + bzip2                           1.0.8  h7f98852_4          conda-forge     Cached
+  + c-ares                         1.19.1  hd590300_0          conda-forge     Cached
+  + ca-certificates             2023.7.22  hbcca054_0          conda-forge     Cached
+  + certifi                     2023.7.22  pyhd8ed1ab_0        conda-forge     Cached
+  + cffi                           1.15.1  py310h255011f_3     conda-forge     Cached
+  + charset-normalizer              3.2.0  pyhd8ed1ab_0        conda-forge     Cached
+  + colorama                        0.4.6  pyhd8ed1ab_0        conda-forge     Cached
+  + conda                          23.3.1  py310hff52083_0     conda-forge     Cached
+  + conda-libmamba-solver          23.3.0  pyhd8ed1ab_0        conda-forge     Cached
+  + conda-package-handling          2.2.0  pyh38be061_0        conda-forge     Cached
+  + conda-package-streaming         0.9.0  pyhd8ed1ab_0        conda-forge     Cached
+  + cryptography                   41.0.3  py310h75e40e8_0     conda-forge     Cached
+  + fmt                             9.1.0  h924138e_0          conda-forge     Cached
+  + icu                              73.2  h59595ed_0          conda-forge     Cached
+  + idna                              3.4  pyhd8ed1ab_0        conda-forge     Cached
+  + jsonpatch                        1.32  pyhd8ed1ab_0        conda-forge     Cached
+  + jsonpointer                       2.0  py_0                conda-forge     Cached
+  + keyutils                        1.6.1  h166bdaf_0          conda-forge     Cached
+  + krb5                           1.21.2  h659d440_0          conda-forge     Cached
+  + ld_impl_linux-64                 2.40  h41732ed_0          conda-forge     Cached
+  + libarchive                      3.6.2  h039dbb9_1          conda-forge     Cached
+  + libcurl                         8.2.1  hca28451_0          conda-forge     Cached
+  + libedit                  3.1.20191231  he28a2e2_2          conda-forge     Cached
+  + libev                            4.33  h516909a_1          conda-forge     Cached
+  + libffi                          3.4.2  h7f98852_5          conda-forge     Cached
+  + libgcc-ng                      13.1.0  he5830b7_0          conda-forge     Cached
+  + libgomp                        13.1.0  he5830b7_0          conda-forge     Cached
+  + libiconv                         1.17  h166bdaf_0          conda-forge     Cached
+  + libmamba                        1.4.2  hcea66bb_0          conda-forge     Cached
+  + libmambapy                      1.4.2  py310h1428755_0     conda-forge     Cached
+  + libnghttp2                     1.52.0  h61bc06f_0          conda-forge     Cached
+  + libnsl                          2.0.0  h7f98852_0          conda-forge     Cached
+  + libsolv                        0.7.24  hfc55251_3          conda-forge     Cached
+  + libsqlite                      3.43.0  h2797004_0          conda-forge     Cached
+  + libssh2                        1.11.0  h0841786_0          conda-forge     Cached
+  + libstdcxx-ng                   13.1.0  hfd8a6a1_0          conda-forge     Cached
+  + libuuid                        2.38.1  h0b41bf4_0          conda-forge     Cached
+  + libxml2                        2.11.5  h232c23b_1          conda-forge     Cached
+  + libzlib                        1.2.13  hd590300_5          conda-forge     Cached
+  + lz4-c                           1.9.4  hcb278e6_0          conda-forge     Cached
+  + lzo                              2.10  h516909a_1000       conda-forge     Cached
+  + mamba                           1.4.2  py310h51d5547_0     conda-forge     Cached
+  + ncurses                           6.4  hcb278e6_0          conda-forge     Cached
+  + openssl                         3.1.2  hd590300_0          conda-forge     Cached
+  + packaging                        23.1  pyhd8ed1ab_0        conda-forge     Cached
+  + pip                            23.2.1  pyhd8ed1ab_0        conda-forge     Cached
+  + pluggy                          1.3.0  pyhd8ed1ab_0        conda-forge     Cached
+  + pybind11-abi                        4  hd8ed1ab_3          conda-forge     Cached
+  + pycosat                         0.6.4  py310h5764c6d_1     conda-forge     Cached
+  + pycparser                        2.21  pyhd8ed1ab_0        conda-forge     Cached
+  + pyopenssl                      23.2.0  pyhd8ed1ab_1        conda-forge     Cached
+  + pysocks                         1.7.1  pyha2e5f31_6        conda-forge     Cached
+  + python                        3.10.12  hd12c33a_0_cpython  conda-forge     Cached
+  + python_abi                       3.10  3_cp310             conda-forge     Cached
+  + readline                          8.2  h8228510_1          conda-forge     Cached
+  + reproc                         14.2.4  h0b41bf4_0          conda-forge     Cached
+  + reproc-cpp                     14.2.4  hcb278e6_0          conda-forge     Cached
+  + requests                       2.31.0  pyhd8ed1ab_0        conda-forge     Cached
+  + ruamel.yaml                   0.17.32  py310h2372a71_0     conda-forge     Cached
+  + ruamel.yaml.clib                0.2.7  py310h1fa729e_1     conda-forge     Cached
+  + setuptools                     68.1.2  pyhd8ed1ab_0        conda-forge     Cached
+  + tk                             8.6.12  h27826a3_0          conda-forge     Cached
+  + toolz                          0.12.0  pyhd8ed1ab_0        conda-forge     Cached
+  + tqdm                           4.66.1  pyhd8ed1ab_0        conda-forge     Cached
+  + tzdata                          2023c  h71feb2d_0          conda-forge     Cached
+  + urllib3                         2.0.4  pyhd8ed1ab_0        conda-forge     Cached
+  + wheel                          0.41.2  pyhd8ed1ab_0        conda-forge     Cached
+  + xz                              5.2.6  h166bdaf_0          conda-forge     Cached
+  + yaml-cpp                        0.7.0  h27087fc_2          conda-forge     Cached
+  + zstandard                      0.19.0  py310h5764c6d_0     conda-forge     Cached
+  + zstd                            1.5.5  hfc55251_0          conda-forge     Cached
+
+  Summary:
+
+  Install: 75 packages
+
+  Total download: 0 B
+
+───────────────────────────────────────────────────────────────────────────────────────
+
+
+
+Transaction starting
+Linking _libgcc_mutex-0.1-conda_forge
+Linking ca-certificates-2023.7.22-hbcca054_0
+Linking ld_impl_linux-64-2.40-h41732ed_0
+Linking libstdcxx-ng-13.1.0-hfd8a6a1_0
+Linking pybind11-abi-4-hd8ed1ab_3
+Linking python_abi-3.10-3_cp310
+Linking tzdata-2023c-h71feb2d_0
+Linking libgomp-13.1.0-he5830b7_0
+Linking _openmp_mutex-4.5-2_gnu
+Linking libgcc-ng-13.1.0-he5830b7_0
+Linking bzip2-1.0.8-h7f98852_4
+Linking c-ares-1.19.1-hd590300_0
+Linking fmt-9.1.0-h924138e_0
+Linking icu-73.2-h59595ed_0
+Linking keyutils-1.6.1-h166bdaf_0
+Linking libev-4.33-h516909a_1
+Linking libffi-3.4.2-h7f98852_5
+Linking libiconv-1.17-h166bdaf_0
+Linking libnsl-2.0.0-h7f98852_0
+Linking libuuid-2.38.1-h0b41bf4_0
+Linking libzlib-1.2.13-hd590300_5
+Linking lz4-c-1.9.4-hcb278e6_0
+Linking lzo-2.10-h516909a_1000
+Linking ncurses-6.4-hcb278e6_0
+Linking openssl-3.1.2-hd590300_0
+Linking reproc-14.2.4-h0b41bf4_0
+Linking xz-5.2.6-h166bdaf_0
+Linking yaml-cpp-0.7.0-h27087fc_2
+Linking libedit-3.1.20191231-he28a2e2_2
+Linking libnghttp2-1.52.0-h61bc06f_0
+Linking libsolv-0.7.24-hfc55251_3
+Linking libsqlite-3.43.0-h2797004_0
+Linking libssh2-1.11.0-h0841786_0
+Linking libxml2-2.11.5-h232c23b_1
+Linking readline-8.2-h8228510_1
+Linking reproc-cpp-14.2.4-hcb278e6_0
+Linking tk-8.6.12-h27826a3_0
+Linking zstd-1.5.5-hfc55251_0
+Linking krb5-1.21.2-h659d440_0
+Linking libarchive-3.6.2-h039dbb9_1
+Linking python-3.10.12-hd12c33a_0_cpython
+Linking boltons-23.0.0-pyhd8ed1ab_0
+Linking brotli-python-1.1.0-py310hc6cd4ac_0
+Linking certifi-2023.7.22-pyhd8ed1ab_0
+Linking charset-normalizer-3.2.0-pyhd8ed1ab_0
+Linking colorama-0.4.6-pyhd8ed1ab_0
+Linking idna-3.4-pyhd8ed1ab_0
+Linking jsonpointer-2.0-py_0
+Linking libcurl-8.2.1-hca28451_0
+Linking packaging-23.1-pyhd8ed1ab_0
+Linking pluggy-1.3.0-pyhd8ed1ab_0
+Linking pycosat-0.6.4-py310h5764c6d_1
+Linking pycparser-2.21-pyhd8ed1ab_0
+Linking pysocks-1.7.1-pyha2e5f31_6
+Linking ruamel.yaml.clib-0.2.7-py310h1fa729e_1
+Linking setuptools-68.1.2-pyhd8ed1ab_0
+Linking toolz-0.12.0-pyhd8ed1ab_0
+Linking wheel-0.41.2-pyhd8ed1ab_0
+Linking cffi-1.15.1-py310h255011f_3
+Linking jsonpatch-1.32-pyhd8ed1ab_0
+Linking libmamba-1.4.2-hcea66bb_0
+Linking pip-23.2.1-pyhd8ed1ab_0
+Linking ruamel.yaml-0.17.32-py310h2372a71_0
+Linking tqdm-4.66.1-pyhd8ed1ab_0
+Linking urllib3-2.0.4-pyhd8ed1ab_0
+Linking cryptography-41.0.3-py310h75e40e8_0
+Linking libmambapy-1.4.2-py310h1428755_0
+Linking requests-2.31.0-pyhd8ed1ab_0
+Linking zstandard-0.19.0-py310h5764c6d_0
+Linking conda-package-streaming-0.9.0-pyhd8ed1ab_0
+Linking pyopenssl-23.2.0-pyhd8ed1ab_1
+Linking conda-package-handling-2.2.0-pyh38be061_0
+Linking conda-23.3.1-py310hff52083_0
+Linking conda-libmamba-solver-23.3.0-pyhd8ed1ab_0
+Linking mamba-1.4.2-py310h51d5547_0
+Transaction finished
+installation finished.
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 23.3.1
+  latest version: 23.10.0
+
+Please update conda by running
+
+    $ conda update -n base -c conda-forge conda
+
+Or to minimize the number of packages updated during conda update use
+
+     conda install conda=23.10.0
+
+
+
+## Package Plan ##
+
+  environment location: /home/patricka/.julia/conda/3
+
+  added / updated specs:
+    - astroquery
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    astropy-5.3.4              |  py310h1f7b6fc_2         7.7 MB  conda-forge
+    astroquery-0.4.6           |     pyhd8ed1ab_0         3.8 MB  conda-forge
+    beautifulsoup4-4.12.2      |     pyha770c72_0         112 KB  conda-forge
+    dbus-1.13.6                |       h5008d03_3         604 KB  conda-forge
+    expat-2.5.0                |       hcb278e6_1         134 KB  conda-forge
+    gettext-0.21.1             |       h27087fc_0         4.1 MB  conda-forge
+    html5lib-1.1               |     pyh9f0ad1d_0          89 KB  conda-forge
+    importlib-metadata-6.8.0   |     pyha770c72_0          25 KB  conda-forge
+    importlib_metadata-6.8.0   |       hd8ed1ab_0           9 KB  conda-forge
+    jaraco.classes-3.3.0       |     pyhd8ed1ab_0          11 KB  conda-forge
+    jeepney-0.8.0              |     pyhd8ed1ab_0          36 KB  conda-forge
+    keyring-24.3.0             |  py310hff52083_0          62 KB  conda-forge
+    libblas-3.9.0              |19_linux64_openblas          14 KB  conda-forge
+    libcblas-3.9.0             |19_linux64_openblas          14 KB  conda-forge
+    libexpat-2.5.0             |       hcb278e6_1          76 KB  conda-forge
+    libgfortran-ng-13.2.0      |       h69a702a_0          23 KB  conda-forge
+    libgfortran5-13.2.0        |       ha4646dd_0         1.4 MB  conda-forge
+    libglib-2.78.1             |       h783c2da_1         2.6 MB  conda-forge
+    liblapack-3.9.0            |19_linux64_openblas          14 KB  conda-forge
+    libopenblas-0.3.24         |pthreads_h413a1c8_0         5.2 MB  conda-forge
+    more-itertools-10.1.0      |     pyhd8ed1ab_0          52 KB  conda-forge
+    numpy-1.26.0               |  py310hb13e2d6_0         6.6 MB  conda-forge
+    openssl-3.1.4              |       hd590300_0         2.5 MB  conda-forge
+    pcre2-10.42                |       hcad00b1_0         993 KB  conda-forge
+    pyerfa-2.0.1.1             |  py310h1f7b6fc_0         347 KB  conda-forge
+    pyvo-1.4.2                 |     pyhd8ed1ab_0         758 KB  conda-forge
+    pyyaml-6.0.1               |  py310h2372a71_1         167 KB  conda-forge
+    secretstorage-3.3.3        |  py310hff52083_2          27 KB  conda-forge
+    six-1.16.0                 |     pyh6c4a22f_0          14 KB  conda-forge
+    soupsieve-2.5              |     pyhd8ed1ab_1          36 KB  conda-forge
+    webencodings-0.5.1         |     pyhd8ed1ab_2          15 KB  conda-forge
+    yaml-0.2.5                 |       h7f98852_2          87 KB  conda-forge
+    zipp-3.17.0                |     pyhd8ed1ab_0          19 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        37.5 MB
+
+The following NEW packages will be INSTALLED:
+
+  astropy            conda-forge/linux-64::astropy-5.3.4-py310h1f7b6fc_2 
+  astroquery         conda-forge/noarch::astroquery-0.4.6-pyhd8ed1ab_0 
+  beautifulsoup4     conda-forge/noarch::beautifulsoup4-4.12.2-pyha770c72_0 
+  dbus               conda-forge/linux-64::dbus-1.13.6-h5008d03_3 
+  expat              conda-forge/linux-64::expat-2.5.0-hcb278e6_1 
+  gettext            conda-forge/linux-64::gettext-0.21.1-h27087fc_0 
+  html5lib           conda-forge/noarch::html5lib-1.1-pyh9f0ad1d_0 
+  importlib-metadata conda-forge/noarch::importlib-metadata-6.8.0-pyha770c72_0 
+  importlib_metadata conda-forge/noarch::importlib_metadata-6.8.0-hd8ed1ab_0 
+  jaraco.classes     conda-forge/noarch::jaraco.classes-3.3.0-pyhd8ed1ab_0 
+  jeepney            conda-forge/noarch::jeepney-0.8.0-pyhd8ed1ab_0 
+  keyring            conda-forge/linux-64::keyring-24.3.0-py310hff52083_0 
+  libblas            conda-forge/linux-64::libblas-3.9.0-19_linux64_openblas 
+  libcblas           conda-forge/linux-64::libcblas-3.9.0-19_linux64_openblas 
+  libexpat           conda-forge/linux-64::libexpat-2.5.0-hcb278e6_1 
+  libgfortran-ng     conda-forge/linux-64::libgfortran-ng-13.2.0-h69a702a_0 
+  libgfortran5       conda-forge/linux-64::libgfortran5-13.2.0-ha4646dd_0 
+  libglib            conda-forge/linux-64::libglib-2.78.1-h783c2da_1 
+  liblapack          conda-forge/linux-64::liblapack-3.9.0-19_linux64_openblas 
+  libopenblas        conda-forge/linux-64::libopenblas-0.3.24-pthreads_h413a1c8_0 
+  more-itertools     conda-forge/noarch::more-itertools-10.1.0-pyhd8ed1ab_0 
+  numpy              conda-forge/linux-64::numpy-1.26.0-py310hb13e2d6_0 
+  pcre2              conda-forge/linux-64::pcre2-10.42-hcad00b1_0 
+  pyerfa             conda-forge/linux-64::pyerfa-2.0.1.1-py310h1f7b6fc_0 
+  pyvo               conda-forge/noarch::pyvo-1.4.2-pyhd8ed1ab_0 
+  pyyaml             conda-forge/linux-64::pyyaml-6.0.1-py310h2372a71_1 
+  secretstorage      conda-forge/linux-64::secretstorage-3.3.3-py310hff52083_2 
+  six                conda-forge/noarch::six-1.16.0-pyh6c4a22f_0 
+  soupsieve          conda-forge/noarch::soupsieve-2.5-pyhd8ed1ab_1 
+  webencodings       conda-forge/noarch::webencodings-0.5.1-pyhd8ed1ab_2 
+  yaml               conda-forge/linux-64::yaml-0.2.5-h7f98852_2 
+  zipp               conda-forge/noarch::zipp-3.17.0-pyhd8ed1ab_0 
+
+The following packages will be UPDATED:
+
+  openssl                                  3.1.2-hd590300_0 --> 3.1.4-hd590300_0 
+
+
+
+Downloading and Extracting Packages
+beautifulsoup4-4.12. | 112 KB    |            |   0% 
+jeepney-0.8.0        | 36 KB     |            |   0% [A
+
+pyerfa-2.0.1.1       | 347 KB    |            |   0% [A[A
+
+
+gettext-0.21.1       | 4.1 MB    |            |   0% [A[A[A
+
+
+
+libblas-3.9.0        | 14 KB     |            |   0% [A[A[A[A
+
+
+
+
+libcblas-3.9.0       | 14 KB     |            |   0% [A[A[A[A[A
+
+
+
+
+
+libgfortran-ng-13.2. | 23 KB     |            |   0% [A[A[A[A[A[A
+
+
+
+
+
+
+pyvo-1.4.2           | 758 KB    |            |   0% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+zipp-3.17.0          | 19 KB     |            |   0% [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+pyyaml-6.0.1         | 167 KB    |            |   0% [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+libopenblas-0.3.24   | 5.2 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+openssl-3.1.4        | 2.5 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+astroquery-0.4.6     | 3.8 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+more-itertools-10.1. | 52 KB     |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+importlib-metadata-6 | 25 KB     |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+libgfortran5-13.2.0  | 1.4 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+liblapack-3.9.0      | 14 KB     |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+astropy-5.3.4        | 7.7 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pcre2-10.42          | 993 KB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ... (more hidden) ...[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+gettext-0.21.1       | 4.1 MB    |            |   0% [A[A[Abeautifulsoup4-4.12. | 112 KB    | #4         |  14% 
+jeepney-0.8.0        | 36 KB     | ####4      |  44% [A
+
+
+gettext-0.21.1       | 4.1 MB    | ####2      |  42% [A[A[A
+jeepney-0.8.0        | 36 KB     | ########## | 100% [A
+
+
+
+
+libcblas-3.9.0       | 14 KB     | ########## | 100% [A[A[A[A[Abeautifulsoup4-4.12. | 112 KB    | ########## | 100% 
+
+
+
+
+libcblas-3.9.0       | 14 KB     | ########## | 100% [A[A[A[A[A
+
+
+
+
+
+libgfortran-ng-13.2. | 23 KB     | #######    |  70% [A[A[A[A[A[A
+
+
+
+
+
+libgfortran-ng-13.2. | 23 KB     | ########## | 100% [A[A[A[A[A[A
+
+
+
+
+
+
+
+
+pyyaml-6.0.1         | 167 KB    | 9          |  10% [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+zipp-3.17.0          | 19 KB     | ########6  |  86% [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+libopenblas-0.3.24   | 5.2 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+zipp-3.17.0          | 19 KB     | ########## | 100% [A[A[A[A[A[A[A[A
+
+pyerfa-2.0.1.1       | 347 KB    | 4          |   5% [A[A
+
+
+
+
+
+
+
+
+pyyaml-6.0.1         | 167 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+openssl-3.1.4        | 2.5 MB    |            |   1% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+libblas-3.9.0        | 14 KB     | ########## | 100% [A[A[A[A
+
+
+
+libblas-3.9.0        | 14 KB     | ########## | 100% [A[A[A[A
+
+
+
+
+
+
+
+
+
+libopenblas-0.3.24   | 5.2 MB    | ###9       |  39% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+openssl-3.1.4        | 2.5 MB    | ###6       |  37% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+astroquery-0.4.6     | 3.8 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A
+
+pyerfa-2.0.1.1       | 347 KB    | ####6      |  46% [A[A
+
+
+
+
+
+
+
+
+
+libopenblas-0.3.24   | 5.2 MB    | ######9    |  70% [A[A[A[A[A[A[A[A[A[A
+
+pyerfa-2.0.1.1       | 347 KB    | ########## | 100% [A[A
+
+
+
+
+
+
+
+
+
+
+openssl-3.1.4        | 2.5 MB    | ######9    |  69% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+more-itertools-10.1. | 52 KB     | ###        |  31% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+astroquery-0.4.6     | 3.8 MB    | 2          |   2% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+more-itertools-10.1. | 52 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+importlib-metadata-6 | 25 KB     | ######3    |  63% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+pyvo-1.4.2           | 758 KB    | 2          |   2% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+importlib-metadata-6 | 25 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+astroquery-0.4.6     | 3.8 MB    | ####3      |  44% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+liblapack-3.9.0      | 14 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+libgfortran5-13.2.0  | 1.4 MB    | 1          |   1% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+pyvo-1.4.2           | 758 KB    | #2         |  13% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pcre2-10.42          | 993 KB    | 1          |   2% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+astroquery-0.4.6     | 3.8 MB    | #######1   |  72% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+libgfortran5-13.2.0  | 1.4 MB    | ########8  |  89% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ... (more hidden) ...[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+pyvo-1.4.2           | 758 KB    | ###1       |  32% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+openssl-3.1.4        | 2.5 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+openssl-3.1.4        | 2.5 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+liblapack-3.9.0      | 14 KB     | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+libopenblas-0.3.24   | 5.2 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+libopenblas-0.3.24   | 5.2 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+pyvo-1.4.2           | 758 KB    | #####9     |  59% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+libgfortran5-13.2.0  | 1.4 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+astropy-5.3.4        | 7.7 MB    |            |   0% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ... (more hidden) ...[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ... (more hidden) ...[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+astropy-5.3.4        | 7.7 MB    | 3          |   3% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pcre2-10.42          | 993 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+pcre2-10.42          | 993 KB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+astropy-5.3.4        | 7.7 MB    | 5          |   5% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+astropy-5.3.4        | 7.7 MB    | 9          |  10% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+astropy-5.3.4        | 7.7 MB    | #7         |  18% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+astropy-5.3.4        | 7.7 MB    | ##4        |  25% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+astropy-5.3.4        | 7.7 MB    | ###5       |  36% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+astropy-5.3.4        | 7.7 MB    | #####3     |  54% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+astropy-5.3.4        | 7.7 MB    | ######7    |  68% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+astropy-5.3.4        | 7.7 MB    | #########  |  90% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+pyvo-1.4.2           | 758 KB    | ########## | 100% [A[A[A[A[A[A[A
+
+
+
+
+
+
+pyvo-1.4.2           | 758 KB    | ########## | 100% [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+astroquery-0.4.6     | 3.8 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+astroquery-0.4.6     | 3.8 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+gettext-0.21.1       | 4.1 MB    | ########## | 100% [A[A[A
+
+
+gettext-0.21.1       | 4.1 MB    | ########## | 100% [A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+astropy-5.3.4        | 7.7 MB    | ########## | 100% [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A                                                     
+                                                     [A
+
+                                                     [A[A
+
+
+                                                     [A[A[A
+
+
+
+                                                     [A[A[A[A
+
+
+
+
+                                                     [A[A[A[A[A
+
+
+
+
+
+                                                     [A[A[A[A[A[A
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                     [A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A
+[A
+
+[A[A
+
+
+[A[A[A
+
+
+
+[A[A[A[A
+
+
+
+
+[A[A[A[A[A
+
+
+
+
+
+[A[A[A[A[A[A
+
+
+
+
+
+
+[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A[A
+
+
+
+
+
+
+
+
+
+
+
+
+[A[A[A[A[A[A[A[A[A[A[A[A[A
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+[ Info: Downloading miniconda installer ...
+[ Info: Installing miniconda ...
+[ Info: Running `conda install -y astroquery` in root environment

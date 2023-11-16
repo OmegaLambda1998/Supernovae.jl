@@ -161,13 +161,13 @@ function save_filter(filter::Filter, filter_dir::AbstractString)
 end
 
 """
-    planck(T::Unitful.Quantity{Float64}, λ::Unitful.Quantity{Float64})
+    planck(T::Unitful.Unitful.Temperature, λ::Unitful.Length)
 
 Planck's law: Calculates the specral radiance of a blackbody at temperature T, emitting at wavelength λ
 
 # Arguments
-- `T::Unitful.Quantity{Float64}`: Temperature of blackbody
-- `λ::Unitful.Quantity{Float64}`: Wavelength of blackbody
+- `T::Unitful.Temperature`: Temperature of blackbody
+- `λ::Unitful.Length`: Wavelength of blackbody
 """
 function planck(T::Unitful.Temperature, λ::Unitful.Length)
     if T <= 0u"K"

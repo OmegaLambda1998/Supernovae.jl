@@ -167,7 +167,7 @@ function get_default_unit(header::Vector{String}, column_id::String, column_inde
 end
 
 """
-    Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Level, redshift::Float64, config::Dict{String,Any}; max_flux_err::Unitful.Quantity{Float64}=Inf * 1.0u"μJy", peak_time::Union{Bool,Float64}=false, peak_time_unit::Unitful.FreeUnits)
+    Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude, redshift::Float64, config::Dict{String,Any}; max_flux_err::Flux=Inf * 1.0u"μJy", peak_time::Union{Bool,Float64}=false)
 
 Create a Lightcurve from a Vector of observations, modelled as a Vector of Dicts. Each observation must contains the keys `NAME`, and `PATH` which specify the name of the supernovae, and a path to the photometry respectively. `PATH` can either be absolute, or relative to `DATA_PATH` as specified in `[ GLOBAL ]` and is expected to be a delimited file of rows and columns, with a header row describing the content of each column, and a row for each individual photometric observation of the lightcurve. Each observation in `PATH` must contain a time, flux, and flux error column. You can also optionally pescribe a seperate facility, instrument, passband, and upperlimit column. If any of these column exist, they will be read per row. If not, you must specify a global value. The keys `DELIMITER::String=", "`, and `COMMENT::String="#"` allow you to specify the delimiter and comment characters used by `PATH`.
 
@@ -185,13 +185,13 @@ As for the rest of the inputs, it is required to specify a zeropoint (in some ma
 
 # Arguments
 - `observations::Vector{Dict{String,Any}}`: A `Vector` of `Dicts` containing information and overwrites for the file containing photometry of the supernova.
-- `zeropoint::Level`: The zeropoint of the supernova 
+- `zeropoint::Magnitude`: The zeropoint of the supernova 
 - `redshift::Float64`: The redshift of the supernova
 - `config::Dict{String,Any}`: The global config, containing information about paths
-- `max_flux_err::Unitful.Quantity{Float64}=Inf * 1.0u"μJy"`: An optional constrain on the maximum flux error. Any observation with flux error greater than this is considered an outlier and removed from the lightcurve.
-- `peak_time::Union{Bool, Float64}=false`: If not `false`, times will be relative to `peak_time` (i.e, will transform from `time` to `time-peak_time`). If `true` times a relative to the time of peak flux, otherwise times are relative to `peak_time`, which is assumed to be of the same unit as the times.
+- `max_flux_err::Flux=Inf * 1.0u"μJy"`: An optional constrain on the maximum flux error. Any observation with flux error greater than this is considered an outlier and removed from the lightcurve.
+- `peak_time::Union{Bool, Float64}=false`: If not `false`, times will be relative to `peak_time` (i.e, will transform from `time` to `time - peak_time`). If `true` times a relative to the time of peak flux, otherwise times are relative to `peak_time`, which is assumed to be of the same unit as the times.
 """
-function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude, redshift::Float64, config::Dict{String,Any}; max_flux_err::Flux=Inf * 1.0u"μJy", peak_time::Union{Bool,Float64}=false, peak_time_unit::Unitful.Time)
+function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude, redshift::Float64, config::Dict{String,Any}; max_flux_err::Flux=Inf * 1.0u"μJy", peak_time::Union{Bool,Float64}=false)
     lightcurve = Lightcurve()
     for observation in observations
         # File path
@@ -356,7 +356,7 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
     end
     # If peak_time is a value, set all time relative to that value
     if peak_time isa Float64
-        peak_time *= peak_time_unit #TODO Change this to be time unit of data
+        peak_time *= unit(time[0])
         for obs in lightcurve.observations
             obs.time -= peak_time
         end
