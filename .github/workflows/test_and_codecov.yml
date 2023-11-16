@@ -27,6 +27,11 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
       - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: ./venv/
+          environment-file: environment.yml
+      - run: conda install -c conda-forge astroquery
       - uses: julia-actions/setup-julia@v1
         with:
           version: ${{ matrix.julia-version }}
