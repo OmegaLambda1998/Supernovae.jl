@@ -1,4 +1,4 @@
-[![Tests](https://github.com/OmegaLambda1998/Supernovae.jl/actions/workflows/test.yml/badge.svg)](https://github.com/OmegaLambda1998/Supernovae.jl/actions/workflows/test.yml)
+[![Tests](https://github.com/OmegaLambda1998/Supernovae.jl/actions/workflows/test_and_codecov.yml/badge.svg)](https://github.com/OmegaLambda1998/Supernovae.jl/actions/workflows/test_and_codecov.yml)
 [![Documentation](https://github.com/OmegaLambda1998/Supernovae.jl/actions/workflows/documentation.yml/badge.svg)](https://omegalambda.au/Supernovae.jl/)
 [![Coverage Status](https://coveralls.io/repos/github/OmegaLambda1998/Supernovae.jl/badge.svg?branch=main)](https://coveralls.io/github/OmegaLambda1998/Supernovae.jl?branch=main)
 
