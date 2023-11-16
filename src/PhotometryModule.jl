@@ -15,6 +15,8 @@ export flux_to_mag, mag_to_flux
 export absmag_to_mag, mag_to_absmag
 
 const c = 299792458.0u"m / s"
+const Magnitude = Union{Quantity{T, dimension(1.0u"AB_mag"), U}, Level{L, S, Quantity{T, dimension(1.0u"AB_mag"), U}} where {L, S}} where {T, U}
+const Flux = Union{Quantity{T, dimension(1.0u"μJy"), U}, Level{L, S, Quantity{T, dimension(1.0u"μJy"), U}} where {L, S}} where {T, U}
 
 """
     mutable struct Observation
@@ -189,7 +191,7 @@ As for the rest of the inputs, it is required to specify a zeropoint (in some ma
 - `max_flux_err::Unitful.Quantity{Float64}=Inf * 1.0u"μJy"`: An optional constrain on the maximum flux error. Any observation with flux error greater than this is considered an outlier and removed from the lightcurve.
 - `peak_time::Union{Bool, Float64}=false`: If not `false`, times will be relative to `peak_time` (i.e, will transform from `time` to `time-peak_time`). If `true` times a relative to the time of peak flux, otherwise times are relative to `peak_time`, which is assumed to be of the same unit as the times.
 """
-function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Level, redshift::Float64, config::Dict{String,Any}; max_flux_err::Unitful.Quantity{Float64}=Inf * 1.0u"μJy", peak_time::Union{Bool,Float64}=false, peak_time_unit::Unitful.FreeUnits)
+function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude, redshift::Float64, config::Dict{String,Any}; max_flux_err::Flux=Inf * 1.0u"μJy", peak_time::Union{Bool,Float64}=false, peak_time_unit::Unitful.Time)
     lightcurve = Lightcurve()
     for observation in observations
         # File path
@@ -412,7 +414,7 @@ Convert `flux` to magnitudes. Calculates `zeropoint - 2.5log10(flux)`. Returns `
 - `flux::Unitful.Quantity{Float64}`: The flux to convert, in units compatible with Jansky. If the flux is negative it will be set to 0.0 to avoid `log10` errors
 - `zeropoint::Level`: The assumed zeropoint, used to convert the flux to magnitudes.
 """
-function flux_to_mag(flux::Unitful.Quantity{Float64}, zeropoint::Level)
+function flux_to_mag(flux::Flux, zeropoint::Magnitude)
     if flux < 0.0 * unit(flux)
         flux *= 0.0
     end
@@ -428,7 +430,7 @@ Converts `flux_err` to magnitude error. Calculates `(2.5 / log(10)) * (flux_err 
 - `flux::Unitful.Quantity{Float64}`: The flux associated with the error to be converted
 - `flux_err::Unitful.Quantity{Float64}`: The flux error to be converted
 """
-function flux_err_to_mag_err(flux::Unitful.Quantity{Float64}, flux_err::Unitful.Quantity{Float64})
+function flux_err_to_mag_err(flux::Flux, flux_err::Flux)
     return (2.5 / log(10)) * (flux_err / flux) * u"AB_mag"
 end
 
@@ -442,7 +444,7 @@ Convert `flux` to magnitudes. Calculates `10^(0.4(zeropoint - mag))`. Return `Jy
 - `zeropoint::Level`: The assumed zeropoint, used to convert the flux to magnitudes.
 """
 
-function mag_to_flux(mag::Level, zeropoint::Level)
+function mag_to_flux(mag::Magnitude, zeropoint::Magnitude)
     return (10.0^(0.4 * (ustrip(zeropoint |> u"AB_mag") - ustrip(mag |> u"AB_mag")))) * u"Jy"
 end
 
@@ -456,7 +458,7 @@ Converts `mag` to absolute magnitude. Calculates `mag - 5 log10(c * redshift / (
 - `redshift::Float64`: The redshift, used to calculate the distance to the object
 - `;H0::Unitful.Quantity{Float64}=70.0u"km/s/Mpc`: The assumed value of H0, used to calculate the distance to the object
 """
-function mag_to_absmag(mag::Level, redshift::Float64; H0::Unitful.Quantity{Float64}=70.0u"km/s/Mpc")
+function mag_to_absmag(mag::Magnitude, redshift::Float64; H0::Unitful.Frequency=70.0u"km/s/Mpc")
     d = c * redshift / H0
     μ = 5.0 * log10(d / 10.0u"pc")
     absmag = (ustrip(mag |> u"AB_mag") - μ) * u"AB_mag"
@@ -474,7 +476,7 @@ Converts `absmag` to magnitudes. Calculates `absmag + 5 log10(c * redshift / (H0
 - `;H0::Unitful.Quantity{Float64}=70.0u"km/s/Mpc`: The assumed value of H0, used to calculate the distance to the object
 """
 
-function absmag_to_mag(absmag::Level, redshift::Float64; H0::Unitful.Quantity{Float64}=70.0u"km/s/Mpc")
+function absmag_to_mag(absmag::Magnitude, redshift::Float64; H0::Unitful.Frequency=70.0u"km/s/Mpc")
     d = c * redshift / H0
     μ = 5.0 * log10(d / 10.0u"pc")
     mag = (ustrip(absmag |> u"AB_mag") + μ) * u"AB_mag"

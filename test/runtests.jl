@@ -25,24 +25,13 @@ using Unitful, UnitfulAstro
         rm(filter_path)
         neg_t = -10u"K"
         zero_t = 0.0u"K"
-        neg_λ = -10u"nm"
-        zero_λ = 0.0u"nm"
+        neg_λ = -10.0u"nm"
+        zero_λ = 0u"nm"
         @test_throws DomainError planck(neg_t, 1000.0u"nm") 
         @test_throws DomainError planck(zero_t, 1000.0u"nm") 
         @test_throws DomainError planck(1000.0u"K", neg_λ)
         @test_throws DomainError planck(1000.0u"K", zero_λ)
         @test_throws DomainError synthetic_flux(filter_1, neg_t)
         @test_throws DomainError synthetic_flux(filter_1, zero_t)
-    end
-
-    @testset "PhotometryModule" begin
-        obs_path = joinpath(@__DIR__, "observations")
-        observations = Vector{Dict{String, Any}}(
-            Dict{String, Any}(
-                "NAME" => "Default",
-                "PATH" => joinpath(obs_path, "default.txt")
-            )
-        )
-
     end
 end
