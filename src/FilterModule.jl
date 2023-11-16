@@ -11,6 +11,7 @@ using Trapz
 
 # Exports
 export Filter
+export planck
 export synthetic_flux
 
 const h = 6.626e-34 * u"J / Hz" # Planck Constant
@@ -168,22 +169,28 @@ Planck's law: Calculates the specral radiance of a blackbody at temperature T, e
 - `T::Unitful.Quantity{Float64}`: Temperature of blackbody
 - `λ::Unitful.Quantity{Float64}`: Wavelength of blackbody
 """
-function planck(T::Unitful.Quantity{Float64}, λ::Unitful.Quantity{Float64})
+function planck(T::Unitful.Temperature, λ::Unitful.Length)
+    if T <= 0u"K"
+        throw(DomainError(T, "Temperature must be strictly greater than 0 K"))
+    end
+    if λ <= 0u"Å"
+        throw(DomainError(λ, "Wavelength must be strictly greater than 0 Å"))
+    end
     exponent = h * c / (λ * k * T)
     B = (2π * h * c * c / (λ^5)) / (exp(exponent) - 1) # Spectral Radiance
     return B
 end
 
 """
-    synthetic_flux(filter::Filter, T::Unitful.Quantity{Float64})
+    synthetic_flux(filter::Filter, T::Unitful.Temperature)
 
 Calculates the flux of a blackbody at temperature `T`, as observed with the `filter`
 
 # Arguments
 - `filter::Filter`: The [`Filter`](@ref) through which the blackbody is observed
-- `T::Unitful.Quantity{Float64}`: The temperature of the blackbody
+- `T::Unitful.Temperature`: The temperature of the blackbody
 """
-function synthetic_flux(filter::Filter, T::Unitful.Quantity{Float64})
+function synthetic_flux(filter::Filter, T::Unitful.Temperature)
     numer = @. planck(T, filter.wavelength) * filter.transmission * filter.wavelength
     numer = trapz(numer, filter.wavelength)
     denom = @. filter.transmission / filter.wavelength
