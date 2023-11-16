@@ -8,8 +8,6 @@ on:
   pull_request:
   workflow_dispatch:
 
-permissions: write-all
-
 jobs:
   build:
     runs-on: ubuntu-latest 
@@ -19,11 +17,8 @@ jobs:
         with:
           version: 'nightly' 
       - name: Install dependencies
-        run: JULIA_LOAD_PATH="@stdlib" julia --project=doc/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
-        env:
-          PYTHON: ""
+        run: julia --project=doc/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
       - name: Build and deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PYTHON: ""
         run: julia --project=doc/ doc/make.jl
