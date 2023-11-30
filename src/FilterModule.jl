@@ -35,7 +35,7 @@ function svo(facility::String, instrument::String, passband::String)
     def svo(svo_name):
         try:
             return SvoFps.get_transmission_data(svo_name)
-        except IndexError:
+        except:
             return None
     """
 

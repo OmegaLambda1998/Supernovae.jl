@@ -18,7 +18,9 @@ using Unitful, UnitfulAstro
         # Get the filter from svo
         filter_1 = Filter(facility, instrument, passband, filter_config)
         # Load the same filter from disk
-        filter_2 = Filter(facility, instrument, passband, filter_path)
+        filter_2 = Filter(facility, instrument, passband, filter_config)
+        # Make sure it crashes correctly
+        @test_throws ErrorException broken_filter = Filter("A", "B", "C", filter_config)
         for field in fieldnames(Filter)
             @test getfield(filter_1, field) == getfield(filter_2, field)
         end
@@ -33,5 +35,7 @@ using Unitful, UnitfulAstro
         @test_throws DomainError planck(1000.0u"K", zero_λ)
         @test_throws DomainError synthetic_flux(filter_1, neg_t)
         @test_throws DomainError synthetic_flux(filter_1, zero_t)
+        @test planck(1000u"K", 5000u"nm") == planck(1000.0u"K", 50000.0u"Å")
+        @test synthetic_flux(filter_1, 1000u"K") == synthetic_flux(filter_2, 1000.0u"K")
     end
 end
