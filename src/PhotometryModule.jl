@@ -162,7 +162,8 @@ If no unit is provided for a parameter, it is assumed that the unit is listed in
 """
 function get_default_unit(header::Vector{String}, column_id::String, column_index::Int64)
     column_head = header[column_index]
-    unit = replace(column_head, column_id => "", "[" => "", "]" => "")
+    #unit = replace(column_head, column_id => "", "[" => "", "]" => "")
+    unit = foldl(replace, [column_id => "", "[" => "", "]" => ""], column_head)
     return uparse(unit, unit_context=UNITS)
 end
 
