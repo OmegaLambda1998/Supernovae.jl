@@ -35,7 +35,28 @@ using Unitful, UnitfulAstro
         @test_throws DomainError planck(1000.0u"K", zero_λ)
         @test_throws DomainError synthetic_flux(filter_1, neg_t)
         @test_throws DomainError synthetic_flux(filter_1, zero_t)
-        @test planck(1000u"K", 5000u"nm") == planck(1000.0u"K", 50000.0u"Å")
+        a_planck = planck(1000u"K", 5000u"nm") 
+        b_planck = planck(1000.0u"K", 50000.0u"Å") 
+        @test a_planck |> unit(b_planck) ≈ b_planck
         @test synthetic_flux(filter_1, 1000u"K") == synthetic_flux(filter_2, 1000.0u"K")
+    end
+
+    @testset "PhotometryModule" begin
+        default_observations = Vector{Dict{String, Any}}([
+            Dict{String, Any}(
+                "NAME" => "default",
+                "PATH" => joinpath(@__DIR__, "observations/Default.txt"),
+                "FACILITY" => "JWST",
+                "INSTRUMENT" => "NIRCam",
+                "PASSBAND" => "F200W",
+                "UPPERLIMIT" => false
+            )
+        ])
+        default_zeropoint = -21.0u"AB_mag"
+        default_redshift = 0.0
+        default_config = Dict{String, Any}(
+            "FILTER_PATH" => joinpath(@__DIR__, "filters")
+        )
+        default_lightcurve = Lightcurve(default_observations, default_zeropoint, default_redshift, default_config)
     end
 end
