@@ -1,0 +1,4 @@
+# Time in MJD, flux in μJy, error in flux in μJy
+time[d], flux[μJy], flux_err[μJy], facility, instrument, passband, upperlimit
+0, 1, 2, JWST, NIRCam, F200W, False
+3, 4, 5, JWST, NIRCam, F200W, False

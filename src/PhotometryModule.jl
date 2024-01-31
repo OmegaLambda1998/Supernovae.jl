@@ -342,15 +342,14 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
                 end
                 upperlimit = Vector{Bool}()
                 for d in data
-                    if d in upperlimit_true
+                    if d[upperlimit_col] in upperlimit_true
                         push!(upperlimit, true)
-                    elseif d in upperlimit_false
+                    elseif d[upperlimit_col] in upperlimit_false
                         push!(upperlimit, false)
                     else
                         error("Unknown upperlimit specifier $d, truth options include: $upperlimit_true, false options include: $upperlimit_false")
                     end
                 end
-                upperlimit = [d[upperlimit_col] for d in data]
             else
                 error("Missing upperlimit details. Please either specify a upperlimit column, or provide a upperlimit")
             end
@@ -433,7 +432,7 @@ Convert `flux` to magnitudes. Calculates `zeropoint - 2.5log10(flux)`. Returns `
 - `zeropoint::Level`: The assumed zeropoint, used to convert the flux to magnitudes.
 """
 function flux_to_mag(flux::Flux, zeropoint::Magnitude)
-    if flux < 0.0 * unit(flux)
+    if flux <= 0.0 * unit(flux)
         flux *= 0.0
     end
     return (ustrip(zeropoint |> u"AB_mag") - 2.5 * log10(ustrip(flux |> u"Jy"))) * u"AB_mag"
