@@ -201,7 +201,69 @@ using Unitful, UnitfulAstro
             @test getfield.(default_filter, field) == getfield.(extracols_filter, field) == getfield.(named_filter, field) == getfield.(index_filter, field)
         end
         @test default_upperlimit == extracols_upperlimit == named_upperlimit == index_upperlimit
+
+        # Test that functions make sense
         @test !(false in (absmag_to_mag.(default_absmag, default_redshift) .≈ default_mag))
         @test !(false in (mag_to_flux.(default_mag, default_zeropoint) ≈ default_flux))
+
+        # Error testing
+        broken_observations = Vector{Dict{String, Any}}([
+            Dict{String, Any}(
+                "NAME" => "broken",
+                "PATH" => joinpath(@__DIR__, "observations/Default.txt"),
+                "HEADER" => Dict{String, Any}() 
+            )
+        ])
+        @test_throws ErrorException broken_lightcurve = Lightcurve(broken_observations, default_zeropoint, default_redshift, default_config)
+        broken_observations[1]["HEADER"]["TIME"] = Dict{String, Any}(
+            "COL" => "missing",
+            "UNIT" => "DEFAULT"
+        )
+        @test_throws ErrorException broken_lightcurve = Lightcurve(broken_observations, default_zeropoint, default_redshift, default_config)
+        broken_observations[1]["HEADER"]["TIME"]["COL"] = "time" 
+        @test_throws ErrorException broken_lightcurve = Lightcurve(broken_observations, default_zeropoint, default_redshift, default_config)
+        broken_observations[1]["HEADER"]["FLUX"] = Dict{String, Any}(
+            "COL" => "flux",
+            "UNIT" => "DEFAULT"
+        )
+        @test_throws ErrorException broken_lightcurve = Lightcurve(broken_observations, default_zeropoint, default_redshift, default_config)
+        broken_observations[1]["HEADER"]["FLUX_ERR"] = Dict{String, Any}(
+            "COL" => "flux_err",
+            "UNIT" => "DEFAULT"
+        )
+        @test_throws ErrorException broken_lightcurve = Lightcurve(broken_observations, default_zeropoint, default_redshift, default_config)
+        broken_observations[1]["FACILITY"] = "JWST"
+        @test_throws ErrorException broken_lightcurve = Lightcurve(broken_observations, default_zeropoint, default_redshift, default_config)
+        broken_observations[1]["INSTRUMENT"] = "NIRCam"
+        @test_throws ErrorException broken_lightcurve = Lightcurve(broken_observations, default_zeropoint, default_redshift, default_config)
+        broken_observations[1]["PASSBAND"] = "F200W"
+        @test_throws ErrorException broken_lightcurve = Lightcurve(broken_observations, default_zeropoint, default_redshift, default_config)
+        broken_observations[1]["UPPERLIMIT"] = false
+
+        # Test peak time options
+        peak_time_observations = Vector{Dict{String, Any}}([
+            Dict{String, Any}(
+                "NAME" => "peak_time",
+                "PATH" => joinpath(@__DIR__, "observations/Default.txt"),
+                "FACILITY" => "JWST",
+                "INSTRUMENT" => "NIRCam",
+                "PASSBAND" => "F200W",
+                "UPPERLIMIT" => false
+            )
+        ])
+        peak_time_zeropoint = -21.0u"AB_mag"
+        peak_time_redshift = 1.0
+        peak_time_config = Dict{String, Any}(
+            "FILTER_PATH" => joinpath(@__DIR__, "filters")
+        )
+        lc_1= Lightcurve(peak_time_observations, peak_time_zeropoint, peak_time_redshift, peak_time_config, peak_time=true)
+        lc_2= Lightcurve(peak_time_observations, peak_time_zeropoint, peak_time_redshift, peak_time_config, peak_time=3.0)
+        lc_1_time = [o.time for o in lc_1.observations]
+        lc_2_time = [o.time for o in lc_2.observations]
+        @test lc_1_time == lc_2_time
+
+        # Test getting
+        @test get(default_lightcurve, "time") == default_time
+        @test isnothing(get(default_lightcurve, "key", nothing))
     end
 end

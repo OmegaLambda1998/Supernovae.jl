@@ -373,7 +373,7 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
     end
     # If peak_time is a value, set all time relative to that value
     if peak_time isa Float64
-        peak_time *= unit(time[0])
+        peak_time *= unit(time[1])
         for obs in lightcurve.observations
             obs.time -= peak_time
         end
@@ -395,31 +395,6 @@ function Base.get(lightcurve::Lightcurve, key::String, default::Any=nothing)
         return [getfield(obs, Symbol(key)) for obs in lightcurve.observations]
     end
     return default
-end
-
-function Base.get!(lightcurve::Lightcurve, key::String, default::Any=nothing)
-    value = get(lightcurve, key, default)
-    # If using the default value, set the key for all observations
-    if value == default
-        for obs in lightcurve.observations
-            setfield!(obs, Symbol(key), value)
-        end
-    end
-    return value
-end
-
-# When using get! you can specify either a single value for all observations or a vector of values for the default
-function Base.get!(lightcurve::Lightcurve, key::String, default::Vector)
-    if length(default) != length(lightcurve.observations)
-        error("Default value length ($(length(default))) not equal to number of observations ($(length(lightcurve.observations)))")
-    end
-    value = get(lightcurve, key, default)
-    # If using the default value, set the key for all observations
-    if value == default
-        for (i, obs) in lightcurve.observations
-            setfield(obs, Symbol(key), default[i])
-        end
-    end
 end
 
 """

@@ -80,10 +80,6 @@ function Base.get(supernova::Supernova, key::AbstractString, default::Any=nothin
     return get(supernova.lightcurve, key, default)
 end
 
-function Base.get!(supernova::Supernova, key::AbstractString, default::Any=nothing)
-    return get!(supernova.lightcurve, key, default)
-end
-
 function Base.filter(f::Function, supernova::Supernova)
     filt = filter(f, supernova.lightcurve.observations)
     return Supernova(supernova.name, supernova.zeropoint, supernova.redshift, Lightcurve(filt))
