@@ -1,0 +1,4 @@
+# Time in MJD, flux in μJy, error in flux in μJy
+time, flux, flux_unit, flux_err, flux_err_unit
+0, 1, μJy, 2, μJy
+3, 4, μJy, 5, μJy

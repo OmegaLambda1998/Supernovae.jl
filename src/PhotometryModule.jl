@@ -101,7 +101,7 @@ function get_column_index(header::Vector{String}, header_keys::Dict{String,Any})
     columns = Dict{String,Tuple{Any,Any}}()
     for key in keys(header_keys)
         opts = header_keys[key]
-        column_id::String = opts["COL"]
+        column_id = opts["COL"]
         unit = get(opts, "UNIT", nothing)
         unit_column_id = get(opts, "UNIT_COL", nothing)
         column_index = get_column_id(header, column_id)
@@ -237,33 +237,51 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
             if isnothing(time_col)
                 error("Can not find time column, please make sure you are specifying it correctly")
             end
-            time_unit = columns["TIME"][2]
-            time = [parse(Float64, d[time_col]) * time_unit for d in data]
+            time_unit_col = columns["TIME"][2]
+            time_unit(row) = begin
+                if isa(time_unit_col, Int64) 
+                    return uparse(row[time_unit_col], unit_context=UNITS)
+                else
+                    return time_unit_col
+                end
+            end
+            time = [parse(Float64, d[time_col]) * time_unit(d) for d in data]
         else
             error("Missing time column. Please specify a time column.")
         end
-
 
         if "FLUX" in keys(columns)
             flux_col = columns["FLUX"][1]
             if isnothing(flux_col)
                 error("Can not find flux column, please make sure you are specifying it correctly")
             end
-            flux_unit = columns["FLUX"][2]
-            flux = [(parse(Float64, d[flux_col]) + flux_offset) * flux_unit for d in data]
+            flux_unit_col = columns["FLUX"][2]
+            flux_unit(row) = begin
+                if isa(flux_unit_col, Int64) 
+                    return uparse(row[flux_unit_col], unit_context=UNITS)
+                else
+                    return flux_unit_col
+                end
+            end
+            flux = [(parse(Float64, d[flux_col]) + flux_offset) * flux_unit(d) for d in data]
         else
             error("Missing flux column. Please specify a flux column.")
         end
-
-
 
         if "FLUX_ERR" in keys(columns)
             flux_err_col = columns["FLUX_ERR"][1]
             if isnothing(flux_err_col)
                 error("Can not find flux_err column, please make sure you are specifying it correctly")
             end
-            flux_err_unit = columns["FLUX_ERR"][2]
-            flux_err = [parse(Float64, d[flux_err_col]) * flux_err_unit for d in data]
+            flux_err_unit_col = columns["FLUX_ERR"][2]
+            flux_err_unit(row) = begin
+                if isa(flux_err_unit_col, Int64) 
+                    return uparse(row[flux_err_unit_col], unit_context=UNITS)
+                else
+                    return flux_err_unit_col
+                end
+            end
+            flux_err = [parse(Float64, d[flux_err_col]) * flux_err_unit(d) for d in data]
         else
             error("Missing flux_err column. Please specify a flux_err column.")
         end

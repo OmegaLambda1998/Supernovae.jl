@@ -1,3 +1,4 @@
+# Time in MJD, flux in μJy, error in flux in μJy
 time[d], flux[μJy], flux_err[μJy]
 0, 1, 2
 3, 4, 5

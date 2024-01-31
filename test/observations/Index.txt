@@ -1,0 +1,3 @@
+# Time in MJD, flux, flux units, flux err, flux err units
+0, 1, μJy, 2, μJy
+3, 4, μJy, 5, μJy
