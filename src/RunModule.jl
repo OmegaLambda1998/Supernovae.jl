@@ -19,6 +19,7 @@ export Observation
 export synthetic_flux
 export flux_to_mag, mag_to_flux
 export absmag_to_mag, mag_to_absmag
+export plot_lightcurve
 
 """
     run_Supernovae(toml::Dict{String, Any})

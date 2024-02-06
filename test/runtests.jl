@@ -2,6 +2,8 @@ using Supernovae
 using Supernovae.RunModule
 using Supernovae.RunModule.FilterModule
 using Supernovae.RunModule.PhotometryModule
+using Supernovae.RunModule.SupernovaModule
+using Supernovae.RunModule.PlotModule
 using Test
 using Unitful, UnitfulAstro
 
@@ -294,5 +296,37 @@ using Unitful, UnitfulAstro
         @test get(default_supernova.lightcurve, "time") == get(default_supernova, "time")
         filt_supernova = filter(x -> x.time < 2u"d", default_supernova)
         @test length(filt_supernova.lightcurve.observations) == 1
+        filter!(x -> x.time < 2u"d", default_supernova)
+        @test length(default_supernova.lightcurve.observations) == 1
+    end
+
+    @testset "PlotModule" begin
+        # These `tests` just make sure the plotting function runs without crashing
+        default_observations = Vector{Dict{String, Any}}([
+            Dict{String, Any}(
+                "NAME" => "default",
+                "PATH" => joinpath(@__DIR__, "observations/Default.txt"),
+                "FACILITY" => "JWST",
+                "INSTRUMENT" => "NIRCam",
+                "PASSBAND" => "F200W",
+                "UPPERLIMIT" => false
+            )
+        ])
+        default_zeropoint = -21.0
+        default_redshift = 1.0
+        default_config = Dict{String, Any}(
+            "FILTER_PATH" => joinpath(@__DIR__, "filters"),
+            "OUTPUT_PATH" => joinpath(@__DIR__, "output")
+        )
+        default_data = Dict{String, Any}(
+            "NAME" => "default",
+            "ZEROPOINT" => default_zeropoint,
+            "REDSHIFT" => default_redshift,
+            "OBSERVATIONS" => default_observations 
+        )
+        default_supernova = Supernova(default_data, default_config)
+        plot_config = Dict{String, Any}()
+        plot_lightcurve(default_supernova, plot_config, default_config)
+        @test isfile(joinpath(default_config["OUTPUT_PATH"], "default_lightcurve.svg"))
     end
 end
