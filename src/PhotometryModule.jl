@@ -234,9 +234,6 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
 
         if "TIME" in keys(columns)
             time_col = columns["TIME"][1]
-            if isnothing(time_col)
-                error("Can not find time column, please make sure you are specifying it correctly")
-            end
             time_unit_col = columns["TIME"][2]
             time_unit(row) = begin
                 if isa(time_unit_col, Int64) 
@@ -252,9 +249,6 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
 
         if "FLUX" in keys(columns)
             flux_col = columns["FLUX"][1]
-            if isnothing(flux_col)
-                error("Can not find flux column, please make sure you are specifying it correctly")
-            end
             flux_unit_col = columns["FLUX"][2]
             flux_unit(row) = begin
                 if isa(flux_unit_col, Int64) 
@@ -270,9 +264,6 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
 
         if "FLUX_ERR" in keys(columns)
             flux_err_col = columns["FLUX_ERR"][1]
-            if isnothing(flux_err_col)
-                error("Can not find flux_err column, please make sure you are specifying it correctly")
-            end
             flux_err_unit_col = columns["FLUX_ERR"][2]
             flux_err_unit(row) = begin
                 if isa(flux_err_unit_col, Int64) 
@@ -294,9 +285,6 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
         if isnothing(facility)
             if "FACILITY" in keys(columns)
                 facility_col = columns["FACILITY"][1]
-                if isnothing(facility_col)
-                    error("Can not find facility column, please make sure you are specifying it correctly")
-                end
                 facility = [d[facility_col] for d in data]
             else
                 error("Missing Facility details. Please either specify a facility column, or provide a facility")
@@ -308,9 +296,6 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
         if isnothing(instrument)
             if "INSTRUMENT" in keys(columns)
                 instrument_col = columns["INSTRUMENT"][1]
-                if isnothing(instrument_col)
-                    error("Can not find instrument column, please make sure you are specifying it correctly")
-                end
                 instrument = [d[instrument_col] for d in data]
             else
                 error("Missing instrument details. Please either specify a instrument column, or provide a instrument")
@@ -322,9 +307,6 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
         if isnothing(passband)
             if "PASSBAND" in keys(columns)
                 passband_col = columns["PASSBAND"][1]
-                if isnothing(passband_col)
-                    error("Can not find passband column, please make sure you are specifying it correctly")
-                end
                 passband = [d[passband_col] for d in data]
             else
                 error("Missing passband details. Please either specify a passband column, or provide a passband")
@@ -337,9 +319,6 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
         if isnothing(upperlimit)
             if "UPPERLIMIT" in keys(columns)
                 upperlimit_col = columns["UPPERLIMIT"][1]
-                if isnothing(upperlimit_col)
-                    error("Can not find upperlimit column, please make sure you are specifying it correctly")
-                end
                 upperlimit = Vector{Bool}()
                 for d in data
                     if d[upperlimit_col] in upperlimit_true
