@@ -109,11 +109,11 @@ function plot_lightcurve!(fig::Figure, ax::Axis, supernova::Supernova, plot_conf
             push!(get!(data, (obs.name, obs.filter.passband), Float64[]), ustrip(uconvert(data_unit, obs.flux)) + passband_offset + obs_name_offset)
             push!(get!(data_err, (obs.name, obs.filter.passband), Float64[]), ustrip(uconvert(data_unit, obs.flux_err)))
         elseif data_type == "magnitude"
-            push!(get!(data, (obs.name, obs.filter.passband), Float64[]), ustrip(uconvert(data_unit, obs.magnitude)) + passband_offset + obs_name_offset)
-            push!(get!(data_err, (obs.name, obs.filter.passband), Float64[]), ustrip(uconvert(data_unit, obs.magnitude_err)))
+            push!(get!(data, (obs.name, obs.filter.passband), Float64[]), ustrip(uconvert(data_unit, obs.mag)) + passband_offset + obs_name_offset)
+            push!(get!(data_err, (obs.name, obs.filter.passband), Float64[]), ustrip(uconvert(data_unit, obs.mag_err)))
         elseif data_type == "abs_magnitude"
-            push!(get!(data, (obs.name, obs.filter.passband), Float64[]), ustrip(uconvert(data_unit, obs.abs_magnitude)) + passband_offset + obs_name_offset)
-            push!(get!(data_err, (obs.name, obs.filter.passband), Float64[]), ustrip(uconvert(data_unit, obs.abs_magnitude_err)))
+            push!(get!(data, (obs.name, obs.filter.passband), Float64[]), ustrip(uconvert(data_unit, obs.absmag)) + passband_offset + obs_name_offset)
+            push!(get!(data_err, (obs.name, obs.filter.passband), Float64[]), ustrip(uconvert(data_unit, obs.absmag_err)))
         else
             error("Unknown data type: $data_type. Possible options are [flux, magnitude, abs_magnitude]")
         end

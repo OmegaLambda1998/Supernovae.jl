@@ -328,5 +328,13 @@ using Unitful, UnitfulAstro
         plot_config = Dict{String, Any}()
         plot_lightcurve(default_supernova, plot_config, default_config)
         @test isfile(joinpath(default_config["OUTPUT_PATH"], "default_lightcurve.svg"))
+        plot_config["DATATYPE"] = "magnitude"
+        plot_lightcurve(default_supernova, plot_config, default_config)
+        @test isfile(joinpath(default_config["OUTPUT_PATH"], "default_lightcurve.svg"))
+        plot_config["DATATYPE"] = "abs_magnitude"
+        plot_lightcurve(default_supernova, plot_config, default_config)
+        @test isfile(joinpath(default_config["OUTPUT_PATH"], "default_lightcurve.svg"))
+        plot_config["DATATYPE"] = "error"
+        @test_throws ErrorException plot_lightcurve(default_supernova, plot_config, default_config)
     end
 end
