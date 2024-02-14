@@ -1,6 +1,13 @@
+[![Tests](https://github.com/OmegaLambda1998/Supernovae.jl/actions/workflows/test_and_codecov.yml/badge.svg)](https://github.com/OmegaLambda1998/Supernovae.jl/actions/workflows/test_and_codecov.yml)
+[![Documentation](https://github.com/OmegaLambda1998/Supernovae.jl/actions/workflows/documentation.yml/badge.svg)](https://omegalambda.au/Supernovae.jl/)
+[![Coverage Status](https://coveralls.io/repos/github/OmegaLambda1998/Supernovae.jl/badge.svg?branch=main)](https://coveralls.io/github/OmegaLambda1998/Supernovae.jl?branch=main)
+
 # [Supernovae.jl](https://github.com/OmegaLambda1998/Supernovae.jl) Documentation
 
 Provides methods for reading in and plotting supernova lightcurves from text files. Extremely flexible reading methods allow for almost any reasonable lightcurve data file syntax to be read.
+
+## Prerequisites
+To automatically download passbands from the [SVO Filter Profile Service](svo2.cab.inta-csic.es/theory/fps/), you must install the python package [astroquery](https://astroquery.readthedocs.io/en/latest/index.html). This is installed as part of the build process, installing into a `Conda.jl` conda environment.
 
 ## Install
 ```bash
@@ -8,6 +15,7 @@ $ git clone git@github.com:OmegaLambda1998/Supernovae.jl.git
 $ cd Supernovae.jl
 $ make
 ```
+This will instantiate and build `Supernovae.jl`, installing all required Julia packages, and setting up a Conda environment for the required Python packages. Finally it will run the tests to make sure everything is working. If you want to skip testing run `make install` instead. You can also run `./scripts/Supernovae -v ./Examples/Inputs/2021zby/2021zby_data.toml` to load and plot the lightcurve of 2021zby. This will create a `.svg` plot in `./Examples/Outputs/2021zby/`.
 
 ## Usage
 ```bash
@@ -17,7 +25,7 @@ $ ./scripts/Supernovae -v path/to/input.toml
 Details on how to build the input files which control `Supernovae.jl` can be found in [Usage](./usage.md).
 
 ## Example data file
-The following example input file can be found in the Examples directory.
+The following example input file can be found in the Examples directory. `base_path` is the directory containing your input file.
 
 ```toml
 [ global ]
@@ -30,8 +38,7 @@ output_path = "../../Outputs/2021zby" # Defaults to base_path / Output
 name = "2021zby" # Required
 zeropoint = 8.9 # Required
 redshift = 0.02559 # Required
-max_flux_err = 2.5e2 # Optional, set's the maximum allowed value for the uncertainty in the flux
-max_flux_err_unit = "µJy" # Optional, default to µJy
+max_flux_err = 2.5e2 # Optional, set's the maximum allowed value for the uncertainty in the flux, assumes same units as flux
 peak_time = true # Default false. Can either be true, in which case all times will become relative to the peak data point. Alternatively, give a value, and all times will be relative to that value
 peak_time_unit = "d" # Optional, default to d
 

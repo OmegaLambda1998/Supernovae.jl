@@ -8,8 +8,7 @@ output_path = "../../Outputs/2021zby" # Defaults to base_path / Output
 name = "2021zby" # Required
 zeropoint = 8.9 # Required
 redshift = 0.02559 # Required
-max_flux_err = 2.5e2 # Optional, set's the maximum allowed value for the uncertainty in the flux
-max_flux_err_unit = "µJy" # Optional, default to µJy
+max_flux_err = 2.5e2 # Optional, set's the maximum allowed value for the uncertainty in the flux, assumes same units as flux
 peak_time = true # Default false. Can either be true, in which case all times will become relative to the peak data point. Alternatively, give a value, and all times will be relative to that value
 peak_time_unit = "d" # Optional, default to d
 

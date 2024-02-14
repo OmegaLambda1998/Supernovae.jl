@@ -7,6 +7,8 @@ install:
 test:
 	$(JULIA) -e 'using Pkg; Pkg.test()'
 
-all:
-	install
-	test
+all: install test
+
+.PHONY: install test
+
+.DEFAULT_GOAL := all

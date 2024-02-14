@@ -6,9 +6,9 @@ To load a supernova with `Supernovae.jl` you must create an input file containin
 - Ability to include other files via `<include path/to/file.toml>`. This will essentially copy paste the contents of `file.toml` into your input file.
 - Ability to interpolate environmental variables via `<$ENV_VAR>`.
 - Ability to interpolate other keys in your input via `<%key>`. As long as `<%key>` exists in the same subtree, the value of key will be interpolated, allowing for easy duplication.
-- Default values vai `[DEFAULT]`. And sub-keys are available everywhere. This is particularly useful when combined with interpolation.
+- Default values via `[DEFAULT]`. Default sub-keys are available everywhere. This is particularly useful when combined with interpolation.
 
-See the `BetterInputFiles` docs for more details and examples about how this all works.
+See the BetterInputFiles [documentation](https://www.omegalambda.au/BetterInputFiles.jl/dev/) for more details and examples about how this all works.
 
 ## Supernovae.jl Input Files
 
@@ -32,10 +32,8 @@ name::String # The name of the supernova
 zeropoint::Float64 # The zeropoint of the supernova
 zeropoint_unit::String="AB_mag" # The unit of the zeropoint.
 redshift::Float64 # The redshift of the supernova
-max_flux_err::Float64=Inf # The maximum allowed flux error. Any datapoint with flux error greater than this will be removed.
-max_flux_err_unit::String="μJy" # The unit of the maximum flux error.
-peak_time::Union{Bool, Float64}=false # If true, set time relatative to the time of maximum flux. Alternatively, provide a value for time to be set relative to.
-peak_time_unit::String="d" # The unit of the peak_time, only used if peak_time is a value.
+max_flux_err::Float64=Inf # The maximum allowed flux error. Any datapoint with flux error greater than this will be removed. Assumes the same units as flux.
+peak_time::Union{Bool, Float64}=false # If true, set time relatative to the time of maximum flux. Alternatively, provide a value for time to be set relative to. Assumes the same units as time
 ```
 In addition to these options, you must specify `[[ data.observations ]]`, which contain details on the data files you with to associate with this supernova. The main assumption is that columns are different parameters and rows are different datapoints. Since `[[ data.observations ]]` is a list object, you can include as many files as you want, and they will all get collated into the one supernova object. `observations` keys include:
 ```toml
