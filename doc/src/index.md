@@ -7,7 +7,7 @@
 Provides methods for reading in and plotting supernova lightcurves from text files. Extremely flexible reading methods allow for almost any reasonable lightcurve data file syntax to be read.
 
 ## Prerequisites
-To automatically download passbands from the [SVO Filter Profile Service](svo2.cab.inta-csic.es/theory/fps/), you must install the python package [astroquery](https://astroquery.readthedocs.io/en/latest/index.html). This is installed as part of the build process, installing into a `Conda.jl` conda environment.
+To automatically download passbands from the [SVO Filter Profile Service](http://svo2.cab.inta-csic.es/theory/fps/), you must install the python package [astroquery](https://astroquery.readthedocs.io/en/latest/index.html). This is installed as part of the build process, installing into a `Conda.jl` conda environment.
 
 ## Install
 ```bash
