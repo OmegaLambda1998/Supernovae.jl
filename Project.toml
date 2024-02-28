@@ -1,7 +1,7 @@
 name = "Supernovae"
 uuid = "f00d7deb-a70b-45c2-b896-7f55cd638e72"
 authors = ["Patrick Armstrong <patrick.armstrong@anu.edu.au> and contributors"]
-version = "0.1.0"
+version = "1.0"
 
 [deps]
 ArgParse = "c7e460c6-2fb9-53a9-8c5b-16f535851c63"
@@ -19,4 +19,16 @@ Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
 UnitfulAstro = "6112ee07-acf9-5e0f-b108-d242c714bf9f"
 
 [compat]
+ArgParse = "^1.1"
+BetterInputFiles = "^1.2"
+CairoMakie = "^0.11"
+Conda = "^1.10"
+Makie = "^0.20"
+OrderedCollections = "^1.6"
+PyCall = "^1.96"
+StatProfilerHTML = "^1.6"
+TOML = "^1.0"
+Trapz = "^2.0"
+Unitful = "^1.19"
+UnitfulAstro = "^1.2"
 julia = "^1.6"
