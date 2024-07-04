@@ -2,5 +2,5 @@ Manifest.toml
 /Examples/Outputs/
 /prepare_pkg.py
 /statprof/
-/docs/build/
+/doc/build/
 /venv
