@@ -170,10 +170,10 @@ Planck's law: Calculates the specral radiance of a blackbody at temperature T, e
 - `λ::Unitful.Length`: Wavelength of blackbody
 """
 function planck(T::Unitful.Temperature, λ::Unitful.Length)
-    if T < 0u"K"
+    if T <= 0u"K"
         throw(DomainError(T, "Temperature must be strictly greater than 0 K"))
     end
-    if λ < 0u"Å"
+    if λ <= 0u"Å"
         throw(DomainError(λ, "Wavelength must be strictly greater than 0 Å"))
     end
     exponent = h * c / (λ * k * T)
