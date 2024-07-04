@@ -370,9 +370,8 @@ function Lightcurve(
                 end
             end
         end
-        filter = [
-            Filter(facility[i], instrument[i], passband[i], config) for i = 1:length(data)
-        ]
+        filter =
+            [Filter(facility[i], instrument[i], passband[i], config) for i = 1:length(data)]
 
         obs = [
             Observation(
