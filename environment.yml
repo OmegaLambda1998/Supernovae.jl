@@ -1,4 +1,0 @@
-name: ./venv/
-channels:
-  - defaults
-prefix: ./venv/ 

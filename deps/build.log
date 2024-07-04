@@ -1,21 +1,5 @@
-Collecting package metadata (current_repodata.json): ...working... done
-Solving environment: ...working... done
-
-
-==> WARNING: A newer version of conda exists. <==
-  current version: 23.3.1
-  latest version: 23.11.0
-
-Please update conda by running
-
-    $ conda update -n base -c conda-forge conda
-
-Or to minimize the number of packages updated during conda update use
-
-     conda install conda=23.11.0
-
-
-
-# All requested packages already installed.
-
-[ Info: Running `conda install -y astroquery` in root environment
+    Building Conda → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/b19db3927f0db4151cb86d073689f2428e524576/build.log`
+[ Info: /home/patricka/.julia/conda/3/x86_64/bin
+    Building Conda ─→ `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/b19db3927f0db4151cb86d073689f2428e524576/build.log`
+    Building PyCall → `~/.julia/scratchspaces/44cfe95a-1eb2-52ea-b672-e2afdf69b78f/9816a3826b0ebf49ab4926e2b18842ad8b5c8f04/build.log`
+[ Info: 3.10.14; /home/patricka/.julia/conda/3/x86_64/lib/libpython3.10.so.1.0; /home/patricka/.julia/conda/3/x86_64/bin/python; true

@@ -1,4 +1,5 @@
 # Filter Module
+__precompile__()
 module FilterModule
 
 # Internal Packages 
@@ -18,6 +19,12 @@ const h = 6.626e-34 * u"J / Hz" # Planck Constant
 const k = 1.381e-23 * u"J / K" # Boltzmann Constant
 const c = 299792458 * u"m / s" # Speed of light in a vacuum
 
+# Python setup
+const svo_fps = PyNULL()
+function __init__()
+    copy!(svo_fps, pyimport_conda("astroquery.svo_fps", "astroquery", "conda-forge"))
+end
+
 """
     svo(facility::String, instrument::String, passband::String)
 
@@ -29,18 +36,12 @@ Attempt to get filter transmission curve from [SVO](http://svo2.cab.inta-csic.es
 - `passband::String`: SVO name for the filter's passband
 """
 function svo(facility::String, instrument::String, passband::String)
-    py"""
-    from astroquery.svo_fps import SvoFps
-
-    def svo(svo_name):
-        try:
-            return SvoFps.get_transmission_data(svo_name)
-        except:
-            return None
-    """
-
     svo_name = "$facility/$instrument.$passband"
-    return py"svo"(svo_name)
+    try
+        return svo_fps.SvoFps.get_transmission_data(svo_name)
+    catch
+        return nothing
+    end
 end
 
 """
@@ -169,10 +170,10 @@ Planck's law: Calculates the specral radiance of a blackbody at temperature T, e
 - `λ::Unitful.Length`: Wavelength of blackbody
 """
 function planck(T::Unitful.Temperature, λ::Unitful.Length)
-    if T <= 0u"K"
+    if T < 0u"K"
         throw(DomainError(T, "Temperature must be strictly greater than 0 K"))
     end
-    if λ <= 0u"Å"
+    if λ < 0u"Å"
         throw(DomainError(λ, "Wavelength must be strictly greater than 0 Å"))
     end
     exponent = h * c / (λ * k * T)
