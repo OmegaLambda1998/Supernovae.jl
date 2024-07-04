@@ -75,7 +75,12 @@ Make [`Filter`](@ref) object from [`svo`](@ref) transmission curve.
 - `passband::String`: Name of the filter's passband
 - `svo::Pycall.PyObject`: SVO transmission curve
 """
-function Filter(facility::String, instrument::String, passband::String, svo::PyCall.PyObject)
+function Filter(
+    facility::String,
+    instrument::String,
+    passband::String,
+    svo::PyCall.PyObject,
+)
     wavelength = svo.__getitem__("Wavelength")
     transmission = svo.__getitem__("Transmission")
     return Filter(facility, instrument, passband, wavelength .* u"Å", transmission)
@@ -92,7 +97,12 @@ Make [`Filter`](@ref) object from `filter_file` transmission curve.
 - `passband::String`: Name of the filter's passband
 - `filter_file::AbstractString`: Path to transmission curve file. Assumed to be a comma delimited wavelength,transmission file.
 """
-function Filter(facility::String, instrument::String, passband::String, filter_file::AbstractString)
+function Filter(
+    facility::String,
+    instrument::String,
+    passband::String,
+    filter_file::AbstractString,
+)
     lines = open(filter_file) do io
         ls = [line for line in readlines(io) if line != ""]
         return ls
@@ -120,7 +130,12 @@ Make [`Filter`](@ref) object from `config` options. `config` must include "FILTE
 - `passband::String`: Name of the filter's passband
 - `config::Dict{String, Any}`: Options for creating a Filter.
 """
-function Filter(facility::String, instrument::String, passband::String, config::Dict{String,Any})
+function Filter(
+    facility::String,
+    instrument::String,
+    passband::String,
+    config::Dict{String,Any},
+)
     filter_directory = config["FILTER_PATH"]
     filter_file = "$(facility)__$(instrument)__$(passband)"
     if !isfile(joinpath(filter_directory, filter_file))
@@ -132,10 +147,17 @@ function Filter(facility::String, instrument::String, passband::String, config::
             save_filter(filter, filter_directory)
             return filter
         else
-            error("Could not find $(filter_file) anywhere, no filter found with facility: $facility, instrument: $instrument, and passband: $passband")
+            error(
+                "Could not find $(filter_file) anywhere, no filter found with facility: $facility, instrument: $instrument, and passband: $passband",
+            )
         end
     else
-        return Filter(facility, instrument, passband, joinpath(filter_directory, filter_file))
+        return Filter(
+            facility,
+            instrument,
+            passband,
+            joinpath(filter_directory, filter_file),
+        )
     end
 end
 
@@ -149,10 +171,11 @@ Save `filter` to directory `filter_dir`.
 - `filter_dir::AbstractString`: The directory to save `filter` to.
 """
 function save_filter(filter::Filter, filter_dir::AbstractString)
-    filter_path = joinpath(filter_dir, "$(filter.facility)__$(filter.instrument)__$(filter.passband)")
+    filter_path =
+        joinpath(filter_dir, "$(filter.facility)__$(filter.instrument)__$(filter.passband)")
     @debug "Saving filter to $filter_path"
     filter_str = ""
-    for i in 1:length(filter.wavelength)
+    for i = 1:length(filter.wavelength)
         filter_str *= "$(ustrip(filter.wavelength[i])),$(filter.transmission[i])\n"
     end
     open(filter_path, "w") do io

@@ -15,8 +15,14 @@ export flux_to_mag, mag_to_flux
 export absmag_to_mag, mag_to_absmag
 
 const c = 299792458.0u"m / s"
-const Magnitude = Union{Quantity{T, dimension(1.0u"AB_mag"), U}, Level{L, S, Quantity{T, dimension(1.0u"AB_mag"), U}} where {L, S}} where {T, U}
-const Flux = Union{Quantity{T, dimension(1.0u"μJy"), U}, Level{L, S, Quantity{T, dimension(1.0u"μJy"), U}} where {L, S}} where {T, U}
+const Magnitude = Union{
+    Quantity{T,dimension(1.0u"AB_mag"),U},
+    Level{L,S,Quantity{T,dimension(1.0u"AB_mag"),U}} where {L,S},
+} where {T,U}
+const Flux = Union{
+    Quantity{T,dimension(1.0u"μJy"),U},
+    Level{L,S,Quantity{T,dimension(1.0u"μJy"),U}} where {L,S},
+} where {T,U}
 
 """
     mutable struct Observation
@@ -70,7 +76,7 @@ Parse a file, splitting on `delimiter` and removing `comment`s.
 - `;delimiter::String=", "`: What `delimiter` to split on
 - `;comment::String="#"`: What comments to remove. Will remove everything from this comment onwards, allowing for inline comments
 """
-function parse_file(lines::Vector{String}; delimiter::String=", ", comment::String="#")
+function parse_file(lines::Vector{String}; delimiter::String = ", ", comment::String = "#")
     parsed_file = Vector{Vector{String}}()
     for line in lines
         # Remove comments
@@ -109,7 +115,7 @@ function get_column_index(header::Vector{String}, header_keys::Dict{String,Any})
             if unit == "DEFAULT"
                 column_unit = get_default_unit(header, column_id, column_index)
             else
-                column_unit = uparse(unit, unit_context=UNITS)
+                column_unit = uparse(unit, unit_context = UNITS)
             end
         elseif !isnothing(unit_column_id)
             column_unit = get_column_id(header, unit_column_id)
@@ -162,8 +168,8 @@ If no unit is provided for a parameter, it is assumed that the unit is listed in
 """
 function get_default_unit(header::Vector{String}, column_id::String, column_index::Int64)
     column_head = header[column_index]
-    unit = foldl(replace, [column_id => "", "[" => "", "]" => ""]; init=column_head)
-    return uparse(unit, unit_context=UNITS)
+    unit = foldl(replace, [column_id => "", "[" => "", "]" => ""]; init = column_head)
+    return uparse(unit, unit_context = UNITS)
 end
 
 """
@@ -191,7 +197,14 @@ As for the rest of the inputs, it is required to specify a zeropoint (in some ma
 - `max_flux_err::Flux=Inf * 1.0u"μJy"`: An optional constrain on the maximum flux error. Any observation with flux error greater than this is considered an outlier and removed from the lightcurve.
 - `peak_time::Union{Bool, Float64}=false`: If not `false`, times will be relative to `peak_time` (i.e, will transform from `time` to `time - peak_time`). If `true` times a relative to the time of peak flux, otherwise times are relative to `peak_time`, which is assumed to be of the same unit as the times.
 """
-function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude, redshift::Float64, config::Dict{String,Any}; max_flux_err::Flux=Inf * 1.0u"μJy", peak_time::Union{Bool,Float64}=false)
+function Lightcurve(
+    observations::Vector{Dict{String,Any}},
+    zeropoint::Magnitude,
+    redshift::Float64,
+    config::Dict{String,Any};
+    max_flux_err::Flux = Inf * 1.0u"μJy",
+    peak_time::Union{Bool,Float64} = false,
+)
     lightcurve = Lightcurve()
     for observation in observations
         # File path
@@ -220,12 +233,12 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
         default_header_keys = Dict{String,Any}(
             "TIME" => Dict{String,Any}("COL" => "time", "UNIT" => "DEFAULT"),
             "FLUX" => Dict{String,Any}("COL" => "flux", "UNIT" => "DEFAULT"),
-            "FLUX_ERR" => Dict{String,Any}("COL" => "flux_err", "UNIT" => "DEFAULT")
+            "FLUX_ERR" => Dict{String,Any}("COL" => "flux_err", "UNIT" => "DEFAULT"),
         )
         header_keys = get(observation, "HEADER", default_header_keys)
 
         obs_file = open(obs_path, "r") do io
-            return parse_file(readlines(io); delimiter=delimiter, comment=comment)
+            return parse_file(readlines(io); delimiter = delimiter, comment = comment)
         end
         header = obs_file[1]
         data = obs_file[2:end]
@@ -236,8 +249,8 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
             time_col = columns["TIME"][1]
             time_unit_col = columns["TIME"][2]
             time_unit(row) = begin
-                if isa(time_unit_col, Int64) 
-                    return uparse(row[time_unit_col], unit_context=UNITS)
+                if isa(time_unit_col, Int64)
+                    return uparse(row[time_unit_col], unit_context = UNITS)
                 else
                     return time_unit_col
                 end
@@ -251,13 +264,14 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
             flux_col = columns["FLUX"][1]
             flux_unit_col = columns["FLUX"][2]
             flux_unit(row) = begin
-                if isa(flux_unit_col, Int64) 
-                    return uparse(row[flux_unit_col], unit_context=UNITS)
+                if isa(flux_unit_col, Int64)
+                    return uparse(row[flux_unit_col], unit_context = UNITS)
                 else
                     return flux_unit_col
                 end
             end
-            flux = [(parse(Float64, d[flux_col]) + flux_offset) * flux_unit(d) for d in data]
+            flux =
+                [(parse(Float64, d[flux_col]) + flux_offset) * flux_unit(d) for d in data]
         else
             error("Missing flux column. Please specify a flux column.")
         end
@@ -266,8 +280,8 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
             flux_err_col = columns["FLUX_ERR"][1]
             flux_err_unit_col = columns["FLUX_ERR"][2]
             flux_err_unit(row) = begin
-                if isa(flux_err_unit_col, Int64) 
-                    return uparse(row[flux_err_unit_col], unit_context=UNITS)
+                if isa(flux_err_unit_col, Int64)
+                    return uparse(row[flux_err_unit_col], unit_context = UNITS)
                 else
                     return flux_err_unit_col
                 end
@@ -287,7 +301,9 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
                 facility_col = columns["FACILITY"][1]
                 facility = [d[facility_col] for d in data]
             else
-                error("Missing Facility details. Please either specify a facility column, or provide a facility")
+                error(
+                    "Missing Facility details. Please either specify a facility column, or provide a facility",
+                )
             end
         else
             facility = [facility for _ in data]
@@ -298,7 +314,9 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
                 instrument_col = columns["INSTRUMENT"][1]
                 instrument = [d[instrument_col] for d in data]
             else
-                error("Missing instrument details. Please either specify a instrument column, or provide a instrument")
+                error(
+                    "Missing instrument details. Please either specify a instrument column, or provide a instrument",
+                )
             end
         else
             instrument = [instrument for _ in data]
@@ -309,7 +327,9 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
                 passband_col = columns["PASSBAND"][1]
                 passband = [d[passband_col] for d in data]
             else
-                error("Missing passband details. Please either specify a passband column, or provide a passband")
+                error(
+                    "Missing passband details. Please either specify a passband column, or provide a passband",
+                )
             end
         else
             passband = [passband for _ in data]
@@ -326,11 +346,15 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
                     elseif d[upperlimit_col] in upperlimit_false
                         push!(upperlimit, false)
                     else
-                        error("Unknown upperlimit specifier $d, truth options include: $upperlimit_true, false options include: $upperlimit_false")
+                        error(
+                            "Unknown upperlimit specifier $d, truth options include: $upperlimit_true, false options include: $upperlimit_false",
+                        )
                     end
                 end
             else
-                error("Missing upperlimit details. Please either specify a upperlimit column, or provide a upperlimit")
+                error(
+                    "Missing upperlimit details. Please either specify a upperlimit column, or provide a upperlimit",
+                )
             end
         else
             if typeof(upperlimit) == Bool
@@ -340,13 +364,30 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
                     upperlimit_equivalent = get_equiv[upperlimit]
                     upperlimit = [u < 0 * unit(u) for u in upperlimit_equivalent]
                 else
-                    error("Can not determine upperlimit from $(upperlimit), only 'time', 'flux', and 'flux_err' can be used.")
+                    error(
+                        "Can not determine upperlimit from $(upperlimit), only 'time', 'flux', and 'flux_err' can be used.",
+                    )
                 end
             end
         end
-        filter = [Filter(facility[i], instrument[i], passband[i], config) for i in 1:length(data)]
+        filter = [
+            Filter(facility[i], instrument[i], passband[i], config) for i = 1:length(data)
+        ]
 
-        obs = [Observation(obs_name, time[i], flux[i], flux_err[i], mag[i], mag_err[i], absmag[i], absmag_err[i], filter[i], upperlimit[i]) for i in 1:length(data) if flux_err[i] < max_flux_err]
+        obs = [
+            Observation(
+                obs_name,
+                time[i],
+                flux[i],
+                flux_err[i],
+                mag[i],
+                mag_err[i],
+                absmag[i],
+                absmag_err[i],
+                filter[i],
+                upperlimit[i],
+            ) for i = 1:length(data) if flux_err[i] < max_flux_err
+        ]
 
         lightcurve.observations = vcat(lightcurve.observations, obs)
     end
@@ -369,7 +410,7 @@ function Lightcurve(observations::Vector{Dict{String,Any}}, zeropoint::Magnitude
     return lightcurve
 end
 
-function Base.get(lightcurve::Lightcurve, key::String, default::Any=nothing)
+function Base.get(lightcurve::Lightcurve, key::String, default::Any = nothing)
     if Symbol(key) in fieldnames(Observation)
         return [getfield(obs, Symbol(key)) for obs in lightcurve.observations]
     end
@@ -416,7 +457,8 @@ Convert `flux` to magnitudes. Calculates `10^(0.4(zeropoint - mag))`. Return `Jy
 """
 
 function mag_to_flux(mag::Magnitude, zeropoint::Magnitude)
-    return (10.0^(0.4 * (ustrip(zeropoint |> u"AB_mag") - ustrip(mag |> u"AB_mag")))) * u"Jy"
+    return (10.0^(0.4 * (ustrip(zeropoint |> u"AB_mag") - ustrip(mag |> u"AB_mag")))) *
+           u"Jy"
 end
 
 """
@@ -429,7 +471,11 @@ Converts `mag` to absolute magnitude. Calculates `mag - 5 log10(c * redshift / (
 - `redshift::Float64`: The redshift, used to calculate the distance to the object
 - `;H0::Unitful.Quantity{Float64}=70.0u"km/s/Mpc`: The assumed value of H0, used to calculate the distance to the object
 """
-function mag_to_absmag(mag::Magnitude, redshift::Float64; H0::Unitful.Frequency=70.0u"km/s/Mpc")
+function mag_to_absmag(
+    mag::Magnitude,
+    redshift::Float64;
+    H0::Unitful.Frequency = 70.0u"km/s/Mpc",
+)
     d = c * redshift / H0
     μ = 5.0 * log10(d / 10.0u"pc")
     absmag = (ustrip(mag |> u"AB_mag") - μ) * u"AB_mag"
@@ -447,7 +493,11 @@ Converts `absmag` to magnitudes. Calculates `absmag + 5 log10(c * redshift / (H0
 - `;H0::Unitful.Quantity{Float64}=70.0u"km/s/Mpc`: The assumed value of H0, used to calculate the distance to the object
 """
 
-function absmag_to_mag(absmag::Magnitude, redshift::Float64; H0::Unitful.Frequency=70.0u"km/s/Mpc")
+function absmag_to_mag(
+    absmag::Magnitude,
+    redshift::Float64;
+    H0::Unitful.Frequency = 70.0u"km/s/Mpc",
+)
     d = c * redshift / H0
     μ = 5.0 * log10(d / 10.0u"pc")
     mag = (ustrip(absmag |> u"AB_mag") + μ) * u"AB_mag"
