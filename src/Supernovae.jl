@@ -68,9 +68,9 @@ Loads `toml_path`, and sets up logging with verbosity based on `verbose`. Runs [
 function main(toml_path::AbstractString, verbose::Bool, profile::Bool)
     paths = OrderedDict(
         "data_path" => ("base_path", "Data"),
-        "filter_path" => ("base_path", "Filters")
+        "filter_path" => ("base_path", "Filters"),
     )
-    toml = setup_input(toml_path, verbose; paths=paths)
+    toml = setup_input(toml_path, verbose; paths = paths)
     if profile
         @warn "Running everything once to precompile before profiling"
         run_Supernovae(toml)
