@@ -4,7 +4,6 @@ module Supernovae
 using TOML
 using BetterInputFiles
 using ArgParse
-using StatProfilerHTML
 using OrderedCollections
 
 # Internal Packages
@@ -32,9 +31,6 @@ function get_args()
         "--verbose", "-v"
         help = "Increase level of logging verbosity"
         action = :store_true
-        "--profile", "-p"
-        help = "Run profiler"
-        action = :store_true
         "input"
         help = "Path to .toml file"
         required = true
@@ -51,8 +47,7 @@ function main()
     args = get_args()
     toml_path = args["input"]
     verbose = args["verbose"]
-    profile = args["profile"]
-    main(toml_path, verbose, profile)
+    main(toml_path, verbose)
 end
 
 """
@@ -63,22 +58,14 @@ Loads `toml_path`, and sets up logging with verbosity based on `verbose`. Runs [
 # Arguments
 - `toml_path::AbstractString`: Path to toml input file.
 - `verbose::Bool`: Set verbosity of logging
-- `profile::Bool`: If true, profile [`run_Supernovae`](@ref)
 """
-function main(toml_path::AbstractString, verbose::Bool, profile::Bool)
+function main(toml_path::AbstractString, verbose::Bool)
     paths = OrderedDict(
         "data_path" => ("base_path", "Data"),
         "filter_path" => ("base_path", "Filters"),
     )
     toml = setup_input(toml_path, verbose; paths = paths)
-    if profile
-        @warn "Running everything once to precompile before profiling"
-        run_Supernovae(toml)
-        @profilehtml run_Supernovae(toml)
-    else
-        run_Supernovae(toml)
-    end
-
+    run_Supernovae(toml)
 end
 
 if abspath(PROGRAM_FILE) == @__FILE__
