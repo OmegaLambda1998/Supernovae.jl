@@ -139,8 +139,8 @@ function Filter(
     filter_directory = config["FILTER_PATH"]
     filter_file = "$(facility)__$(instrument)__$(passband)"
     if !isfile(joinpath(filter_directory, filter_file))
-        @debug "Could not find $(filter_file) in $(filter_directory)"
-        @debug "Attempting to find filter on SVO FPS"
+        @warn "Could not find $(filter_file) in $(filter_directory)"
+        @warn "Attempting to find filter on SVO FPS"
         filter_svo = svo(facility, instrument, passband)
         if !isnothing(filter_svo)
             filter = Filter(facility, instrument, passband, filter_svo)
