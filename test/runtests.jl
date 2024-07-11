@@ -28,7 +28,7 @@ using Unitful, UnitfulAstro
         for field in fieldnames(Filter)
             @test getfield(filter_1, field) == getfield(filter_2, field)
         end
-        rm(filter_path)
+        #rm(filter_path)
 
         neg_t = -10u"K"
         zero_t = 0.0u"K"
