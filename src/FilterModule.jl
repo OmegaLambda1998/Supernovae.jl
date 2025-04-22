@@ -75,12 +75,7 @@ Make [`Filter`](@ref) object from [`svo`](@ref) transmission curve.
 - `passband::String`: Name of the filter's passband
 - `svo::Pycall.Py`: SVO transmission curve
 """
-function Filter(
-    facility::String,
-    instrument::String,
-    passband::String,
-    svo::PythonCall.Py,
-)
+function Filter(facility::String, instrument::String, passband::String, svo::PythonCall.Py)
     wavelength = svo.__getitem__("Wavelength")
     transmission = svo.__getitem__("Transmission")
     return Filter(facility, instrument, passband, wavelength .* u"Å", transmission)
