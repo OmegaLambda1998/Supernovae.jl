@@ -7,7 +7,7 @@ module FilterModule
 # External Packages 
 using Unitful
 using UnitfulAstro
-using PyCall
+using PythonCall
 using Trapz
 
 # Exports
@@ -20,15 +20,15 @@ const k = 1.381e-23 * u"J / K" # Boltzmann Constant
 const c = 299792458 * u"m / s" # Speed of light in a vacuum
 
 # Python setup
-const svo_fps = PyNULL()
+const svo_fps = Ref{Py}()
 function __init__()
-    copy!(svo_fps, pyimport_conda("astroquery.svo_fps", "astroquery", "conda-forge"))
+    svo_fps[] = pyimport("astroquery.svo_fps")
 end
 
 """
     svo(facility::String, instrument::String, passband::String)
 
-Attempt to get filter transmission curve from [SVO](http://svo2.cab.inta-csic.es/theory/fps/). Uses the python package `astroquery` via PyCall.
+Attempt to get filter transmission curve from [SVO](http://svo2.cab.inta-csic.es/theory/fps/). Uses the python package `astroquery` via PythonCall.
 
 # Arguments
 - `facility::String`: SVO name for the filter's facility
@@ -38,7 +38,7 @@ Attempt to get filter transmission curve from [SVO](http://svo2.cab.inta-csic.es
 function svo(facility::String, instrument::String, passband::String)
     svo_name = "$facility/$instrument.$passband"
     try
-        return svo_fps.SvoFps.get_transmission_data(svo_name)
+        return svo_fps[].SvoFps.get_transmission_data(svo_name)
     catch
         return nothing
     end
@@ -65,7 +65,7 @@ struct Filter
 end
 
 """
-    Filter(facility::String, instrument::String, passband::String, svo::PyCall.PyObject)
+    Filter(facility::String, instrument::String, passband::String, svo::PythonCall.Py)
 
 Make [`Filter`](@ref) object from [`svo`](@ref) transmission curve.
 
@@ -73,13 +73,13 @@ Make [`Filter`](@ref) object from [`svo`](@ref) transmission curve.
 - `facility::String`: Name of the filter's facility
 - `instrument::String`: Name of the filter's instrument
 - `passband::String`: Name of the filter's passband
-- `svo::Pycall.PyObject`: SVO transmission curve
+- `svo::Pycall.Py`: SVO transmission curve
 """
 function Filter(
     facility::String,
     instrument::String,
     passband::String,
-    svo::PyCall.PyObject,
+    svo::PythonCall.Py,
 )
     wavelength = svo.__getitem__("Wavelength")
     transmission = svo.__getitem__("Transmission")
@@ -122,7 +122,7 @@ end
 """
     Filter(facility::String, instrument::String, passband::String, config::Dict{String, Any})
 
-Make [`Filter`](@ref) object from `config` options. `config` must include "FILTER_PATH" => path/to/transmission_curve. If this file exists, the transmission curve will be loaded via [`Filter(facility::String, instrument::String, passband::String, filter_file::AbstractString)`](@ref), otherwise attempt to create Filter via [`Filter(facility::String, instrument::String, passband::String, svo::PyCall.PyObject)`](@ref) and the SVO FPS database.
+Make [`Filter`](@ref) object from `config` options. `config` must include "FILTER_PATH" => path/to/transmission_curve. If this file exists, the transmission curve will be loaded via [`Filter(facility::String, instrument::String, passband::String, filter_file::AbstractString)`](@ref), otherwise attempt to create Filter via [`Filter(facility::String, instrument::String, passband::String, svo::PythonCall.Py)`](@ref) and the SVO FPS database.
 
 # Arguments
 - `facility::String`: Name of the filter's facility
